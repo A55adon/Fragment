@@ -1,0 +1,10 @@
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\external\glad\src\glad.c;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\glad.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\external\stb_image.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\stb_image.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\core\FragEngine.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\FragEngine.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\main.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\main.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Graphics\Graphics.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\Graphics.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Graphics\Shader.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\Shader.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Graphics\Texture.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\Texture.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Graphics\UI\UI.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\UI.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Graphics\UI\UIObject.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\UIObject.obj
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\source\modules\Physics\Physics.cpp;C:\Users\simon\Desktop\Code\FragEngine\FragEngine\x64\Debug\Physics.obj

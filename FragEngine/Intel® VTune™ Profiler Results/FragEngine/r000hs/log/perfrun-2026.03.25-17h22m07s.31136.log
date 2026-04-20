@@ -1,0 +1,12 @@
+48 [30332] INFO perfrun.launcher <> - Launcher main begin
+54 [30332] INFO perfrun.launcher <> - MessageCatalogInit finished
+54 [30332] INFO perfrun.launcher <> - Launcher instance created
+54 [30332] INFO perfrun.launcher <> - argc = 9; cmdline = C:\Program Files (x86)\Intel\oneAPI\vtune\2025.9\bin64\amplxe-runss.exe --ui-output-format xml --ui-output-fd 924 -r C:\Users\simon\Desktop\Code\FragEngine\FragEngine\Intel® VTune™ Profiler Results\FragEngine\r000hs --command stop 
+66 [30332] INFO perfrun.launcher <> - New signal handler callback was added
+382 [30332] INFO perfrun.perfcollector <> - SEP tool path: C:\Program Files (x86)\Intel\oneAPI\vtune\2025.9\bin64\sep.exe
+392 [30332] INFO perfrun.launcher <> - create msngr2::ICliToolContext
+392 [30332] INFO perfrun.launcher <> - create file finder object
+392 [30332] INFO perfrun.launcher <> - open the result directory: pattern = C:\Users\simon\Desktop\Code\FragEngine\FragEngine\Intel® VTune™ Profiler Results\FragEngine\r000hs
+396 [30332] INFO perfrun.launcher <> - RpcClient: IP address = 127.0.0.1; port = 4294966875
+824 [30332] INFO perfrun.launcher <> - Application exit code: 0
+824 [30332] INFO perfrun.launcher <> - Exit code: 0

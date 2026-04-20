@@ -1,0 +1,25 @@
+#pragma once
+
+// Project config
+#define CFG_PROJECT_NAME "Fragment"
+#define CFG_PROJECT_VERSION_MAJOR 0
+#define CFG_PROJECT_VERSION_MINOR 0
+#define CFG_PROJECT_VERSION_FIX 0
+
+// GLFW config
+#define CFG_GLFW_CONTEXT_VERSION_MAJOR 3
+#define CFG_GLFW_CONTEXT_VERSION_MINOR 3
+#define CFG_GLFW_OPENGL_PROFILE GLFW_OPENGL_CORE_PROFILE
+#define CFG_GLFW_SAMPLES 4 // Multisampling level
+
+// GL defines
+#define CFG_GL_ENABLE_MULTISAMPLING true
+#define CFG_GL_ENABLE_DEPTH_TEST true
+#define CFG_GL_LINEWIDTH 3.f
+
+// Custom resolution
+#define CFG_CUSTOM_RESOLUTION_FILTERING GL_NEAREST
+
+// Rendering
+#define CFG_WIREMESHMODE false
+#define CFG_SHADOW_TEXTURE_SIZE 2048

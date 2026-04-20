@@ -1,0 +1,16 @@
+-r
+C:\Users\simon\Desktop\Code\FragEngine\FragEngine\Intel® VTune™ Profiler Results\FragEngine\r000hs
+--stack-stitching
+--data-limit-mb=1000
+--disk-space-limit=0
+--mrte-type=java,dotnet,python
+--stack-unwind-limit=8388608
+--itt-config=frame
+--itt-config=task,event,counter
+--stackwalk=offline
+--mrte-mode=auto
+--type=cpu:stack
+--interval=10
+--app-working-dir=C:\Users\simon\Desktop\Code\FragEngine\FragEngine\
+--
+C:\Users\simon\Desktop\Code\FragEngine\x64\Debug\FragEngine.exe

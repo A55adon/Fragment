@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FragEngine/FragEngine.vcxproj" Id="6095985a-7bcd-492b-950c-48fb45a99af7" />
+</Solution>

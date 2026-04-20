@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{e5789890-823b-4377-88cc-fe55b4108378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{fd5a4469-4fe9-40eb-ad6b-61172569317c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IO">
+      <UniqueIdentifier>{cfd488ed-7fc1-4b3d-b911-0c5470be72a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{56ef3326-9261-4779-998a-a99a499852da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{411ef55c-9fbc-48b7-8c7c-8d2ae5b0e83e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{1a735d84-e278-43e8-8af4-55be5cdb3469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\UI">
+      <UniqueIdentifier>{b879b1eb-85ee-4f4a-b475-546a13cfc65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\UI">
+      <UniqueIdentifier>{12913ca6-1861-4f7c-9ee7-df07671d8dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{b3c9860d-6bc6-4f74-9462-918dca43b659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Monitoring">
+      <UniqueIdentifier>{47eb3c21-665a-4b06-88ff-59a53adbe870}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\glad\src\glad.c">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="external\stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\Fragment.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\Graphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\Shader.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\Texture.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\UI\UIObject.cpp">
+      <Filter>Source Files\Graphics\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Physics\Physics.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\UI\UI.cpp">
+      <Filter>Source Files\Graphics\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\Renderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\modules\Graphics\Camera.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\Graphics.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\LightSource.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\Shader.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\Texture.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\DataTypes.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\DefaultFunctions.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\Fragment.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\Mesh.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\SceneObject.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\Window.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\IO\UserInput\Input.h">
+      <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UI.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Physics\Physics.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\Scene.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Button.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Rect.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Slider.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Text.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIObject.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UITypes.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Font.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\Dropdown.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Monitoring\Monitor.h">
+      <Filter>Header Files\Monitoring</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\Renderer.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\config.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Physics\AxisConstraint.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Physics\JointConstraint.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\modules\Graphics\model.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\model.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\resolution.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\resolution.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\UI\ui.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\UI\ui.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\shadow.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="source\modules\Graphics\shadow.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="external\glad\src\glad.c" />
+    <ClCompile Include="external\stb_image.cpp" />
+    <ClCompile Include="source\core\Fragment.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\modules\Graphics\Graphics.cpp" />
+    <ClCompile Include="source\modules\Graphics\Renderer.cpp" />
+    <ClCompile Include="source\modules\Graphics\Shader.cpp" />
+    <ClCompile Include="source\modules\Graphics\Texture.cpp" />
+    <ClCompile Include="source\modules\Graphics\UI\UI.cpp" />
+    <ClCompile Include="source\modules\Graphics\UI\UIObject.cpp" />
+    <ClCompile Include="source\modules\Physics\Physics.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\core\config.h" />
+    <ClInclude Include="source\core\DataTypes.h" />
+    <ClInclude Include="source\core\DefaultFunctions.h" />
+    <ClInclude Include="source\core\Fragment.h" />
+    <ClInclude Include="source\core\Mesh.h" />
+    <ClInclude Include="source\core\Scene.h" />
+    <ClInclude Include="source\core\SceneObject.h" />
+    <ClInclude Include="source\modules\Graphics\Camera.h" />
+    <ClInclude Include="source\modules\Graphics\Graphics.h" />
+    <ClInclude Include="source\modules\Graphics\LightSource.h" />
+    <ClInclude Include="source\modules\Graphics\Renderer.h" />
+    <ClInclude Include="source\modules\Graphics\Shader.h" />
+    <ClInclude Include="source\modules\Graphics\Texture.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Button.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Dropdown.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Font.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Rect.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Slider.h" />
+    <ClInclude Include="source\modules\Graphics\UI\Text.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UI.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIObject.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UITypes.h" />
+    <ClInclude Include="source\modules\Graphics\Window.h" />
+    <ClInclude Include="source\modules\IO\UserInput\Input.h" />
+    <ClInclude Include="source\modules\Monitoring\Monitor.h" />
+    <ClInclude Include="source\modules\Physics\AxisConstraint.h" />
+    <ClInclude Include="source\modules\Physics\JointConstraint.h" />
+    <ClInclude Include="source\modules\Physics\Physics.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\modules\Graphics\model.frag" />
+    <None Include="source\modules\Graphics\model.vert" />
+    <None Include="source\modules\Graphics\resolution.frag" />
+    <None Include="source\modules\Graphics\resolution.vert" />
+    <None Include="source\modules\Graphics\shadow.frag" />
+    <None Include="source\modules\Graphics\shadow.vert" />
+    <None Include="source\modules\Graphics\UI\ui.frag" />
+    <None Include="source\modules\Graphics\UI\ui.vert" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{6095985a-7bcd-492b-950c-48fb45a99af7}</ProjectGuid>
+    <RootNamespace>FragEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Fragment</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED
+;JPH_OBJECT_STREAM</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)external\glad\include;$(ProjectDir)external\glfw\include;$(ProjectDir)external\JoltPhysics-5.5.0;$(ProjectDir)external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjDir)external\glfw\lib\glfw3.lib;$(ProjDir)external\JoltPhysics-5.5.0\Build\VS2026_CL\Debug\Jolt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED
+;JPH_OBJECT_STREAM</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;$(ProjectDir)external\glad\include;$(ProjectDir)external\glfw\include;$(ProjectDir)external\JoltPhysics-5.5.0;$(ProjectDir)external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjDir)external\glfw\lib\glfw3.lib;$(ProjDir)external\JoltPhysics-5.5.0\Build\VS2026_CL\Debug\Jolt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
