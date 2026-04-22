@@ -7,7 +7,7 @@ class SceneObject;
 // Constraint on one object (world-anchored)
 class AxisConstraint {
 public:
-    AxisConstraint(SceneObject* obj) : _object(obj) {}
+    AxisConstraint(int objID) : _objectID(objID) {}
 
     // Pivot position (relative to object center)
     void setPivotPosition(vec3<float> pos)          { _pivotPointPosition = pos; }
@@ -70,9 +70,9 @@ public:
     bool isMovementLockedY() const { return _constraintMovementAxisMin.y == _constraintMovementAxisMax.y; }
     bool isMovementLockedZ() const { return _constraintMovementAxisMin.z == _constraintMovementAxisMax.z; }
 
-    SceneObject* getObject() { return _object; }
+    int getObjectID() { return _objectID; }
 private:
-    SceneObject* _object = nullptr;
+    int _objectID = -1;
 
     vec3<float> _pivotPointPosition = { 0, 0, 0 };
     vec3<float> _pivotPointRotation = { 0, 0, 0 };

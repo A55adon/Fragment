@@ -14,7 +14,7 @@ Camera* camera;
 LightSource* light1;
 
 Input* userInput;
-
+SceneObject* cube2;
 int scene1ID;
 int scene2ID;
 
@@ -402,9 +402,10 @@ void createScene() {
 		cube2->setScale(vec3<float>(1, 0.25f, 7.f));
 		cube2->initPhysics(cfg);
 
-		AxisConstraint constraint = AxisConstraint(cube2);
+		AxisConstraint constraint = AxisConstraint(cube2->getID());
 		constraint.lockAllRotation();
 		constraint.lockAllMovement();
+		scene1->addAxisConstraint(constraint);
 
 		scene1->getPhysics()->addAxisConstraint(constraint);
 
@@ -448,7 +449,7 @@ void createScene() {
 		cube->setScale(vec3<float>(1, 0.25f, 0.25f));
 		cube->initPhysics(cfg);
 
-		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene2->getPhysics());
+		cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene2->getPhysics());
 		cube2->getRenderMesh().createCube();
 		cube2->getRenderMesh().setColor(Color::Blue);
 		cube2->setPosition(vec3<float>(0, 2, 2));
@@ -553,6 +554,7 @@ void update(float dt) {
 
 	for (auto& o : engine.loadedScene.getAllObjects().getAll())
 		o->syncFromPhysics();
+
 }
 
 void draw() {

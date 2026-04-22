@@ -89,6 +89,11 @@ void Physics::addAxisConstraint(AxisConstraint& constraint)
     settings.mPosition1 = anchorWorldPos;
     settings.mPosition2 = anchorWorldPos;
 
+    settings.mAxisX1 = JPH::Vec3::sAxisX();
+    settings.mAxisY1 = JPH::Vec3::sAxisY();
+    settings.mAxisX2 = JPH::Vec3::sAxisX();
+    settings.mAxisY2 = JPH::Vec3::sAxisY();
+
     // Helper to configure one axis
     auto configureAxis = [&](JPH::SixDOFConstraintSettings::EAxis axis, float mn, float mx) {
         if (mn == mx)
@@ -122,5 +127,11 @@ void Physics::addAxisConstraint(AxisConstraint& constraint)
     physicsSystem.AddConstraint(joltConstraint);
     _constraints.push_back(joltConstraint);
 
+    std::cout << "Constraint created between anchor " << anchorID.GetIndexAndSequenceNumber()
+        << " and body " << bodyID.GetIndexAndSequenceNumber() << std::endl;
+    std::cout << "Constraint enabled: " << joltConstraint->GetEnabled() << std::endl;
+
+    std::cout << "Object position: " << objPos.x << ", " << objPos.y << ", " << objPos.z << std::endl;
+    std::cout << "Anchor position: " << anchorWorldPos.GetX() << ", " << anchorWorldPos.GetY() << ", " << anchorWorldPos.GetZ() << std::endl;
 }
 

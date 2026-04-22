@@ -79,15 +79,21 @@ public:
 			newObject->setScale(obj->getScale());
 			newObject->initPhysics(obj->settings);
 		}
+		for (auto& constraint : ref->getAxisConstraints()) {
+			loadedScene.getPhysics()->addAxisConstraint(constraint);
+		}
+
 		_loadedSceneID = id;
 	}
 	// Saves currently loaded scene and overrides the correstponding one in the register
 	void saveScene() {
 		ASSERT(scenes.getByID(_loadedSceneID), "No scene found with ID: " + std::to_string(_loadedSceneID));
-		scenes.getByID(_loadedSceneID)->getAllObjects().reset();
+		Scene* ref  = scenes.getByID(_loadedSceneID);
+		ref->getAllObjects().reset();
+		ref->getAxisConstraints().clear();
 		for (auto& obj : loadedScene.getAllObjects().getAll())
 		{
-			SceneObject* newObject = scenes.getByID(_loadedSceneID)->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+			SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
 
 			newObject->setPhysicsMesh(obj->getPhysicsMesh());
 			newObject->setRenderMesh(obj->getRenderMesh());
@@ -97,14 +103,19 @@ public:
 			newObject->initPhysics(obj->settings);
 
 		}
+		for (auto& constraint : loadedScene.getAxisConstraints()) {
+			ref->addAxisConstraint(constraint);
+		}
 
 	}
 	void saveSceneToID(int ID) {
 		ASSERT(scenes.getByID(ID), "No scene found with ID: " + std::to_string(ID));
-		scenes.getByID(ID)->getAllObjects().reset();
+		Scene* ref = scenes.getByID(_loadedSceneID);
+		ref->getAllObjects().reset();
+		ref->getAxisConstraints().clear();
 		for (auto& obj : loadedScene.getAllObjects().getAll())
 		{
-			SceneObject* newObject = scenes.getByID(ID)->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+			SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
 
 			newObject->setPhysicsMesh(obj->getPhysicsMesh());
 			newObject->setRenderMesh(obj->getRenderMesh());
@@ -112,6 +123,10 @@ public:
 			newObject->setRotation(obj->getRotation());
 			newObject->setScale(obj->getScale());
 			newObject->initPhysics(obj->settings);
+		}
+
+		for (auto& constraint : loadedScene.getAxisConstraints()) {
+			ref->addAxisConstraint(constraint);
 		}
 
 	}
@@ -155,9 +170,6 @@ private:
 	int renderFPSCap = 60;        // fps
 	int physicsFPSCap = 240;      // fps
 	float _physicsTimeScale = 0.5f; // 50% speed — only used when SLOWED
-
-
-	std::unordered_map<int, SceneObjectState> _sceneSnapshot;
 
 	Input userInput;
 	Graphics graphics;
