@@ -381,13 +381,13 @@ void createScene() {
 	Scene* scene1 = engine.scenes.createNew("scene1");
 	scene1ID = scene1->getID();
 	engine.loadSceneByID(scene1ID);
-	scene1->activatePhysics();
+	//scene1->activatePhysics();
 	{
 		PhysicsSettings cfg;
 		cfg.restitution = 0.f;
 		//cfg.isStatic = true;
 
-		SceneObject* cube = engine.loadedScene.getAllObjects().createNew("Cube1", scene1->getPhysics());
+		SceneObject* cube = engine.loadedScene.getAllObjects().createNew("Cube1", engine.loadedScene.getPhysics());
 		cube->getRenderMesh().createCube();
 		cube->getRenderMesh().setColor(Color::Red);
 		cube->setPosition(vec3<float>(0, 1, 0));
@@ -395,38 +395,62 @@ void createScene() {
 		cube->initPhysics(cfg);
 
 
-		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene1->getPhysics());
+		AxisConstraint constraint2 = AxisConstraint(cube, cube->getName());
+		constraint2.lockAllRotation();
+		constraint2.lockMovementX();
+		constraint2.lockMovementZ();
+		scene1->addAxisConstraint(constraint2);
+
+		engine.loadedScene.addAxisConstraint(constraint2);
+
+		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", engine.loadedScene.getPhysics());
 		cube2->getRenderMesh().createCube();
 		cube2->getRenderMesh().setColor(Color::Green);
 		cube2->setPosition(vec3<float>(0, 2, 2));
 		cube2->setScale(vec3<float>(1, 0.25f, 7.f));
 		cube2->initPhysics(cfg);
 
-		AxisConstraint constraint = AxisConstraint(cube2->getID());
-		constraint.lockAllRotation();
-		constraint.lockAllMovement();
+		AxisConstraint constraint = AxisConstraint(cube2, cube2->getName());
+		constraint.lockRotationY();
+		constraint.lockRotationZ();
+		constraint.lockMovementX();
+		constraint.lockMovementZ();
 		scene1->addAxisConstraint(constraint);
+		
+		engine.loadedScene.addAxisConstraint(constraint);
 
-		scene1->getPhysics()->addAxisConstraint(constraint);
-
-		SceneObject* cube3 = engine.loadedScene.getAllObjects().createNew("Cube3", scene1->getPhysics());
+		SceneObject* cube3 = engine.loadedScene.getAllObjects().createNew("Cube3", engine.loadedScene.getPhysics());
 		cube3->getRenderMesh().createCube();
 		cube3->getRenderMesh().setColor(Color::Blue);
 		cube3->setPosition(vec3<float>(0, 3, 5));
 		cube3->setScale(vec3<float>(0.5f, 0.5f, 0.5f));
 		cube3->initPhysics(cfg);
 
+		AxisConstraint constraint3 = AxisConstraint(cube3, cube3->getName());
+		constraint3.lockAllRotation();
+		constraint3.lockMovementX();
+		constraint3.lockMovementZ();
+		scene1->addAxisConstraint(constraint3);
+		engine.loadedScene.addAxisConstraint(constraint3);
+
 		cfg.mass = 40;
 
-		SceneObject* cube4 = engine.loadedScene.getAllObjects().createNew("Cube4", scene1->getPhysics());
+		SceneObject* cube4 = engine.loadedScene.getAllObjects().createNew("Cube4", engine.loadedScene.getPhysics());
 		cube4->getRenderMesh().createCube();
 		cube4->getRenderMesh().setColor(Color::Red);
 		cube4->setPosition(vec3<float>(0, 14, -1));
 		cube4->initPhysics(cfg);
 
+		AxisConstraint constraint4 = AxisConstraint(cube4, cube4->getName());
+		constraint4.lockAllRotation();
+		constraint4.lockMovementX();
+		constraint4.lockMovementZ();
+		scene1->addAxisConstraint(constraint4);
+		engine.loadedScene.addAxisConstraint(constraint4);
+
 		cfg.isStatic = true;
 
-		SceneObject* floorObj = engine.loadedScene.getAllObjects().createNew("FloorObj", scene1->getPhysics());
+		SceneObject* floorObj = engine.loadedScene.getAllObjects().createNew("FloorObj", engine.loadedScene.getPhysics());
 		floorObj->getRenderMesh().createCube();
 		floorObj->getRenderMesh().setColor(Color::White);
 		floorObj->setScale(vec3<float>(105, 1, 105));
@@ -441,6 +465,7 @@ void createScene() {
 	{
 		PhysicsSettings cfg;
 		cfg.restitution = 0.f;
+		cfg.isStatic = true;
 
 		SceneObject* cube = engine.loadedScene.getAllObjects().createNew("Cube1", scene2->getPhysics());
 		cube->getRenderMesh().createCube();
@@ -471,7 +496,6 @@ void createScene() {
 		cube4->setPosition(vec3<float>(0, 14, -1));
 		cube4->initPhysics(cfg);
 
-		cfg.isStatic = true;
 
 		SceneObject* floorObj = engine.loadedScene.getAllObjects().createNew("FloorObj", scene2->getPhysics());
 		floorObj->getRenderMesh().createCube();

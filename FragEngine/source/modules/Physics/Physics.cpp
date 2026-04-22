@@ -47,6 +47,7 @@ Physics::~Physics()
         JPH::Factory::sInstance = nullptr;
     }
 }
+
 void Physics::update(float dt)
 {
     physicsSystem.Update(dt, 1, tempAllocator, jobSystem);
@@ -54,15 +55,13 @@ void Physics::update(float dt)
 
 void Physics::addAxisConstraint(AxisConstraint& constraint)
 {
-    SceneObject* obj = constraint.getObject(); // you'll need getObject() on AxisConstraint
-    ASSERT(obj, "AxisConstraint has no object");
+    SceneObject* obj = constraint.getCachedObject();
+    ASSERT(obj, "AxisConstraint has no cached object, call setCachedObject() first!");
 
     JPH::BodyInterface& bodyInterface = physicsSystem.GetBodyInterface();
     JPH::BodyID bodyID = obj->getBodyID();
-    ASSERT(!bodyID.IsInvalid(), "SceneObject has no physics body — call initPhysics() first");
+    ASSERT(!bodyID.IsInvalid(), "SceneObject has no physics body, call initPhysics() first");
 
-    // Build a static anchor body at the pivot world position
-    // (pivot is relative to the object, so offset by object position)
     vec3<float> objPos = obj->getPosition();
     vec3<float> pivotPos = constraint.getPivotPosition();
     JPH::RVec3 anchorWorldPos(
@@ -127,11 +126,5 @@ void Physics::addAxisConstraint(AxisConstraint& constraint)
     physicsSystem.AddConstraint(joltConstraint);
     _constraints.push_back(joltConstraint);
 
-    std::cout << "Constraint created between anchor " << anchorID.GetIndexAndSequenceNumber()
-        << " and body " << bodyID.GetIndexAndSequenceNumber() << std::endl;
-    std::cout << "Constraint enabled: " << joltConstraint->GetEnabled() << std::endl;
-
-    std::cout << "Object position: " << objPos.x << ", " << objPos.y << ", " << objPos.z << std::endl;
-    std::cout << "Anchor position: " << anchorWorldPos.GetX() << ", " << anchorWorldPos.GetY() << ", " << anchorWorldPos.GetZ() << std::endl;
 }
 

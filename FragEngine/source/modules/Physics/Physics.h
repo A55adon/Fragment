@@ -87,6 +87,7 @@ public:
     void addAxisConstraint(AxisConstraint& constraint);
 
     JPH::PhysicsSystem& getSystem() { return physicsSystem; }
+    std::vector<JPH::Ref<JPH::Constraint>>& getConstraints() { return _constraints; }
 
 private:
     BPLayerInterfaceImpl                bpLayerInterface;

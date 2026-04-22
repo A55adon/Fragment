@@ -28,6 +28,8 @@ enum class ERenderUpdateState {
 
 class Fragment {
 
+// TODO: 
+// Add uniqueIdentifier keys for sceneobjcets so that when moving from one to another register the object can still be found
 public:
 	Fragment();
 	void runApp();
@@ -62,9 +64,9 @@ public:
 	}
 
 	// Clones the wanted scene from the register into the loaded scene
-	void loadSceneByID(int id) {
-		if (scenes.getByID(id) == nullptr) return;
-		Scene* ref = scenes.getByID(id);
+	void loadSceneByID(int ID) {
+		ASSERT(scenes.getByID(ID), "Could not load scene with id: " + std::to_string(ID));
+		Scene* ref = scenes.getByID(ID);
 		loadedScene = Scene(); // reset scene
 		loadedScene.activatePhysics();
 
@@ -79,11 +81,18 @@ public:
 			newObject->setScale(obj->getScale());
 			newObject->initPhysics(obj->settings);
 		}
+
 		for (auto& constraint : ref->getAxisConstraints()) {
+			loadedScene.addAxisConstraint(constraint);
+		}
+
+		for (auto& constraint : loadedScene.getAxisConstraints()) {
+			SceneObject* obj = loadedScene.getAllObjects().getByName(constraint.getObjectName());
+			constraint.setCachedObject(obj);
 			loadedScene.getPhysics()->addAxisConstraint(constraint);
 		}
 
-		_loadedSceneID = id;
+		_loadedSceneID = ID;
 	}
 	// Saves currently loaded scene and overrides the correstponding one in the register
 	void saveScene() {
@@ -106,11 +115,11 @@ public:
 		for (auto& constraint : loadedScene.getAxisConstraints()) {
 			ref->addAxisConstraint(constraint);
 		}
-
 	}
+
 	void saveSceneToID(int ID) {
 		ASSERT(scenes.getByID(ID), "No scene found with ID: " + std::to_string(ID));
-		Scene* ref = scenes.getByID(_loadedSceneID);
+		Scene* ref = scenes.getByID(ID);
 		ref->getAllObjects().reset();
 		ref->getAxisConstraints().clear();
 		for (auto& obj : loadedScene.getAllObjects().getAll())

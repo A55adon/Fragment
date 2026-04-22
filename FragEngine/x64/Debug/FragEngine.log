@@ -1,14 +1,4 @@
 ﻿C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(551,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (FragEngine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Fragment.cpp
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(69,21): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'source/core/Fragment.cpp')
-  
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Font.h(81,13): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'source/core/Fragment.cpp')
-  
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Text.h(88,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'source/core/Fragment.cpp')
-  
   main.cpp
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(69,21): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'source/main.cpp')
@@ -19,19 +9,9 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Font.
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Text.h(88,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'source/main.cpp')
   
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(528,37): warning C4305: 'argument': truncation from 'double' to 'T'
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(528,37): warning C4305:         with
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(528,37): warning C4305:         [
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(528,37): warning C4305:             T=float
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(528,37): warning C4305:         ]
-  Renderer.cpp
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(69,21): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'source/modules/Graphics/Renderer.cpp')
-  
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Renderer.cpp(205,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Physics.cpp
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Physics\Physics.cpp(57,35): error C2039: 'getObject': is not a member of 'AxisConstraint'
-      C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Physics\AxisConstraint.h(8,7):
-      see declaration of 'AxisConstraint'
-  
-  Generating Code...
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         with
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         [
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:             T=float
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         ]
+  FragEngine.vcxproj -> C:\Users\simon\Desktop\Code\Fragment\x64\Debug\Fragment.exe
