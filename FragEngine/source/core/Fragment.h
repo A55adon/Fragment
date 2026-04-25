@@ -88,8 +88,23 @@ public:
 
 		for (auto& constraint : loadedScene.getAxisConstraints()) {
 			SceneObject* obj = loadedScene.getAllObjects().getByName(constraint.getObjectName());
+			ASSERT(obj, "Invalid object to set as cached");
 			constraint.setCachedObject(obj);
 			loadedScene.getPhysics()->addAxisConstraint(constraint);
+		}
+
+		for (auto& constraint : ref->getHingeConstraints()) {
+			loadedScene.addHingeConstraint(constraint);
+		}
+
+		for (auto& constraint : loadedScene.getHingeConstraints()) {
+			SceneObject* obj1 = loadedScene.getAllObjects().getByName(constraint.getConnector1Name());
+			ASSERT(obj1, "Invalid object to set as cached");
+			constraint.setCachedConnector1(obj1);
+			SceneObject* obj2 = loadedScene.getAllObjects().getByName(constraint.getConnector2Name());
+			if (!obj2) { LOG("No object 2 found, using world anchor"); }
+			constraint.setCachedConnector2(obj2);
+			loadedScene.getPhysics()->addHingeConstraint(constraint);
 		}
 
 		_loadedSceneID = ID;

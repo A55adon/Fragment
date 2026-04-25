@@ -128,3 +128,131 @@ void Physics::addAxisConstraint(AxisConstraint& constraint)
 
 }
 
+void Physics::addHingeConstraint(HingeConstraint& constraint)
+{
+    JPH::BodyInterface& bodyInterface = physicsSystem.GetBodyInterface();
+
+    // Get first object
+    SceneObject* obj1 = constraint.getCachedConnector1();
+    ASSERT(obj1, "HingeConstraint has no cached connector1, call setCachedConnector1() first!");
+
+    JPH::BodyID body1ID = obj1->getBodyID();
+    ASSERT(!body1ID.IsInvalid(), "SceneObject connector1 has no physics body, call initPhysics() first");
+
+    JPH::BodyID body2ID;
+    SceneObject* obj2 = nullptr;
+
+    if (constraint.isWorldAnchored()) {
+        // Create static anchor body at the world position of point1
+        vec3<float> obj1Pos = obj1->getPosition();
+        vec3<float> point1 = constraint.getPoint1();
+        JPH::RVec3 anchorWorldPos(
+            obj1Pos.x + point1.x,
+            obj1Pos.y + point1.y,
+            obj1Pos.z + point1.z
+        );
+
+        JPH::BodyCreationSettings anchorSettings(
+            new JPH::SphereShape(0.01f),
+            anchorWorldPos,
+            JPH::Quat::sIdentity(),
+            JPH::EMotionType::Static,
+            Layers::CONSTRAINT_ANCHOR
+        );
+        anchorSettings.mIsSensor = true;
+
+        body2ID = bodyInterface.CreateAndAddBody(anchorSettings, JPH::EActivation::DontActivate);
+        _anchorBodies.push_back(body2ID);
+    }
+    else {
+        // Get second object
+        obj2 = constraint.getCachedConnector2();
+        ASSERT(obj2, "HingeConstraint has no cached connector2, call setCachedConnector2() first!");
+
+        body2ID = obj2->getBodyID();
+        ASSERT(!body2ID.IsInvalid(), "SceneObject connector2 has no physics body, call initPhysics() first");
+    }
+
+    // Set up the hinge constraint
+    JPH::HingeConstraintSettings settings;
+    settings.mSpace = JPH::EConstraintSpace::WorldSpace;
+
+    // Convert local points to world space
+    vec3<float> obj1Pos = obj1->getPosition();
+    vec3<float> point1 = constraint.getPoint1();
+    settings.mPoint1 = JPH::Vec3(
+        obj1Pos.x + point1.x,
+        obj1Pos.y + point1.y,
+        obj1Pos.z + point1.z
+    );
+
+    if (constraint.isWorldAnchored()) {
+        settings.mPoint2 = settings.mPoint1; // Same position for world anchor
+    }
+    else {
+        vec3<float> obj2Pos = obj2->getPosition();
+        vec3<float> point2 = constraint.getPoint2();
+        settings.mPoint2 = JPH::Vec3(
+            obj2Pos.x + point2.x,
+            obj2Pos.y + point2.y,
+            obj2Pos.z + point2.z
+        );
+    }
+
+    // Set hinge axis
+    vec3<float> hingeAxis1 = constraint.getHingeAxis1();
+    vec3<float> normalAxis1 = constraint.getNormalAxis1();
+    settings.mHingeAxis1 = JPH::Vec3(hingeAxis1.x, hingeAxis1.y, hingeAxis1.z);
+    settings.mNormalAxis1 = JPH::Vec3(normalAxis1.x, normalAxis1.y, normalAxis1.z);
+
+    if (constraint.isWorldAnchored()) {
+        settings.mHingeAxis2 = settings.mHingeAxis1;
+        settings.mNormalAxis2 = settings.mNormalAxis1;
+    }
+    else {
+        vec3<float> hingeAxis2 = constraint.getHingeAxis2();
+        vec3<float> normalAxis2 = constraint.getNormalAxis2();
+        settings.mHingeAxis2 = JPH::Vec3(hingeAxis2.x, hingeAxis2.y, hingeAxis2.z);
+        settings.mNormalAxis2 = JPH::Vec3(normalAxis2.x, normalAxis2.y, normalAxis2.z);
+    }
+
+    // Set angle limits
+    if (constraint.isLocked()) {
+        settings.mLimitsMin = 0.0f;
+        settings.mLimitsMax = 0.0f;
+    }
+    else if (!constraint.isFree()) {
+        settings.mLimitsMin = constraint.getMinAngle();
+        settings.mLimitsMax = constraint.getMaxAngle();
+    }
+
+    // Configure motor in settings (BEFORE creating constraint)
+    if (constraint.isMotorEnabled()) {
+        JPH::MotorSettings motorSettings;
+        motorSettings.mMinForceLimit = -constraint.getMotorMaxTorque();
+        motorSettings.mMaxForceLimit = constraint.getMotorMaxTorque();
+        motorSettings.mMinTorqueLimit = -constraint.getMotorMaxTorque();
+        motorSettings.mMaxTorqueLimit = constraint.getMotorMaxTorque();
+        settings.mMotorSettings = motorSettings;
+    }
+
+    // Lock bodies and create constraint
+    JPH::BodyID bodies[2] = { body1ID, body2ID };
+    JPH::BodyLockMultiWrite locks(physicsSystem.GetBodyLockInterface(), bodies, 2);
+
+    JPH::Body* joltBody1 = locks.GetBody(0);
+    JPH::Body* joltBody2 = locks.GetBody(1);
+    ASSERT(joltBody1 && joltBody2, "Failed to lock physics bodies");
+
+    JPH::Constraint* joltConstraint = settings.Create(*joltBody1, *joltBody2);
+
+    // Set motor state AFTER creation (this is supported)
+    if (constraint.isMotorEnabled()) {
+        JPH::HingeConstraint* hinge = static_cast<JPH::HingeConstraint*>(joltConstraint);
+        hinge->SetMotorState(JPH::EMotorState::Velocity);
+        hinge->SetTargetAngularVelocity(constraint.getMotorTargetVelocity());
+    }
+
+    physicsSystem.AddConstraint(joltConstraint);
+    _constraints.push_back(joltConstraint);
+}

@@ -12,6 +12,7 @@
 #include <optional>
 #include <format>
 #include <concepts>
+#include <iostream>
 
 enum class EGameState {
     UI,
@@ -536,13 +537,20 @@ public:
 
     T* getByID(int id) {
         auto it = idMap.find(id);
-        if (it == idMap.end()) return nullptr;
+        if (it == idMap.end()) {
+            std::cout << "No entry found for ID: " << id << std::endl;
+            return nullptr;
+        }
         return objects[it->second].get();
     }
 
     T* getByName(const std::string& name) {
         auto it = nameMap.find(name);
-        if (it == nameMap.end()) return nullptr;
+        if (it == nameMap.end()) { 
+            std::cout << "No entry found for Name: " << name << std::endl;
+            return nullptr; 
+        }
+
         return objects[it->second].get();
     }
 

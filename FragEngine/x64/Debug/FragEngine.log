@@ -9,9 +9,9 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Font.
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\UI\Text.h(88,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'source/main.cpp')
   
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305: 'argument': truncation from 'double' to 'T'
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         with
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         [
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:             T=float
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(552,37): warning C4305:         ]
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(564,37): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(564,37): warning C4305:         with
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(564,37): warning C4305:         [
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(564,37): warning C4305:             T=float
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(564,37): warning C4305:         ]
   FragEngine.vcxproj -> C:\Users\simon\Desktop\Code\Fragment\x64\Debug\Fragment.exe

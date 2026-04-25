@@ -161,7 +161,7 @@
     <ClInclude Include="source\modules\Physics\AxisConstraint.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="source\modules\Physics\JointConstraint.h">
+    <ClInclude Include="source\modules\Physics\HingeConstraint.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>

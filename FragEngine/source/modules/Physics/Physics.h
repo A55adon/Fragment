@@ -1,6 +1,7 @@
 #pragma once
 
 #include "modules/Physics/AxisConstraint.h"
+#include "modules/Physics/HingeConstraint.h"
 
 #include <Jolt/Jolt.h>
 #include <Jolt/Core/Factory.h>
@@ -9,10 +10,11 @@
 #include <Jolt/Physics/PhysicsSystem.h>
 #include <Jolt/RegisterTypes.h>
 #include <Jolt/Physics/Collision/Shape/BoxShape.h>
-#include <Jolt/Physics/Body/BodyCreationSettings.h>
-#include <Jolt/Physics/Constraints/SixDOFConstraint.h>
 #include <Jolt/Physics/Collision/Shape/SphereShape.h>
+#include <Jolt/Physics/Body/BodyCreationSettings.h>
 #include <Jolt/Physics/Body/BodyLockMulti.h>
+#include <Jolt/Physics/Constraints/SixDOFConstraint.h>
+#include <Jolt/Physics/Constraints/HingeConstraint.h>
 
 namespace Layers {
     static constexpr JPH::ObjectLayer NON_MOVING = 0;
@@ -85,6 +87,8 @@ public:
 
     void update(float dt);
     void addAxisConstraint(AxisConstraint& constraint);
+
+    void addHingeConstraint(HingeConstraint& constraint);
 
     JPH::PhysicsSystem& getSystem() { return physicsSystem; }
     std::vector<JPH::Ref<JPH::Constraint>>& getConstraints() { return _constraints; }

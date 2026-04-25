@@ -29,12 +29,16 @@ public:
 	void addAxisConstraint(AxisConstraint constraint) { _axisConstraints.push_back(constraint); }
 	std::vector<AxisConstraint>& getAxisConstraints() { return _axisConstraints; }
 
+	void addHingeConstraint(HingeConstraint constraint) { _hingeConstraints.push_back(constraint); }
+	std::vector<HingeConstraint>& getHingeConstraints() { return _hingeConstraints; }
 private:
     inline static int nextID = 0;
 	int _ID;
 	std::string _name;
+	
 	Register<SceneObject> _sceneObjects;
 	std::unique_ptr<Physics> _physics;
+
 	std::vector<AxisConstraint> _axisConstraints;
-	// player/camera
+	std::vector<HingeConstraint> _hingeConstraints;
 };

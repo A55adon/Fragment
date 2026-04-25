@@ -378,6 +378,7 @@ void createUI() {
 
 void createScene() {
 
+	// Catapult + single object axis Constraints
 	Scene* scene1 = engine.scenes.createNew("scene1");
 	scene1ID = scene1->getID();
 	engine.loadSceneByID(scene1ID);
@@ -415,6 +416,8 @@ void createScene() {
 		constraint.lockRotationZ();
 		constraint.lockMovementX();
 		constraint.lockMovementZ();
+
+		constraint.setCachedObject(cube2);
 		scene1->addAxisConstraint(constraint);
 		
 		engine.loadedScene.addAxisConstraint(constraint);
@@ -458,7 +461,10 @@ void createScene() {
 	}
 	engine.saveSceneToID(scene1ID);
 	engine.loadedScene.getAllObjects().reset();
+	engine.loadedScene.getAxisConstraints().clear();
+	engine.loadedScene.getHingeConstraints().clear();
 
+	// Cubes with hinges
 	Scene* scene2 = engine.scenes.createNew("scene2");
 	scene2ID = scene2->getID();
 	scene2->activatePhysics();
@@ -467,44 +473,50 @@ void createScene() {
 		cfg.restitution = 0.f;
 		cfg.isStatic = true;
 
-		SceneObject* cube = engine.loadedScene.getAllObjects().createNew("Cube1", scene2->getPhysics());
-		cube->getRenderMesh().createCube();
-		cube->getRenderMesh().setColor(Color::Green);
-		cube->setPosition(vec3<float>(0, 1, 0));
-		cube->setScale(vec3<float>(1, 0.25f, 0.25f));
-		cube->initPhysics(cfg);
+		SceneObject* cube1 = engine.loadedScene.getAllObjects().createNew("Cube1", scene2->getPhysics());
+		cube1->getRenderMesh().createCube();
+		cube1->getRenderMesh().setColor(Color::Green);
+		cube1->setPosition(vec3<float>(0, 1, 0));
+		cube1->setScale(vec3<float>(1, 1, 1));
+		cube1->initPhysics(cfg);
 
-		cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene2->getPhysics());
+		cfg.isStatic = false;
+
+		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene2->getPhysics());
 		cube2->getRenderMesh().createCube();
 		cube2->getRenderMesh().setColor(Color::Blue);
-		cube2->setPosition(vec3<float>(0, 2, 2));
-		cube2->setScale(vec3<float>(1, 0.25f, 7.f));
+		cube2->setPosition(vec3<float>(0, 1, 1.5f));
+		cube2->setScale(vec3<float>(1, 1, 1));
 		cube2->initPhysics(cfg);
 
-		SceneObject* cube3 = engine.loadedScene.getAllObjects().createNew("Cube3", scene2->getPhysics());
-		cube3->getRenderMesh().createCube();
-		cube3->getRenderMesh().setColor(Color::Red);
-		cube3->setPosition(vec3<float>(0, 3, 5));
-		cube3->setScale(vec3<float>(0.5f, 0.5f, 0.5f));
-		cube3->initPhysics(cfg);
+		HingeConstraint hinge(cube1->getName(), cube2->getName());
+		hinge.setCachedConnector1(cube1);
+		hinge.setCachedConnector2(cube2);
 
-		cfg.mass = 40;
+		hinge.setPoint1({ 0, 0, 1.0f });  
+		hinge.setPoint2({ 0, 0, -1.5f }); 
 
-		SceneObject* cube4 = engine.loadedScene.getAllObjects().createNew("Cube4", scene2->getPhysics());
-		cube4->getRenderMesh().createCube();
-		cube4->getRenderMesh().setColor(Color::White);
-		cube4->setPosition(vec3<float>(0, 14, -1));
-		cube4->initPhysics(cfg);
+		hinge.setHingeAxis1({ 0, 1, 0 });
+		hinge.setHingeAxis2({ 0, 1, 0 });
 
+		hinge.setNormalAxis1({ 1, 0, 0 });
+		hinge.setNormalAxis2({ 1, 0, 0 });
 
-		SceneObject* floorObj = engine.loadedScene.getAllObjects().createNew("FloorObj", scene2->getPhysics());
-		floorObj->getRenderMesh().createCube();
-		floorObj->getRenderMesh().setColor(Color::Black);
-		floorObj->setScale(vec3<float>(15, 1, 15));
-		floorObj->initPhysics(cfg);
+		//hinge.setAngleLimits(0, 1.57f);
+
+		// hinge.enableMotor(true);
+		// hinge.setMotorTargetVelocity(2.0f);
+		// hinge.setMotorMaxTorque(100.0f);
+
+		scene2->addHingeConstraint(hinge);
+		scene2->getPhysics()->addHingeConstraint(hinge);
+
 	}
+
 	engine.saveSceneToID(scene2ID);
 	engine.loadedScene.getAllObjects().reset();
+	engine.loadedScene.getAxisConstraints().clear();
+	engine.loadedScene.getHingeConstraints().clear();
 }
 
 void createInput() {
@@ -571,7 +583,7 @@ void start() {
 	engine.setGameState(EGameState::GAME);
 
 	createScene();
-	engine.loadSceneByID(scene1ID);
+	engine.loadSceneByID(scene2ID);
 }
 
 void update(float dt) {

@@ -58,7 +58,7 @@
     <ClInclude Include="source\modules\IO\UserInput\Input.h" />
     <ClInclude Include="source\modules\Monitoring\Monitor.h" />
     <ClInclude Include="source\modules\Physics\AxisConstraint.h" />
-    <ClInclude Include="source\modules\Physics\JointConstraint.h" />
+    <ClInclude Include="source\modules\Physics\HingeConstraint.h" />
     <ClInclude Include="source\modules\Physics\Physics.h" />
   </ItemGroup>
   <ItemGroup>
