@@ -14,6 +14,8 @@
 #include <concepts>
 #include <iostream>
 
+#include "core/config.h"
+
 enum class EGameState {
     UI,
     GAME
@@ -587,3 +589,126 @@ private:
     std::unordered_map<std::string, size_t> nameMap;
 };
 
+
+
+struct Transform {
+private:
+    vec2<float> _position{ 0.0f, 0.0f };
+    vec2<float> _size{ 0.0f, 0.0f };
+
+public:
+    void setPositionPx(vec2<int> pos) {
+        _position.x = (static_cast<float>(pos.x) / CFG_WINDOW_WIDTH) * 2.0f - 1.0f;
+        _position.y = (static_cast<float>(pos.y) / CFG_WINDOW_HEIGHT) * 2.0f - 1.0f;
+    }
+
+    vec2<int> getPositionPx() const {
+        return {
+            static_cast<int>((_position.x + 1.0f) * 0.5f * CFG_WINDOW_WIDTH),
+            static_cast<int>((_position.y + 1.0f) * 0.5f * CFG_WINDOW_HEIGHT)
+        };
+    }
+
+    void setSizePx(vec2<int> size) {
+        _size.x = (static_cast<float>(size.x) / CFG_WINDOW_WIDTH) * 2.0f;
+        _size.y = (static_cast<float>(size.y) / CFG_WINDOW_HEIGHT) * 2.0f;
+    }
+
+    vec2<int> getSizePx() const {
+        return {
+            static_cast<int>(_size.x * 0.5f * CFG_WINDOW_WIDTH),
+            static_cast<int>(_size.y * 0.5f * CFG_WINDOW_HEIGHT)
+        };
+    }
+
+    void setPositionUS(vec2<float> pos) {
+        _position.x = pos.x * 2.0f - 1.0f;
+        _position.y = pos.y * 2.0f - 1.0f;
+    }
+
+    vec2<float> getPositionUS() const {
+        return {
+            (_position.x + 1.0f) * 0.5f,
+            (_position.y + 1.0f) * 0.5f
+        };
+    }
+
+    void setSizeUS(vec2<float> size) {
+        _size.x = size.x * 2.0f;
+        _size.y = size.y * 2.0f;
+    }
+
+    vec2<float> getSizeUS() const {
+        return {
+            _size.x * 0.5f,
+            _size.y * 0.5f
+        };
+    }
+};
+
+struct Style {
+private:
+    Color _primaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
+    Color _secondaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
+    Color _tertiaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
+
+    bool _border{ false };
+    float _borderWidth{ 0.0f };
+    float _borderRadius{ 0.0f };
+    int _boarderEdges{ 0 };
+    Color _borderColor{ 0.0f, 0.0f, 0.0f, 1.0f };
+
+    static Color HexToColor(uint32_t hex) {
+        float r = ((hex >> 24) & 0xFF) / 255.0f;
+        float g = ((hex >> 16) & 0xFF) / 255.0f;
+        float b = ((hex >> 8) & 0xFF) / 255.0f;
+        float a = ((hex) & 0xFF) / 255.0f;
+        return { r, g, b, a };
+    }
+
+    static uint32_t ColorToHex(const Color& c) {
+        uint32_t r = static_cast<uint32_t>(c.r * 255.0f) & 0xFF;
+        uint32_t g = static_cast<uint32_t>(c.g * 255.0f) & 0xFF;
+        uint32_t b = static_cast<uint32_t>(c.b * 255.0f) & 0xFF;
+        uint32_t a = static_cast<uint32_t>(c.a * 255.0f) & 0xFF;
+
+        return (r << 24) | (g << 16) | (b << 8) | a;
+    }
+
+public:
+    void setPrimaryColor(const Color& c) { _primaryColor = c; }
+    Color getPrimaryColor() const { return _primaryColor; }
+
+    void setPrimaryColorHex(uint32_t hex) { _primaryColor = HexToColor(hex); }
+    uint32_t getPrimaryColorHex() const { return ColorToHex(_primaryColor); }
+
+    void setSecondaryColor(const Color& c) { _secondaryColor = c; }
+    Color getSecondaryColor() const { return _secondaryColor; }
+
+    void setSecondaryColorHex(uint32_t hex) { _secondaryColor = HexToColor(hex); }
+    uint32_t getSecondaryColorHex() const { return ColorToHex(_secondaryColor); }
+
+    void setTertiaryColor(const Color& c) { _tertiaryColor = c; }
+    Color getTertiaryColor() const { return _tertiaryColor; }
+
+    void setTertiaryColorHex(uint32_t hex) { _tertiaryColor = HexToColor(hex); }
+    uint32_t getTertiaryColorHex() const { return ColorToHex(_tertiaryColor); }
+
+    void setBorder(bool v) { _border = v; }
+    bool getBorder() const { return _border; }
+
+    void setBorderWidth(float v) { _borderWidth = v; }
+    float getBorderWidth() const { return _borderWidth; }
+
+    void setBorderRadius(float v) { _borderRadius = v; }
+    float getBorderRadius() const { return _borderRadius; }
+
+    void setBorderEdges(int v) { _boarderEdges = v; }
+    int getBorderEdges() const { return _boarderEdges; }
+
+    void setBorderColor(const Color& c) { _borderColor = c; }
+    Color getBorderColor() const { return _borderColor; }
+
+    void setBorderColorHex(uint32_t hex) { _borderColor = HexToColor(hex); }
+    uint32_t getBorderColorHex() const { return ColorToHex(_borderColor); }
+};

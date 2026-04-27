@@ -27,7 +27,7 @@ public:
 
 	// Drawing functions
 	void drawScene(Scene* scene, Camera* camera, std::vector<std::unique_ptr<LightSource>>& lights);
-	void drawUI(UI* ui);
+	//void drawUI(UI* ui);
 	void clear();
 	void present();
 
@@ -35,7 +35,7 @@ private:
 	Renderer() = default;
 	~Renderer() = default;
 
-	void drawUIObject(UIObject* uiObject, vec2<float> parentPos);
+	//void drawUIObject(UIObject* uiObject, vec2<float> parentPos);
 	void renderShadowPass(Scene* scene, LightSource* light);
 
 	inline bool isCustomResolution() { 

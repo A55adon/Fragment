@@ -12,7 +12,6 @@
 #include "modules/Graphics/LightSource.h"
 #include "modules/Graphics/Texture.h"
 #include "modules/Graphics/UI/UI.h"
-#include "modules/Graphics/UI/UIObject.h"
 #include "modules/Graphics/Renderer.h"
 
 class Graphics {

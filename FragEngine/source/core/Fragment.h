@@ -9,7 +9,6 @@
 #include "modules/Graphics/UI/UI.h"
 #include "modules/IO/UserInput/Input.h"
 #include "modules/Physics/Physics.h"
-#include "modules/Graphics/UI/UITypes.h"
 #include "core/SceneObject.h"
 #include "core/GlobalSceneObjectKeyRegister.h"
 #include "core/Scene.h"

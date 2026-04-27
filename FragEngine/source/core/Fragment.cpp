@@ -41,8 +41,6 @@ void Fragment::runApp()
 		auto otherStart = clock::now();
 		userInput.update(dt);
 		
-		for(auto& ui : uis)
-			ui->update();
 
 		logicUpdateFn(dt);
 		auto otherEnd = clock::now();
@@ -188,42 +186,60 @@ Input* Fragment::initUserInput()
 
 UI* Fragment::createNewUI()
 {
-	uis.push_back(std::make_unique<UI>(&userInput, graphics.getWindow()));
+	uis.push_back(std::make_unique<UI>());
 	return uis.back().get();
 }
 
 void Fragment::loadSceneByID(int ID) {
 	ASSERT(scenes.getByID(ID), "Could not load scene with id: " + std::to_string(ID));
 	Scene* ref = scenes.getByID(ID);
-	loadedScene = Scene(); // reset scene
+	loadedScene = Scene();
 	loadedScene.activatePhysics();
 
-	for (auto& obj : ref->getAllObjects().getAll())
-	{
-		SceneObject* newObject = loadedScene.getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+	std::unordered_map<SceneObject*, std::string> keyMap; // old ref obj -> new key
 
+	for (auto& obj : ref->getAllObjects().getAll()) {
+		SceneObject* newObject = loadedScene.getAllObjects().createNew(obj->getName(), loadedScene.getPhysics());
+		// Copy properties
 		newObject->setPhysicsMesh(obj->getPhysicsMesh());
 		newObject->setRenderMesh(obj->getRenderMesh());
 		newObject->setPosition(obj->getPosition());
 		newObject->setRotation(obj->getRotation());
 		newObject->setScale(obj->getScale());
 		newObject->initPhysics(obj->settings);
+
+		std::string newKey = GlobalSceneObjectKeyRegister::registerObject(newObject);
+		keyMap[obj.get()] = newKey;
 	}
 
 	for (auto& constraint : ref->getAxisConstraints()) {
-		loadedScene.addAxisConstraint(constraint);
+		AxisConstraint newConstraint = constraint;
+		SceneObject* oldObj = constraint.getCachedObject(); // from reference scene
+		if (oldObj && keyMap.count(oldObj)) {
+			newConstraint.setObjectKey(keyMap[oldObj]);
+		}
+		loadedScene.addAxisConstraint(newConstraint);
+		// Get reference to the just-added constraint
+		AxisConstraint& addedConstraint = loadedScene.getAxisConstraints().back();
+		loadedScene.getPhysics()->addAxisConstraint(addedConstraint);
 	}
 
-	for (auto& constraint : loadedScene.getAxisConstraints()) {
-		loadedScene.getPhysics()->addAxisConstraint(constraint);
-	}
-
+	// Copy and remap hinge constraints
 	for (auto& constraint : ref->getHingeConstraints()) {
-		loadedScene.addHingeConstraint(constraint);
-	}
+		HingeConstraint newConstraint = constraint;
+		SceneObject* old1 = constraint.getCachedConnector1();
+		if (old1 && keyMap.count(old1))
+			newConstraint.setConnector1Key(keyMap[old1]);
 
-	for (auto& constraint : loadedScene.getHingeConstraints()) {
-		loadedScene.getPhysics()->addHingeConstraint(constraint);
+		if (!newConstraint.isWorldAnchored()) {
+			SceneObject* old2 = constraint.getCachedConnector2();
+			if (old2 && keyMap.count(old2))
+				newConstraint.setConnector2Key(keyMap[old2]);
+		}
+		loadedScene.addHingeConstraint(newConstraint);
+		// Get reference to the just-added constraint
+		HingeConstraint& addedConstraint = loadedScene.getHingeConstraints().back();
+		loadedScene.getPhysics()->addHingeConstraint(addedConstraint);
 	}
 
 	_loadedSceneID = ID;
@@ -233,30 +249,54 @@ void Fragment::saveScene() {
 	ASSERT(scenes.getByID(_loadedSceneID), "No scene found with ID: " + std::to_string(_loadedSceneID));
 	saveSceneToID(_loadedSceneID);
 }
-
 void Fragment::saveSceneToID(int ID) {
 	ASSERT(scenes.getByID(ID), "No scene found with ID: " + std::to_string(ID));
 	Scene* ref = scenes.getByID(ID);
 	ref->getAllObjects().reset();
 	ref->getAxisConstraints().clear();
-	for (auto& obj : loadedScene.getAllObjects().getAll())
-	{
-		SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+	ref->getHingeConstraints().clear();
 
+	// Build a map from old pointer -> new key
+	std::unordered_map<SceneObject*, std::string> keyMap;
+
+	for (auto& obj : loadedScene.getAllObjects().getAll()) {
+		SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics());
+		// Copy properties
 		newObject->setPhysicsMesh(obj->getPhysicsMesh());
 		newObject->setRenderMesh(obj->getRenderMesh());
 		newObject->setPosition(obj->getPosition());
 		newObject->setRotation(obj->getRotation());
 		newObject->setScale(obj->getScale());
 		newObject->initPhysics(obj->settings);
+
+		// Register the new object
+		std::string newKey = GlobalSceneObjectKeyRegister::registerObject(newObject);
+		keyMap[obj.get()] = newKey;
 	}
 
 	for (auto& constraint : loadedScene.getAxisConstraints()) {
-		ref->addAxisConstraint(constraint);
+		AxisConstraint newConstraint = constraint; // copy
+		SceneObject* oldObj = constraint.getCachedObject(); // resolves old key
+		if (oldObj && keyMap.count(oldObj)) {
+			newConstraint.setObjectKey(keyMap[oldObj]);
+		}
+		ref->addAxisConstraint(newConstraint);
 	}
 
+	// Copy hinge constraints with updated keys
 	for (auto& constraint : loadedScene.getHingeConstraints()) {
-		ref->addHingeConstraint(constraint);
+		HingeConstraint newConstraint = constraint;
+
+		SceneObject* old1 = constraint.getCachedConnector1();
+		if (old1 && keyMap.count(old1))
+			newConstraint.setConnector1Key(keyMap[old1]);
+
+		if (!newConstraint.isWorldAnchored()) {
+			SceneObject* old2 = constraint.getCachedConnector2();
+			if (old2 && keyMap.count(old2))
+				newConstraint.setConnector2Key(keyMap[old2]);
+		}
+		ref->addHingeConstraint(newConstraint);
 	}
 
 	loadedScene.getAllObjects().reset();

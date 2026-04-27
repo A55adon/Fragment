@@ -7,7 +7,7 @@
 
 class Window {
 public:
-	Window(vec2<int> size = vec2<int>(800, 600), std::string title = generateProjectName()) {
+	Window(vec2<int> size = vec2<int>(CFG_WINDOW_HEIGHT, CFG_WINDOW_WIDTH), std::string title = generateProjectName()) {
 
 		ASSERT(glfwInit(), "Could not initialize GLFW");
 
@@ -30,8 +30,11 @@ public:
 		int count;
 		GLFWmonitor** monitors = glfwGetMonitors(&count);
 
-		GLFWmonitor* secondMonitor = monitors[1];
+		GLFWmonitor* secondMonitor = monitors[CFG_WINDOW_MONITOR];
 		const GLFWvidmode* mode = glfwGetVideoMode(secondMonitor);
+
+		CFG_WINDOW_WIDTH = mode->width;
+		CFG_WINDOW_WIDTH = mode->height;
 
 		glfwSetWindowMonitor(
 			window,
@@ -48,6 +51,15 @@ public:
 
 	void setSize(vec2<int> size) {
 		glfwSetWindowSize(window, size.x, size.y);
+
+		int count;
+		GLFWmonitor** monitors = glfwGetMonitors(&count);
+
+		GLFWmonitor* secondMonitor = monitors[CFG_WINDOW_MONITOR];
+		const GLFWvidmode* mode = glfwGetVideoMode(secondMonitor);
+
+		CFG_WINDOW_WIDTH = mode->width;
+		CFG_WINDOW_WIDTH = mode->height;
 	}
 
 	int getWidth() {
@@ -82,9 +94,9 @@ public:
 		glfwSwapInterval(vsync ? 1 : 0);
 	}
 
-	bool shouldRun() { return !glfwWindowShouldClose(window); }
-
-
+	bool shouldRun() { 
+		return !glfwWindowShouldClose(window); 
+	}
 
 	GLFWwindow* getRawWindow() { 
 		ASSERT(window, "Window is nullptr");

@@ -74,7 +74,8 @@ public:
     std::string getObjectKey() const { return _objectKey; }
 
     SceneObject* getCachedObject() const { return GlobalSceneObjectKeyRegister::getObjByKey(_objectKey); }
-
+    
+    void setObjectKey(const std::string& key) { _objectKey = key; }
 private:
     std::string _objectKey = "";
 

@@ -43,6 +43,15 @@
     <Filter Include="Header Files\Monitoring">
       <UniqueIdentifier>{47eb3c21-665a-4b06-88ff-59a53adbe870}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\UI\UIBase">
+      <UniqueIdentifier>{f9299328-acde-426f-beec-ca40d23e79d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\UI\UIInput">
+      <UniqueIdentifier>{e37992ff-db06-413b-b4f2-9282a3da60a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\UI\UIStatistics">
+      <UniqueIdentifier>{d3ed4473-6d67-47d8-95e0-a8fa2e9c7f83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -66,9 +75,6 @@
     <ClCompile Include="source\modules\Graphics\Texture.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="source\modules\Graphics\UI\UIObject.cpp">
-      <Filter>Source Files\Graphics\UI</Filter>
-    </ClCompile>
     <ClCompile Include="source\modules\Physics\Physics.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
@@ -79,6 +85,12 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="source\core\GlobalSceneObjectKeyRegister.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\SceneObject.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\config.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,30 +140,6 @@
     <ClInclude Include="source\core\Scene.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Button.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Rect.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Slider.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Text.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\UIObject.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\UITypes.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Font.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="source\modules\Graphics\UI\Dropdown.h">
-      <Filter>Header Files\Graphics\UI</Filter>
-    </ClInclude>
     <ClInclude Include="source\modules\Monitoring\Monitor.h">
       <Filter>Header Files\Monitoring</Filter>
     </ClInclude>
@@ -168,6 +156,36 @@
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIBase\Rectangle.h">
+      <Filter>Header Files\Graphics\UI\UIBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIBase\Text.h">
+      <Filter>Header Files\Graphics\UI\UIBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Button.h">
+      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Dropdown.h">
+      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Input.h">
+      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Slider.h">
+      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIStatistics\ArcChart.h">
+      <Filter>Header Files\Graphics\UI\UIStatistics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIStatistics\Histogram.h">
+      <Filter>Header Files\Graphics\UI\UIStatistics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\modules\Graphics\UI\UIElement.h">
+      <Filter>Header Files\Graphics\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\Mesh2D.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>

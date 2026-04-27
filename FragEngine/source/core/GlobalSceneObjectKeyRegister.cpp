@@ -27,6 +27,14 @@ std::string GlobalSceneObjectKeyRegister::registerObject(SceneObject* obj) {
     return key;
 }
 
+void GlobalSceneObjectKeyRegister::unregisterObject(SceneObject* obj) {
+    auto it = s_reverse.find(obj);
+    if (it != s_reverse.end()) {
+        s_keys.erase(it->second);
+        s_reverse.erase(it);
+    }
+}
+
 SceneObject* GlobalSceneObjectKeyRegister::getObjByKey(const std::string& key) {
     auto it = s_keys.find(key);
     if (it != s_keys.end()) {

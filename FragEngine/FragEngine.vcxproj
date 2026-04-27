@@ -21,15 +21,16 @@
   <ItemGroup>
     <ClCompile Include="external\glad\src\glad.c" />
     <ClCompile Include="external\stb_image.cpp" />
+    <ClCompile Include="source\core\config.cpp" />
     <ClCompile Include="source\core\Fragment.cpp" />
     <ClCompile Include="source\core\GlobalSceneObjectKeyRegister.cpp" />
+    <ClCompile Include="source\core\SceneObject.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\modules\Graphics\Graphics.cpp" />
     <ClCompile Include="source\modules\Graphics\Renderer.cpp" />
     <ClCompile Include="source\modules\Graphics\Shader.cpp" />
     <ClCompile Include="source\modules\Graphics\Texture.cpp" />
     <ClCompile Include="source\modules\Graphics\UI\UI.cpp" />
-    <ClCompile Include="source\modules\Graphics\UI\UIObject.cpp" />
     <ClCompile Include="source\modules\Physics\Physics.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <ClInclude Include="source\core\Fragment.h" />
     <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h" />
     <ClInclude Include="source\core\Mesh.h" />
+    <ClInclude Include="source\core\Mesh2D.h" />
     <ClInclude Include="source\core\Scene.h" />
     <ClInclude Include="source\core\SceneObject.h" />
     <ClInclude Include="source\modules\Graphics\Camera.h" />
@@ -47,15 +49,16 @@
     <ClInclude Include="source\modules\Graphics\Renderer.h" />
     <ClInclude Include="source\modules\Graphics\Shader.h" />
     <ClInclude Include="source\modules\Graphics\Texture.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Button.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Dropdown.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Font.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Rect.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Slider.h" />
-    <ClInclude Include="source\modules\Graphics\UI\Text.h" />
     <ClInclude Include="source\modules\Graphics\UI\UI.h" />
-    <ClInclude Include="source\modules\Graphics\UI\UIObject.h" />
-    <ClInclude Include="source\modules\Graphics\UI\UITypes.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIBase\Rectangle.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIBase\Text.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIElement.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Button.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Dropdown.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Input.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIInput\Slider.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIStatistics\ArcChart.h" />
+    <ClInclude Include="source\modules\Graphics\UI\UIStatistics\Histogram.h" />
     <ClInclude Include="source\modules\Graphics\Window.h" />
     <ClInclude Include="source\modules\IO\UserInput\Input.h" />
     <ClInclude Include="source\modules\Monitoring\Monitor.h" />

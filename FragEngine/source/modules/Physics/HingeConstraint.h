@@ -54,7 +54,9 @@ public:
 
     SceneObject* getCachedConnector1() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector1Key); }
     SceneObject* getCachedConnector2() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector2Key); }
-
+    
+    void setConnector1Key(const std::string& key) { _connector1Key = key; }
+    void setConnector2Key(const std::string& key) { _connector2Key = key; }
 private:
     std::string _connector1Key = "";
     std::string _connector2Key = "";  

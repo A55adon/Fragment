@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "core/Fragment.h"
-#include "modules/Graphics/UI/UIObject.h"
 
 Fragment engine;
 
@@ -20,7 +19,7 @@ int hingeSceneID;
 
 float speed = 3.0f;
 
-REFLECT_EXISTING_ENUM(EPhysicsUpdateState, STOPPED, CAPPED, SLOWED);
+//REFLECT_EXISTING_ENUM(EPhysicsUpdateState, STOPPED, CAPPED, SLOWED);
 
 void onWKeyHeld(float dt) {
 	vec3<float> pos = camera->getPosition();
@@ -206,134 +205,134 @@ void createUI() {
 	//	"My Game Title",
 	//	100.0f, 40.0f);
 
-	auto smallFont = std::make_shared<Font>("res/Roboto-Black.ttf", 12);
-	auto mediumFont = std::make_shared<Font>("res/Roboto-Black.ttf", 24);
-	auto largeFont = std::make_shared<Font>("res/Roboto-Black.ttf", 48);
+	//auto smallFont = std::make_shared<Font>("res/Roboto-Black.ttf", 12);
+	//auto mediumFont = std::make_shared<Font>("res/Roboto-Black.ttf", 24);
+	//auto largeFont = std::make_shared<Font>("res/Roboto-Black.ttf", 48);
 
 	/*Button* btn = menuUI->registerNew<Button>("testbtn");
 	btn->create("Reset", mediumFont, [] { engine.restoreSceneDefault(engine.scenes.getByName("scene1")->getID()); }, UIStyle(), tr2);
 	btn->isDraggable = true;	btn->isResizable = true;*/
 
-	auto getCorrectPos = [](UITransform trIn, float padding = 1.f) {
-		UITransform tr = trIn;
-		float aspect = graphics->getWindow()->getAspect();
-		float halfW = trIn.size.x / (2.f * aspect); // actual NDC-corrected half-width
-		float halfH = trIn.size.y / 2.f;
-
-		if (trIn.position.x - halfW < 0)
-			tr.position.x = halfW + padding / aspect;
-
-		if (trIn.position.y - halfH < 0)
-			tr.position.y = halfH + padding;
-
-		if (trIn.position.x + halfW > 100)
-			tr.position.x = 100.f - (halfW + padding / aspect);
-
-		if (trIn.position.y + halfH > 100)
-			tr.position.y = 100.f - (halfH + padding);
-
-		return tr;
-	};
-
-	auto getCorrectSize = [](UITransform trIn, UIStyle style, Text* text, float padding = 1.f) {
-		UITransform tr = trIn;
-		float aspect = graphics->getWindow()->getAspect();
-
-		vec2<float> worldPos = trIn.position + text->getTransform().position;
-		auto textBounds = text->getBoundsPixels(worldPos);
-
-		vec2<float> textSizePx = { textBounds.y - textBounds.x, textBounds.w - textBounds.z };
-
-		float winW = (float)graphics->getWindow()->getWidth();
-		float winH = (float)graphics->getWindow()->getHeight();
-
-		// X needs aspect correction because text mesh verts are already aspect-scaled
-		vec2<float> textSizeUI = {
-			textSizePx.x / winW * 100.f * aspect,
-			textSizePx.y / winH * 100.f
-		};
-
-		tr.size.x = ((textSizeUI.x + 2.f * padding) + style.borderWidth * 2);
-		tr.size.y = ((textSizeUI.y + 2.f * padding) + style.borderWidth * 2);
-
-		return tr;
-	};
-
-	auto autoCorrect = [getCorrectPos, getCorrectSize](UIObject* obj, Text* txt, float padding = 1.f) {
-		UITransform tr = obj->getTransform();
-		tr = getCorrectSize(tr, obj->getStyle(), txt, padding);
-		tr = getCorrectPos(tr, padding);
-		return tr;
-	};
-
-	float padding = 2.f;
-	
-	Dropdown<EPhysicsUpdateState>* drdwn = menuUI->registerNew<Dropdown<EPhysicsUpdateState>>("dropdown");
-	UITransform tr = UITransform{ { 0,0 },{ 0,0 } };
-	drdwn->create(engine.getPhysicsUpdateState(), tr, UIStyle(), mediumFont);
-	UITransform trC = autoCorrect(drdwn, drdwn->getHeaderButton()->getText(), padding);
-	drdwn->create(engine.getPhysicsUpdateState(), trC, UIStyle(), mediumFont);
-	//LOG(trC.position.x);
-	//LOG(trC.position.y);
-
-	//LOG(trC.size.x);
-	//LOG(trC.size.y);
-	Button* btn = menuUI->registerNew<Button>("Btn");
-	btn->create("Reset", mediumFont);
-	UITransform trBtnC = autoCorrect(btn, btn->getText(), padding);
-
-	float aspect = graphics->getWindow()->getAspect();
-	float dropRightEdge = drdwn->getTransform().position.x + drdwn->getTransform().size.x / (2.f * aspect);
-	float btnHalfW = trBtnC.size.x / (2.f * aspect);
-
-	UITransform trBtn = trBtnC;
-	trBtn.position.x = dropRightEdge + padding / aspect + btnHalfW;
-	trBtn.position.y = drdwn->getTransform().position.y; // align vertically with dropdown
-	trBtn.size.y = drdwn->getTransform().size.y;
-	btn->create("Reset", mediumFont, []() { engine.loadSceneByID(engine.getLoadedSceneID()); }, UIStyle(), trBtn);
-
-	float value = 0.5f;
-
-	Slider<float>* sl = menuUI->registerNew<Slider<float>>("Slider");
-	sl->create(engine.getPhysicsTimeScale(), {0.f, 5.f}, UITransform{{50, 5}, {30, 4}});
-	//sl->onValueChange = [](float v) { engine.setPhysicsTimeScale(v); };
-
-	Button* btnTS = menuUI->registerNew<Button>("Btn");
-	btnTS->create("ToggleScene", mediumFont, []() {
-		if (engine.getLoadedSceneID() == catapultSceneID)
-			engine.loadSceneByID(hingeSceneID);
-		else
-			engine.loadSceneByID(catapultSceneID);
-		}, UIStyle(), UITransform{ {7.f,20.f}, { 18.f,8.f } });
-
-
-	auto makeStat = [&](const std::string& label, float y,
-		std::function<float()> getter)
-		{
-			Text* txt = gameUI->registerNew<Text>("stat_" + label);
-			txt->setFont(smallFont);
-			txt->setParentUI(menuUI);
-			txt->setPositionPercent(92.f, y);
-			txt->setText(label + ": 0");
-
-			static std::vector<std::unique_ptr<VarCapture<float>>> caps;
-
-			auto cap = std::make_unique<VarCapture<float>>(getter, std::chrono::milliseconds(200), false);
-
-			cap->onEntry = [txt, label](const float& v)
-				{
-					txt->setText(label + ": " + std::format("{:.2f}", v));
-				};
-
-			caps.emplace_back(std::move(cap));
-		};
-
-	makeStat("FPS",         2.f, []() { return engine.avgFPS;         });
-	makeStat("Frame(ms)",   4.f, []() { return engine.avgFrameTime;   });
-	makeStat("Physics(ms)", 6.f, []() { return engine.avgPhysicsTime; });
-	makeStat("Render(ms)",  8.f, []() { return engine.avgRenderTime;  });
-	makeStat("Other(ms)",   10.f,[]() { return engine.avgOtherTime;  });
-
+	//auto getCorrectPos = [](UITransform trIn, float padding = 1.f) {
+	//	UITransform tr = trIn;
+	//	float aspect = graphics->getWindow()->getAspect();
+	//	float halfW = trIn.size.x / (2.f * aspect); // actual NDC-corrected half-width
+	//	float halfH = trIn.size.y / 2.f;
+	//
+	//	if (trIn.position.x - halfW < 0)
+	//		tr.position.x = halfW + padding / aspect;
+	//
+	//	if (trIn.position.y - halfH < 0)
+	//		tr.position.y = halfH + padding;
+	//
+	//	if (trIn.position.x + halfW > 100)
+	//		tr.position.x = 100.f - (halfW + padding / aspect);
+	//
+	//	if (trIn.position.y + halfH > 100)
+	//		tr.position.y = 100.f - (halfH + padding);
+	//
+	//	return tr;
+	//};
+	//
+	//auto getCorrectSize = [](UITransform trIn, UIStyle style, Text* text, float padding = 1.f) {
+	//	UITransform tr = trIn;
+	//	float aspect = graphics->getWindow()->getAspect();
+	//
+	//	vec2<float> worldPos = trIn.position + text->getTransform().position;
+	//	auto textBounds = text->getBoundsPixels(worldPos);
+	//
+	//	vec2<float> textSizePx = { textBounds.y - textBounds.x, textBounds.w - textBounds.z };
+	//
+	//	float winW = (float)graphics->getWindow()->getWidth();
+	//	float winH = (float)graphics->getWindow()->getHeight();
+	//
+	//	// X needs aspect correction because text mesh verts are already aspect-scaled
+	//	vec2<float> textSizeUI = {
+	//		textSizePx.x / winW * 100.f * aspect,
+	//		textSizePx.y / winH * 100.f
+	//	};
+	//
+	//	tr.size.x = ((textSizeUI.x + 2.f * padding) + style.borderWidth * 2);
+	//	tr.size.y = ((textSizeUI.y + 2.f * padding) + style.borderWidth * 2);
+	//
+	//	return tr;
+	//};
+	//
+	//auto autoCorrect = [getCorrectPos, getCorrectSize](UIObject* obj, Text* txt, float padding = 1.f) {
+	//	UITransform tr = obj->getTransform();
+	//	tr = getCorrectSize(tr, obj->getStyle(), txt, padding);
+	//	tr = getCorrectPos(tr, padding);
+	//	return tr;
+	//};
+	//
+	//float padding = 2.f;
+	//
+	//Dropdown<EPhysicsUpdateState>* drdwn = menuUI->registerNew<Dropdown<EPhysicsUpdateState>>("dropdown");
+	//UITransform tr = UITransform{ { 0,0 },{ 0,0 } };
+	//drdwn->create(engine.getPhysicsUpdateState(), tr, UIStyle(), mediumFont);
+	//UITransform trC = autoCorrect(drdwn, drdwn->getHeaderButton()->getText(), padding);
+	//drdwn->create(engine.getPhysicsUpdateState(), trC, UIStyle(), mediumFont);
+	////LOG(trC.position.x);
+	////LOG(trC.position.y);
+	//
+	////LOG(trC.size.x);
+	////LOG(trC.size.y);
+	//Button* btn = menuUI->registerNew<Button>("Btn");
+	//btn->create("Reset", mediumFont);
+	//UITransform trBtnC = autoCorrect(btn, btn->getText(), padding);
+	//
+	//float aspect = graphics->getWindow()->getAspect();
+	//float dropRightEdge = drdwn->getTransform().position.x + drdwn->getTransform().size.x / (2.f * aspect);
+	//float btnHalfW = trBtnC.size.x / (2.f * aspect);
+	//
+	//UITransform trBtn = trBtnC;
+	//trBtn.position.x = dropRightEdge + padding / aspect + btnHalfW;
+	//trBtn.position.y = drdwn->getTransform().position.y; // align vertically with dropdown
+	//trBtn.size.y = drdwn->getTransform().size.y;
+	//btn->create("Reset", mediumFont, []() { engine.loadSceneByID(engine.getLoadedSceneID()); }, UIStyle(), trBtn);
+	//
+	//float value = 0.5f;
+	//
+	//Slider<float>* sl = menuUI->registerNew<Slider<float>>("Slider");
+	//sl->create(engine.getPhysicsTimeScale(), {0.f, 5.f}, UITransform{{50, 5}, {30, 4}});
+	////sl->onValueChange = [](float v) { engine.setPhysicsTimeScale(v); };
+	//
+	//Button* btnTS = menuUI->registerNew<Button>("Btn");
+	//btnTS->create("ToggleScene", mediumFont, []() {
+	//	if (engine.getLoadedSceneID() == catapultSceneID)
+	//		engine.loadSceneByID(hingeSceneID);
+	//	else
+	//		engine.loadSceneByID(catapultSceneID);
+	//	}, UIStyle(), UITransform{ {7.f,20.f}, { 18.f,8.f } });
+	//
+	//
+	//auto makeStat = [&](const std::string& label, float y,
+	//	std::function<float()> getter)
+	//	{
+	//		Text* txt = gameUI->registerNew<Text>("stat_" + label);
+	//		txt->setFont(smallFont);
+	//		txt->setParentUI(menuUI);
+	//		txt->setPositionPercent(92.f, y);
+	//		txt->setText(label + ": 0");
+	//
+	//		static std::vector<std::unique_ptr<VarCapture<float>>> caps;
+	//
+	//		auto cap = std::make_unique<VarCapture<float>>(getter, std::chrono::milliseconds(200), false);
+	//
+	//		cap->onEntry = [txt, label](const float& v)
+	//			{
+	//				txt->setText(label + ": " + std::format("{:.2f}", v));
+	//			};
+	//
+	//		caps.emplace_back(std::move(cap));
+	//	};
+	//
+	//makeStat("FPS",         2.f, []() { return engine.avgFPS;         });
+	//makeStat("Frame(ms)",   4.f, []() { return engine.avgFrameTime;   });
+	//makeStat("Physics(ms)", 6.f, []() { return engine.avgPhysicsTime; });
+	//makeStat("Render(ms)",  8.f, []() { return engine.avgRenderTime;  });
+	//makeStat("Other(ms)",   10.f,[]() { return engine.avgOtherTime;  });
+	//
 	//Slider<float>* sl2 = menuUI->registerNew<Slider<float>>("Slider2");
 	//sl2->create(bufferedValue, { 0.f, 100.f }, UITransform{ {50, 15}, {30, 4} });
 	//sl2->onValueChange = [](float v) { buff << v << "\n"; };
@@ -385,7 +384,7 @@ void createUI() {
 	//btn2->create("Clear()", mediumFont, [drdwn] { drdwn->clear(); }, UIStyle(), UITransform{ {50,60} });
 }
 
-void createScene() {
+void createScenes() {
 
 	// Catapult + single object axis Constraints
 
@@ -568,8 +567,9 @@ void start() {
 
 	engine.setGameState(EGameState::GAME);
 
-	createScene();
-	engine.loadSceneByID(catapultSceneID);
+	createScenes();
+	//engine.loadSceneByID(catapultSceneID);
+	LOG(CFG_GET_WINDOW_ASPECT());
 }
 
 void update(float dt) {
@@ -577,6 +577,18 @@ void update(float dt) {
 	for (auto& o : engine.loadedScene.getAllObjects().getAll())
 		o->syncFromPhysics();
 
+	double mx, my;
+	glfwGetCursorPos(window->getRawWindow(), &mx, &my);
+
+	bool lmbDown = glfwGetMouseButton(window->getRawWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
+
+	float mouseX = static_cast<float>(mx);
+	float mouseY = static_cast<float>(my);
+
+	if (engine.getGameState() == EGameState::UI)
+		menuUI->update(mouseX, mouseY, lmbDown);
+	else
+		gameUI->update(mouseX, mouseY, lmbDown);
 }
 
 void draw() {
@@ -584,10 +596,10 @@ void draw() {
 
 	Renderer::get()->drawScene(&engine.loadedScene, graphics->getCameras().getByName("MainCamera"), graphics->getLights().getAll());
 
-	if (engine.getGameState() == EGameState::UI)
-		Renderer::get()->drawUI(menuUI);
-	else
-		Renderer::get()->drawUI(gameUI);
+	//if (engine.getGameState() == EGameState::UI)
+	//	Renderer::get()->drawUI(menuUI);
+	//else
+	//	Renderer::get()->drawUI(gameUI);
 
 	Renderer::get()->present();
 	glfwSwapBuffers(window->getRawWindow());

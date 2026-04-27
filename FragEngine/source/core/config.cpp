@@ -1,0 +1,5 @@
+#include "Config.h"
+
+float CFG_WINDOW_WIDTH = 800.0f;
+float CFG_WINDOW_HEIGHT = 600.0f;
+float CFG_GET_WINDOW_ASPECT() { return CFG_WINDOW_HEIGHT / CFG_WINDOW_WIDTH; }

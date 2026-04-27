@@ -1,58 +1,66 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-#include <functional>
-#include <string>
-#include <algorithm>
+#include "core/config.h"
 #include "core/DataTypes.h"
-#include "modules/Graphics/UI/UIObject.h"
+#include "modules/Graphics/UI/UIElement.h"
+#include "modules/Graphics/Texture.h"
+#include <array>
+// UI API
+/*
+Derivative: UIElement (transform, style, (animationhandler), drag/resize) + debugdraw()->objectname, scale, pos, etc
+Types:
+- Base:
+    - Rectangle(Rounded) ->()
+    - Text -> (text, (font))
+- Input:
+    - Button ->(onClick)
+    - Dropdown<Enum> ->(optionsEnum, toChangeEnumValue) + onValueChange()
+    - Input field<datatype> ->(toChangeValue) + onValueChange()
+    - Slider<datatype> -> (toChangeValue, min/max, step) + onValueChange()
+- Statistics:
+    - Histogram (line with past values)<datatype> -> (toShowVector)
+    - Pie/Arc chart<datatype> -> (toShowData ? like vector or sum, colors for each data)
 
-class Input;
-class Window;
+Factory:
+    create[ObjectName](Args...,Transform,Style);
 
-class UI { // UISpace should be 0 - 100
+Transform:
+    - position ->(%/px)
+    - size ->(%/px)
+Style:
+    - primaryColor
+    - secondaryColor
+    - tertiaryColor
+
+    - border bool
+    - border width
+    - border radius
+    - border color
+
+UI -> UIElement -> Base -> Input
+                        -> Statistics
+*/
+
+
+class UI {
 public:
-    UI(Input* uiInput, Window* window);
-    ~UI();
+	UI() = default;
 
-    template<typename T = UIObject>
-    T* registerNew(const std::string& name = "") {
-        static_assert(std::is_base_of_v<UIObject, T>, "T must derive from UIObject");
-        auto obj = std::make_unique<T>(this);
-        T* ptr = obj.get();
-        ptr->setName(name);
-        objects.push_back(std::move(obj));
-        return ptr;
-    }
+	
 
-    void remove(UIObject* obj) {
-        if (!obj) return;
+	UIElement* createUIElement();
 
-        for (auto it = objects.begin(); it != objects.end(); ++it) {
-            if (it->get() == obj) {
-                objects.erase(it);
-                return;
-            }
-        }
-    }
-
-    void update();
-
-    void setParent(UIObject* child, UIObject* parent);
-    void handleClick(float mouseX, float mouseY);
-
-    std::vector<std::unique_ptr<UIObject>> objects;
-
-    Input* _uiInput;
-    Window* _window;
+	void update(float mouseX, float mouseY, bool lmbDown);
 private:
- 
-    UIObject* _dragTarget = nullptr;
-    UIObject* _resizeTarget = nullptr;
-    int       _resizeEdgeMask = 0;
+    std::vector<UIElement> _rootElements;
 
-    bool  _lmbWasDown = false;
-    float _lastMouseX = 0.f;
-    float _lastMouseY = 0.f;
+	// Interaction
+	UIElement* _dragTarget = nullptr;
+	UIElement* _resizeTarget = nullptr;
+	int _resizeEdgeMask = 0;
+
+	bool _lmbWasDown = false;
+	float _lastMouseX = 0.0f;
+	float _lastMouseY = 0.0f;
 };
+

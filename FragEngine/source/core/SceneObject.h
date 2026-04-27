@@ -22,7 +22,7 @@ struct SceneObjectState {
 class SceneObject {
 public:
     SceneObject() = default;
-    SceneObject(Physics* physics) : _ID(nextID++), _physics(physics) {}
+    SceneObject(Physics* physics);
 
     // Only allow moving and disallow copying because of the Jolt physics body
     SceneObject(const SceneObject&) = delete;
@@ -38,6 +38,8 @@ public:
     ~SceneObject() {
         if (_physics && !_bodyID.IsInvalid())
             destroyPhysics(_physics->getSystem());
+        
+        GlobalSceneObjectKeyRegister::unregisterObject(this);
     }
 
     bool operator==(const SceneObject& other) const {
