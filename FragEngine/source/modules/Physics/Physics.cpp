@@ -125,7 +125,6 @@ void Physics::addAxisConstraint(AxisConstraint& constraint)
     JPH::Constraint* joltConstraint = settings.Create(*anchorBody, *objBody);
     physicsSystem.AddConstraint(joltConstraint);
     _constraints.push_back(joltConstraint);
-
 }
 
 void Physics::addHingeConstraint(HingeConstraint& constraint)

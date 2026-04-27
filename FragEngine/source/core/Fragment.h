@@ -11,6 +11,7 @@
 #include "modules/Physics/Physics.h"
 #include "modules/Graphics/UI/UITypes.h"
 #include "core/SceneObject.h"
+#include "core/GlobalSceneObjectKeyRegister.h"
 #include "core/Scene.h"
 #include "modules/Monitoring/Monitor.h"
 
@@ -27,33 +28,26 @@ enum class ERenderUpdateState {
 };
 
 class Fragment {
-
-// TODO: 
-// Add uniqueIdentifier keys for sceneobjcets so that when moving from one to another register the object can still be found
 public:
 	Fragment();
 	void runApp();
-	void startApp();
+	void startApp();	
+	void end() { endFn(); }
 
 	void setAppStartFn(std::function<void()> fn);
 	void setAppDrawUpdateFn(std::function<void()> fn);
 	void setAppLogicUpdateFn(std::function<void(float dt)> fn);
 	void setEndFn(std::function<void()> fn);
 
-	Graphics* initGraphics();
-
+	// Modules 
+	Graphics* getGraphics();
 	Input* initUserInput();
-
-	UI* initNewUI();
-
-	Graphics* getGraphics() { return &graphics; }
 	Input* getInput() { return &userInput; }
 
-	void changeCursorFocus(bool focussed) {
-		if (focussed) glfwSetInputMode(graphics.getWindow()->getRawWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		else glfwSetInputMode(graphics.getWindow()->getRawWindow(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-	}
+	UI* createNewUI();
 
+	
+	// Gamestate
 	void setGameState(EGameState newState) {
 		gameState = newState;
 		userInput.setGameState(newState);
@@ -63,111 +57,32 @@ public:
 		return gameState;
 	}
 
-	// Clones the wanted scene from the register into the loaded scene
-	void loadSceneByID(int ID) {
-		ASSERT(scenes.getByID(ID), "Could not load scene with id: " + std::to_string(ID));
-		Scene* ref = scenes.getByID(ID);
-		loadedScene = Scene(); // reset scene
-		loadedScene.activatePhysics();
+	// Scene Management
+	void loadSceneByID(int ID);	// Clones the desired scene from the register into the loaded scene
 
-		for (auto& obj : ref->getAllObjects().getAll())
-		{
-			SceneObject* newObject = loadedScene.getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+	void saveScene(); // Saves currently loaded scene and overrides the corresponding one in the register
 
-			newObject->setPhysicsMesh(obj->getPhysicsMesh());
-			newObject->setRenderMesh(obj->getRenderMesh());
-			newObject->setPosition(obj->getPosition());
-			newObject->setRotation(obj->getRotation());
-			newObject->setScale(obj->getScale());
-			newObject->initPhysics(obj->settings);
-		}
+	void saveSceneToID(int ID);
 
-		for (auto& constraint : ref->getAxisConstraints()) {
-			loadedScene.addAxisConstraint(constraint);
-		}
-
-		for (auto& constraint : loadedScene.getAxisConstraints()) {
-			SceneObject* obj = loadedScene.getAllObjects().getByName(constraint.getObjectName());
-			ASSERT(obj, "Invalid object to set as cached");
-			constraint.setCachedObject(obj);
-			loadedScene.getPhysics()->addAxisConstraint(constraint);
-		}
-
-		for (auto& constraint : ref->getHingeConstraints()) {
-			loadedScene.addHingeConstraint(constraint);
-		}
-
-		for (auto& constraint : loadedScene.getHingeConstraints()) {
-			SceneObject* obj1 = loadedScene.getAllObjects().getByName(constraint.getConnector1Name());
-			ASSERT(obj1, "Invalid object to set as cached");
-			constraint.setCachedConnector1(obj1);
-			SceneObject* obj2 = loadedScene.getAllObjects().getByName(constraint.getConnector2Name());
-			if (!obj2) { LOG("No object 2 found, using world anchor"); }
-			constraint.setCachedConnector2(obj2);
-			loadedScene.getPhysics()->addHingeConstraint(constraint);
-		}
-
-		_loadedSceneID = ID;
-	}
-	// Saves currently loaded scene and overrides the correstponding one in the register
-	void saveScene() {
-		ASSERT(scenes.getByID(_loadedSceneID), "No scene found with ID: " + std::to_string(_loadedSceneID));
-		Scene* ref  = scenes.getByID(_loadedSceneID);
-		ref->getAllObjects().reset();
-		ref->getAxisConstraints().clear();
-		for (auto& obj : loadedScene.getAllObjects().getAll())
-		{
-			SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
-
-			newObject->setPhysicsMesh(obj->getPhysicsMesh());
-			newObject->setRenderMesh(obj->getRenderMesh());
-			newObject->setPosition(obj->getPosition());
-			newObject->setRotation(obj->getRotation());
-			newObject->setScale(obj->getScale());
-			newObject->initPhysics(obj->settings);
-
-		}
-		for (auto& constraint : loadedScene.getAxisConstraints()) {
-			ref->addAxisConstraint(constraint);
-		}
-	}
-
-	void saveSceneToID(int ID) {
-		ASSERT(scenes.getByID(ID), "No scene found with ID: " + std::to_string(ID));
-		Scene* ref = scenes.getByID(ID);
-		ref->getAllObjects().reset();
-		ref->getAxisConstraints().clear();
-		for (auto& obj : loadedScene.getAllObjects().getAll())
-		{
-			SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
-
-			newObject->setPhysicsMesh(obj->getPhysicsMesh());
-			newObject->setRenderMesh(obj->getRenderMesh());
-			newObject->setPosition(obj->getPosition());
-			newObject->setRotation(obj->getRotation());
-			newObject->setScale(obj->getScale());
-			newObject->initPhysics(obj->settings);
-		}
-
-		for (auto& constraint : loadedScene.getAxisConstraints()) {
-			ref->addAxisConstraint(constraint);
-		}
-
-	}
+	Scene* saveToNewScene(std::string name = "");
 
 	int getLoadedSceneID() { return _loadedSceneID; }
 	Scene* getLoadedScene() { return &loadedScene; }
+	Scene* createNewScene(std::string name = "");
 
-	void end() {
-		endFn();
-	}
-
-	void setDebugFPS(bool debug) {
-		_debugFPS = debug;
-	}
+	void addAxisConstraint(AxisConstraint constraint) { loadedScene.addAxisConstraint(constraint); }
+	void addHingeConstraint(HingeConstraint constraint) { loadedScene.addHingeConstraint(constraint); }
 
 	Scene loadedScene;
 	Register<Scene> scenes;
+
+	// Scene Objects
+	SceneObject* createNewSceneObject(std::string name = "");
+
+
+	// Misc
+	void setDebugFPS(bool debug) { _debugFPS = debug; }
+
 
 
 	EPhysicsUpdateState& getPhysicsUpdateState() { return _physicsUpdateState; }
@@ -191,8 +106,8 @@ private:
 
 	int _loadedSceneID = -1;
 
-	int renderFPSCap = 60;        // fps
-	int physicsFPSCap = 240;      // fps
+	int _renderFPSCap = 60;          // fps
+	int _physicsFPSCap = 240;        // fps
 	float _physicsTimeScale = 0.5f; // 50% speed — only used when SLOWED
 
 	Input userInput;

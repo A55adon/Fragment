@@ -31,11 +31,12 @@ public:
 
 	void addHingeConstraint(HingeConstraint constraint) { _hingeConstraints.push_back(constraint); }
 	std::vector<HingeConstraint>& getHingeConstraints() { return _hingeConstraints; }
+
 private:
     inline static int nextID = 0;
 	int _ID;
 	std::string _name;
-	
+
 	Register<SceneObject> _sceneObjects;
 	std::unique_ptr<Physics> _physics;
 

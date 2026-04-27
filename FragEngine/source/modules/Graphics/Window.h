@@ -65,6 +65,11 @@ public:
 		return height;
 	}
 
+	void setCursorFocus(bool focussed) {
+		if (focussed) glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		else glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+
 	float getAspect() {
 		return getWidth() / getHeight();
 	}

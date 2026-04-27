@@ -1,13 +1,14 @@
 #pragma once
 
 #include "core/DataTypes.h"
+#include "core/GlobalSceneObjectKeyRegister.h"
 
 class SceneObject;
 
 // Constraint on one object (world-anchored)
 class AxisConstraint {
 public:
-    AxisConstraint(SceneObject* sceneObject, std::string objName) : _cachedObject(sceneObject), _objectName(objName) {}
+    AxisConstraint(std::string objKey) : _objectKey(objKey) {}
 
     // Pivot position (relative to object center)
     void setPivotPosition(vec3<float> pos)          { _pivotPointPosition = pos; }
@@ -70,14 +71,12 @@ public:
     bool isMovementLockedY() const { return _constraintMovementAxisMin.y == _constraintMovementAxisMax.y; }
     bool isMovementLockedZ() const { return _constraintMovementAxisMin.z == _constraintMovementAxisMax.z; }
 
-    std::string getObjectName() const { return _objectName; }
+    std::string getObjectKey() const { return _objectKey; }
 
-    SceneObject* getCachedObject() const { return _cachedObject; }
-    void setCachedObject(SceneObject* obj) { _cachedObject = obj; }
+    SceneObject* getCachedObject() const { return GlobalSceneObjectKeyRegister::getObjByKey(_objectKey); }
 
 private:
-    std::string _objectName = "";
-    SceneObject* _cachedObject = nullptr;
+    std::string _objectKey = "";
 
     vec3<float> _pivotPointPosition = { 0, 0, 0 };
     vec3<float> _pivotPointRotation = { 0, 0, 0 };

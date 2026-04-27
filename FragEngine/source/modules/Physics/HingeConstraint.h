@@ -1,18 +1,19 @@
 #pragma once
 
 #include "core/DataTypes.h"
+#include "core/GlobalSceneObjectKeyRegister.h"
 
 class SceneObject;
 
 class HingeConstraint {
 public:
-    HingeConstraint(std::string obj1Name, std::string obj2Name = "")
-        : _connector1Name(obj1Name), _connector2Name(obj2Name) {
+    HingeConstraint(std::string obj1Key, std::string obj2Key = "")
+        : _connector1Key(obj1Key), _connector2Key(obj2Key) {
     }
 
-    std::string getConnector1Name() const { return _connector1Name; }
-    std::string getConnector2Name() const { return _connector2Name; }
-    bool isWorldAnchored() const { return _connector2Name == ""; }
+    std::string getConnector1Key() const { return _connector1Key; }
+    std::string getConnector2Key() const { return _connector2Key; }
+    bool isWorldAnchored() const { return _connector2Key == ""; }
 
     void setPoint1(vec3<float> pos) { _point1 = pos; }
     void setPoint2(vec3<float> pos) { _point2 = pos; }
@@ -51,17 +52,12 @@ public:
     float getMotorTargetVelocity() const { return _motorTargetVelocity; }
     float getMotorMaxTorque() const { return _motorMaxTorque; }
 
-    void setCachedConnector1(SceneObject* obj) { _cachedConnector1 = obj; }
-    void setCachedConnector2(SceneObject* obj) { _cachedConnector2 = obj; }
-    SceneObject* getCachedConnector1() const { return _cachedConnector1; }
-    SceneObject* getCachedConnector2() const { return _cachedConnector2; }
+    SceneObject* getCachedConnector1() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector1Key); }
+    SceneObject* getCachedConnector2() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector2Key); }
 
 private:
-    std::string _connector1Name = "";
-    std::string _connector2Name = "";  
-
-    SceneObject* _cachedConnector1 = nullptr;
-    SceneObject* _cachedConnector2 = nullptr;
+    std::string _connector1Key = "";
+    std::string _connector2Key = "";  
 
     vec3<float> _point1 = { 0, 0, 0 };
     vec3<float> _point2 = { 0, 0, 0 };

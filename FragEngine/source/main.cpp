@@ -15,8 +15,8 @@ LightSource* light1;
 
 Input* userInput;
 SceneObject* cube2;
-int scene1ID;
-int scene2ID;
+int catapultSceneID;
+int hingeSceneID;
 
 float speed = 3.0f;
 
@@ -77,11 +77,11 @@ void onControlKeyReleased() {
 void onEscapeKeyPressed() {
 	if (engine.getGameState() == EGameState::UI) {
 		engine.setGameState(EGameState::GAME);
-		engine.changeCursorFocus(true);
+		window->setCursorFocus(true);
 	}
 	else if (engine.getGameState() == EGameState::GAME) {
 		engine.setGameState(EGameState::UI);
-		engine.changeCursorFocus(false);
+		window->setCursorFocus(false);
 	}
 }
 void on1KeyPressed() {
@@ -298,6 +298,15 @@ void createUI() {
 	sl->create(engine.getPhysicsTimeScale(), {0.f, 5.f}, UITransform{{50, 5}, {30, 4}});
 	//sl->onValueChange = [](float v) { engine.setPhysicsTimeScale(v); };
 
+	Button* btnTS = menuUI->registerNew<Button>("Btn");
+	btnTS->create("ToggleScene", mediumFont, []() {
+		if (engine.getLoadedSceneID() == catapultSceneID)
+			engine.loadSceneByID(hingeSceneID);
+		else
+			engine.loadSceneByID(catapultSceneID);
+		}, UIStyle(), UITransform{ {7.f,20.f}, { 18.f,8.f } });
+
+
 	auto makeStat = [&](const std::string& label, float y,
 		std::function<float()> getter)
 		{
@@ -379,144 +388,121 @@ void createUI() {
 void createScene() {
 
 	// Catapult + single object axis Constraints
-	Scene* scene1 = engine.scenes.createNew("scene1");
-	scene1ID = scene1->getID();
-	engine.loadSceneByID(scene1ID);
-	//scene1->activatePhysics();
-	{
-		PhysicsSettings cfg;
-		cfg.restitution = 0.f;
-		//cfg.isStatic = true;
 
-		SceneObject* cube = engine.loadedScene.getAllObjects().createNew("Cube1", engine.loadedScene.getPhysics());
-		cube->getRenderMesh().createCube();
-		cube->getRenderMesh().setColor(Color::Red);
-		cube->setPosition(vec3<float>(0, 1, 0));
-		cube->setScale(vec3<float>(1, 0.25f, 0.25f));
-		cube->initPhysics(cfg);
+	PhysicsSettings cfg;
+	cfg.restitution = 0.f;
 
+	SceneObject* stand = engine.createNewSceneObject();
+	stand->getRenderMesh().createCube();
+	stand->getRenderMesh().setColor(Color::Red);
+	stand->setPosition(vec3<float>(0, 1, 0));
+	stand->setScale(vec3<float>(1, 0.25f, 0.25f));
+	stand->initPhysics(cfg);
 
-		AxisConstraint constraint2 = AxisConstraint(cube, cube->getName());
-		constraint2.lockAllRotation();
-		constraint2.lockMovementX();
-		constraint2.lockMovementZ();
-		scene1->addAxisConstraint(constraint2);
+	AxisConstraint standConstraint = AxisConstraint(GlobalSceneObjectKeyRegister::getKeyByObj(stand));
+	standConstraint.lockAllRotation();
+	standConstraint.lockMovementX();
+	standConstraint.lockMovementZ();
 
-		engine.loadedScene.addAxisConstraint(constraint2);
+	engine.addAxisConstraint(standConstraint);
 
-		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", engine.loadedScene.getPhysics());
-		cube2->getRenderMesh().createCube();
-		cube2->getRenderMesh().setColor(Color::Green);
-		cube2->setPosition(vec3<float>(0, 2, 2));
-		cube2->setScale(vec3<float>(1, 0.25f, 7.f));
-		cube2->initPhysics(cfg);
+	SceneObject* plate = engine.createNewSceneObject();
+	plate->getRenderMesh().createCube();
+	plate->getRenderMesh().setColor(Color::Green);
+	plate->setPosition(vec3<float>(0, 2, 2));
+	plate->setScale(vec3<float>(1, 0.25f, 7.f));
+	plate->initPhysics(cfg);
 
-		AxisConstraint constraint = AxisConstraint(cube2, cube2->getName());
-		constraint.lockRotationY();
-		constraint.lockRotationZ();
-		constraint.lockMovementX();
-		constraint.lockMovementZ();
+	AxisConstraint plateConstraint = AxisConstraint(GlobalSceneObjectKeyRegister::getKeyByObj(plate));
+	plateConstraint.lockRotationY();
+	plateConstraint.lockRotationZ();
+	plateConstraint.lockMovementX();
+	plateConstraint.lockMovementZ();
 
-		constraint.setCachedObject(cube2);
-		scene1->addAxisConstraint(constraint);
-		
-		engine.loadedScene.addAxisConstraint(constraint);
+	engine.addAxisConstraint(plateConstraint);
 
-		SceneObject* cube3 = engine.loadedScene.getAllObjects().createNew("Cube3", engine.loadedScene.getPhysics());
-		cube3->getRenderMesh().createCube();
-		cube3->getRenderMesh().setColor(Color::Blue);
-		cube3->setPosition(vec3<float>(0, 3, 5));
-		cube3->setScale(vec3<float>(0.5f, 0.5f, 0.5f));
-		cube3->initPhysics(cfg);
+	SceneObject* payload = engine.createNewSceneObject();
+	payload->getRenderMesh().createCube();
+	payload->getRenderMesh().setColor(Color::Blue);
+	payload->setPosition(vec3<float>(0, 3, 5));
+	payload->setScale(vec3<float>(0.5f, 0.5f, 0.5f));
+	payload->initPhysics(cfg);
 
-		AxisConstraint constraint3 = AxisConstraint(cube3, cube3->getName());
-		constraint3.lockAllRotation();
-		constraint3.lockMovementX();
-		constraint3.lockMovementZ();
-		scene1->addAxisConstraint(constraint3);
-		engine.loadedScene.addAxisConstraint(constraint3);
+	AxisConstraint payloadConstraint = AxisConstraint(GlobalSceneObjectKeyRegister::getKeyByObj(payload));
+	payloadConstraint.lockAllRotation();
+	payloadConstraint.lockMovementX();
+	payloadConstraint.lockMovementZ();
 
-		cfg.mass = 40;
+	engine.addAxisConstraint(payloadConstraint);
 
-		SceneObject* cube4 = engine.loadedScene.getAllObjects().createNew("Cube4", engine.loadedScene.getPhysics());
-		cube4->getRenderMesh().createCube();
-		cube4->getRenderMesh().setColor(Color::Red);
-		cube4->setPosition(vec3<float>(0, 14, -1));
-		cube4->initPhysics(cfg);
+	cfg.mass = 40;
 
-		AxisConstraint constraint4 = AxisConstraint(cube4, cube4->getName());
-		constraint4.lockAllRotation();
-		constraint4.lockMovementX();
-		constraint4.lockMovementZ();
-		scene1->addAxisConstraint(constraint4);
-		engine.loadedScene.addAxisConstraint(constraint4);
+	SceneObject* weight = engine.createNewSceneObject();
+	weight->getRenderMesh().createCube();
+	weight->getRenderMesh().setColor(Color::Red);
+	weight->setPosition(vec3<float>(0, 14, -1));
+	weight->initPhysics(cfg);
 
-		cfg.isStatic = true;
+	AxisConstraint weightConstraint = AxisConstraint(GlobalSceneObjectKeyRegister::getKeyByObj(weight));
+	weightConstraint.lockAllRotation();
+	weightConstraint.lockMovementX();
+	weightConstraint.lockMovementZ();
+	engine.addAxisConstraint(weightConstraint);
 
-		SceneObject* floorObj = engine.loadedScene.getAllObjects().createNew("FloorObj", engine.loadedScene.getPhysics());
-		floorObj->getRenderMesh().createCube();
-		floorObj->getRenderMesh().setColor(Color::White);
-		floorObj->setScale(vec3<float>(105, 1, 105));
-		floorObj->initPhysics(cfg);
-	}
-	engine.saveSceneToID(scene1ID);
-	engine.loadedScene.getAllObjects().reset();
-	engine.loadedScene.getAxisConstraints().clear();
-	engine.loadedScene.getHingeConstraints().clear();
+	cfg.isStatic = true;
+
+	SceneObject* floorPlate = engine.createNewSceneObject();
+	floorPlate->getRenderMesh().createCube();
+	floorPlate->getRenderMesh().setColor(Color::White);
+	floorPlate->setScale(vec3<float>(105, 1, 105));
+	floorPlate->initPhysics(cfg);
+
+	Scene* catapultScene = engine.saveToNewScene("catapultScene");
+	catapultSceneID = catapultScene->getID();
+
 
 	// Cubes with hinges
-	Scene* scene2 = engine.scenes.createNew("scene2");
-	scene2ID = scene2->getID();
-	scene2->activatePhysics();
-	{
-		PhysicsSettings cfg;
-		cfg.restitution = 0.f;
-		cfg.isStatic = true;
+	cfg = PhysicsSettings();
+	cfg.restitution = 0.f;
 
-		SceneObject* cube1 = engine.loadedScene.getAllObjects().createNew("Cube1", scene2->getPhysics());
-		cube1->getRenderMesh().createCube();
-		cube1->getRenderMesh().setColor(Color::Green);
-		cube1->setPosition(vec3<float>(0, 1, 0));
-		cube1->setScale(vec3<float>(1, 1, 1));
-		cube1->initPhysics(cfg);
+	cfg.isStatic = true;
 
-		cfg.isStatic = false;
+	SceneObject* cube1 = engine.createNewSceneObject();
+	cube1->getRenderMesh().createCube();
+	cube1->getRenderMesh().setColor(Color::Green);
+	cube1->setPosition(vec3<float>(0, 1, 0));
+	cube1->setScale(vec3<float>(1, 1, 1));
+	cube1->initPhysics(cfg);
 
-		SceneObject* cube2 = engine.loadedScene.getAllObjects().createNew("Cube2", scene2->getPhysics());
-		cube2->getRenderMesh().createCube();
-		cube2->getRenderMesh().setColor(Color::Blue);
-		cube2->setPosition(vec3<float>(0, 1, 1.5f));
-		cube2->setScale(vec3<float>(1, 1, 1));
-		cube2->initPhysics(cfg);
+	cfg.isStatic = false;
 
-		HingeConstraint hinge(cube1->getName(), cube2->getName());
-		hinge.setCachedConnector1(cube1);
-		hinge.setCachedConnector2(cube2);
+	SceneObject* cube2 = engine.createNewSceneObject();
+	cube2->getRenderMesh().createCube();
+	cube2->getRenderMesh().setColor(Color::Blue);
+	cube2->setPosition(vec3<float>(0, 1, 1));
+	cube2->setScale(vec3<float>(0.5f, 1, 0.5f));
+	cube2->initPhysics(cfg);
 
-		hinge.setPoint1({ 0, 0, 1.0f });  
-		hinge.setPoint2({ 0, 0, -1.5f }); 
+	HingeConstraint hinge(GlobalSceneObjectKeyRegister::getKeyByObj(cube1), GlobalSceneObjectKeyRegister::getKeyByObj(cube2));
+	hinge.setPoint1({ 0, 0, 0.5f });  
+	hinge.setPoint2({ 0, 0, -1.5f }); 
 
-		hinge.setHingeAxis1({ 0, 1, 0 });
-		hinge.setHingeAxis2({ 0, 1, 0 });
+	hinge.setHingeAxis1({ 1, 0, 0 });
+	hinge.setHingeAxis2({ 1, 0, 0 });
 
-		hinge.setNormalAxis1({ 1, 0, 0 });
-		hinge.setNormalAxis2({ 1, 0, 0 });
+	hinge.setNormalAxis1({ 1, 0, 0 });
+	hinge.setNormalAxis2({ 1, 0, 0 });
 
-		//hinge.setAngleLimits(0, 1.57f);
+	//hinge.setAngleLimits(0, 1.57f);
 
-		// hinge.enableMotor(true);
-		// hinge.setMotorTargetVelocity(2.0f);
-		// hinge.setMotorMaxTorque(100.0f);
+	hinge.enableMotor(true);
+	hinge.setMotorTargetVelocity(2.0f);
+	hinge.setMotorMaxTorque(100.0f);
 
-		scene2->addHingeConstraint(hinge);
-		scene2->getPhysics()->addHingeConstraint(hinge);
+	engine.addHingeConstraint(hinge);
 
-	}
-
-	engine.saveSceneToID(scene2ID);
-	engine.loadedScene.getAllObjects().reset();
-	engine.loadedScene.getAxisConstraints().clear();
-	engine.loadedScene.getHingeConstraints().clear();
+	Scene* hingeScene = engine.saveToNewScene("HingeScene");
+	hingeSceneID = hingeScene->getID();
 }
 
 void createInput() {
@@ -550,7 +536,7 @@ void start() {
 	engine.setDebugFPS(true);
 
 	// Create Graphics
-	graphics = engine.initGraphics();
+	graphics = engine.getGraphics();
 	window = graphics->getWindow();
 	window->setFullscreen();
 	window->setVSync(false);
@@ -571,8 +557,8 @@ void start() {
 	light1->emissionStrength = 1.f;
 
 	// Create the UI
-	menuUI = engine.initNewUI();
-	gameUI = engine.initNewUI();
+	menuUI = engine.createNewUI();
+	gameUI = engine.createNewUI();
 	createUI();
 
 	// Init Keyboard IO
@@ -583,7 +569,7 @@ void start() {
 	engine.setGameState(EGameState::GAME);
 
 	createScene();
-	engine.loadSceneByID(scene2ID);
+	engine.loadSceneByID(catapultSceneID);
 }
 
 void update(float dt) {
@@ -598,9 +584,9 @@ void draw() {
 
 	Renderer::get()->drawScene(&engine.loadedScene, graphics->getCameras().getByName("MainCamera"), graphics->getLights().getAll());
 
-	//if (engine.getGameState() == EGameState::UI)
+	if (engine.getGameState() == EGameState::UI)
 		Renderer::get()->drawUI(menuUI);
-	//else
+	else
 		Renderer::get()->drawUI(gameUI);
 
 	Renderer::get()->present();

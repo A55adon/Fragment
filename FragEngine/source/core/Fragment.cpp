@@ -67,7 +67,7 @@ void Fragment::runApp()
 
 			case EPhysicsUpdateState::CAPPED:
 			{
-				float target = 1.0f / (float)physicsFPSCap;
+				float target = 1.0f / (float)_physicsFPSCap;
 				std::chrono::duration<float> physDelta = currentTime - lastPhysicsTime;
 				if (physDelta.count() >= target)
 				{
@@ -90,7 +90,7 @@ void Fragment::runApp()
 
 		case ERenderUpdateState::CAPPED:
 		{
-			float target = 1.0f / (float)renderFPSCap;
+			float target = 1.0f / (float)_renderFPSCap;
 			std::chrono::duration<float> renderDelta = currentTime - lastRenderTime;
 			if (renderDelta.count() >= target)
 			{
@@ -175,7 +175,7 @@ void Fragment::setEndFn(std::function<void()> fn)
 	endFn = fn;
 }
 
-Graphics* Fragment::initGraphics()
+Graphics* Fragment::getGraphics()
 {
 	return &graphics;
 }
@@ -186,8 +186,112 @@ Input* Fragment::initUserInput()
 	return &userInput;
 }
 
-UI* Fragment::initNewUI()
+UI* Fragment::createNewUI()
 {
 	uis.push_back(std::make_unique<UI>(&userInput, graphics.getWindow()));
 	return uis.back().get();
 }
+
+void Fragment::loadSceneByID(int ID) {
+	ASSERT(scenes.getByID(ID), "Could not load scene with id: " + std::to_string(ID));
+	Scene* ref = scenes.getByID(ID);
+	loadedScene = Scene(); // reset scene
+	loadedScene.activatePhysics();
+
+	for (auto& obj : ref->getAllObjects().getAll())
+	{
+		SceneObject* newObject = loadedScene.getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+
+		newObject->setPhysicsMesh(obj->getPhysicsMesh());
+		newObject->setRenderMesh(obj->getRenderMesh());
+		newObject->setPosition(obj->getPosition());
+		newObject->setRotation(obj->getRotation());
+		newObject->setScale(obj->getScale());
+		newObject->initPhysics(obj->settings);
+	}
+
+	for (auto& constraint : ref->getAxisConstraints()) {
+		loadedScene.addAxisConstraint(constraint);
+	}
+
+	for (auto& constraint : loadedScene.getAxisConstraints()) {
+		loadedScene.getPhysics()->addAxisConstraint(constraint);
+	}
+
+	for (auto& constraint : ref->getHingeConstraints()) {
+		loadedScene.addHingeConstraint(constraint);
+	}
+
+	for (auto& constraint : loadedScene.getHingeConstraints()) {
+		loadedScene.getPhysics()->addHingeConstraint(constraint);
+	}
+
+	_loadedSceneID = ID;
+}
+
+void Fragment::saveScene() {
+	ASSERT(scenes.getByID(_loadedSceneID), "No scene found with ID: " + std::to_string(_loadedSceneID));
+	saveSceneToID(_loadedSceneID);
+}
+
+void Fragment::saveSceneToID(int ID) {
+	ASSERT(scenes.getByID(ID), "No scene found with ID: " + std::to_string(ID));
+	Scene* ref = scenes.getByID(ID);
+	ref->getAllObjects().reset();
+	ref->getAxisConstraints().clear();
+	for (auto& obj : loadedScene.getAllObjects().getAll())
+	{
+		SceneObject* newObject = ref->getAllObjects().createNew(obj->getName(), loadedScene.getPhysics()); // add object directly to scene
+
+		newObject->setPhysicsMesh(obj->getPhysicsMesh());
+		newObject->setRenderMesh(obj->getRenderMesh());
+		newObject->setPosition(obj->getPosition());
+		newObject->setRotation(obj->getRotation());
+		newObject->setScale(obj->getScale());
+		newObject->initPhysics(obj->settings);
+	}
+
+	for (auto& constraint : loadedScene.getAxisConstraints()) {
+		ref->addAxisConstraint(constraint);
+	}
+
+	for (auto& constraint : loadedScene.getHingeConstraints()) {
+		ref->addHingeConstraint(constraint);
+	}
+
+	loadedScene.getAllObjects().reset();
+	loadedScene.getAxisConstraints().clear();
+	loadedScene.getHingeConstraints().clear();
+}
+
+Scene* Fragment::saveToNewScene(std::string name)
+{
+	Scene* tempScene = createNewScene(name);
+	saveSceneToID(tempScene->getID());
+	return tempScene;
+}
+
+Scene* Fragment::createNewScene(std::string name)
+{
+	if (name.empty()) { // if no name give, return a scene with name "scene" followed by the scene ID
+		Scene* tempScene = scenes.createNew("Scene");
+		tempScene->setName("Scene" + std::to_string(tempScene->getID()));
+		return tempScene;
+	}
+
+	return scenes.createNew(name);
+}
+
+SceneObject* Fragment::createNewSceneObject(std::string name)
+{
+	if (name.empty()) { // if no name give, return a sceneObject with name "sceneObject" followed by the scene ID
+		SceneObject* tempSceneObject = loadedScene.getAllObjects().createNew<SceneObject>("SceneObject", loadedScene.getPhysics());
+		tempSceneObject->setName("SceneObject" + std::to_string(tempSceneObject->getID()));
+		GlobalSceneObjectKeyRegister::registerObject(tempSceneObject);
+		return tempSceneObject;
+	}
+
+	return loadedScene.getAllObjects().createNew<SceneObject>(name, loadedScene.getPhysics());
+}
+
+

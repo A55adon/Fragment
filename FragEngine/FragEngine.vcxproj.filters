@@ -78,6 +78,9 @@
     <ClCompile Include="source\modules\Graphics\Renderer.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="source\core\GlobalSceneObjectKeyRegister.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\modules\Graphics\Camera.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="source\modules\Physics\HingeConstraint.h">
       <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

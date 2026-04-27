@@ -1,6 +1,7 @@
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\external\glad\src\glad.c;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\glad.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\external\stb_image.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\stb_image.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\Fragment.obj
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\GlobalSceneObjectKeyRegister.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\GlobalSceneObjectKeyRegister.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\main.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Graphics.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\Graphics.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Renderer.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\x64\Debug\Renderer.obj
