@@ -3,5 +3,9 @@
 #include "modules/Graphics/UI/UIElement.h"
 
 class Rectangle : public UIElement {
-	void rebuild() {};
+public:
+	void rebuild();
+
+	void onResize(float dx, float dy, int edgeMask);
+	void onDrag(float dx, float dy);
 };

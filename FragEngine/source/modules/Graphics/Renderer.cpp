@@ -260,77 +260,75 @@ void Renderer::drawScene(Scene* scene, Camera* camera, std::vector<std::unique_p
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 }
-//
-//void Renderer::drawUI(UI* ui)
-//{
-//	
-//	ASSERT(_uiShader.ID > 0, "Invalid uiShader");
-//
-//	if (isCustomResolution())
-//		glBindFramebuffer(GL_FRAMEBUFFER, _resolutionFBO);
-//	else
-//		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-//	glViewport(0, 0, _resolution.x, _resolution.y);
-//
-//	glDisable(GL_DEPTH_TEST);
-//	glDisable(GL_CULL_FACE);
-//	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//
-//	_uiShader.use();
-//	for (auto& uiobj : ui->objects) {
-//		drawUIObject(uiobj.get(), { 0,0 });
-//	}
-//
-//	// Restore state after UI drawing:
-//	glDisable(GL_BLEND);
-//	glEnable(GL_DEPTH_TEST);
-//	glEnable(GL_CULL_FACE);
-//}
-//
-//void Renderer::drawUIObject(UIObject* uiObject, vec2<float> parentPos) {
-//	vec2<float> worldPos = parentPos + uiObject->getTransform().position;
-//
-//	float ndcX = (worldPos.x / 100.0f) * 2.0f - 1.0f;
-//	float ndcY = 1.0f - (worldPos.y / 100.0f) * 2.0f;
-//
-//	//Draw
-//	for (auto& t : uiObject->getMesh().triangles)
-//	{
-//		_uiShader.use();
-//
-//		if (uiObject->getMesh().texture)
-//		{
-//			uiObject->getMesh().texture->bind(0);
-//
-//			_uiShader.setInt("uTexture", 0);
-//			_uiShader.setInt("useTexture", 1);
-//		}
-//		else
-//		{
-//			_uiShader.setInt("useTexture", 0);
-//		}
-//
-//		Vertex verts[3];
-//		for (int i = 0; i < 3; ++i)
-//		{
-//			verts[i] = t.vertices[i];
-//			verts[i].position.x += ndcX;
-//			verts[i].position.y += ndcY;
-//		}
-//
-//		glBindVertexArray(_uiVAO);
-//		glBindBuffer(GL_ARRAY_BUFFER, _uiVBO);
-//		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
-//		glDrawArrays(GL_TRIANGLES, 0, 3);
-//		glBindVertexArray(0);
-//	}
-//	for (auto& child : uiObject->getChildren()) {
-//		drawUIObject(child.get(), worldPos);
-//	}
-//	glBindVertexArray(0);
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//}
+
+void Renderer::drawUI(UI* ui)
+{
+	
+	ASSERT(_uiShader.ID > 0, "Invalid uiShader");
+
+	if (isCustomResolution())
+		glBindFramebuffer(GL_FRAMEBUFFER, _resolutionFBO);
+	else
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glViewport(0, 0, _resolution.x, _resolution.y);
+
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	_uiShader.use();
+	for (auto& uiEl : ui->getRootElements()) {
+		drawUIObject(uiEl, { 0,0 });
+	}
+
+	// Restore state after UI drawing:
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+}
+
+void Renderer::drawUIObject(UIElement* uiElement, vec2<float> parentPos) {
+	vec2<float> worldPos = parentPos + uiElement->getTransform().getPosition();
+
+
+	//Draw
+	for (auto& t : uiElement->getMesh2D().getTriangles())
+	{
+		_uiShader.use();
+
+		if (uiElement->getMesh2D().getTexture())
+		{
+			uiElement->getMesh2D().getTexture()->bind(0);
+
+			_uiShader.setInt("uTexture", 0);
+			_uiShader.setInt("useTexture", 1);
+		}
+		else
+		{
+			_uiShader.setInt("useTexture", 0);
+		}
+
+		Vertex2D verts[3];
+		for (int i = 0; i < 3; ++i)
+		{
+			verts[i] = t.vertices[i];
+			verts[i].position.x += parentPos.x;
+			verts[i].position.y += parentPos.y;
+		}
+
+		glBindVertexArray(_uiVAO);
+		glBindBuffer(GL_ARRAY_BUFFER, _uiVBO);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindVertexArray(0);
+	}
+	for (auto& child : uiElement->getChildren()) {
+		drawUIObject(child, worldPos);
+	}
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
 
 void Renderer::renderShadowPass(Scene* scene, LightSource* light)
 {

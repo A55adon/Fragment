@@ -52,6 +52,9 @@
     <Filter Include="Header Files\Graphics\UI\UIStatistics">
       <UniqueIdentifier>{d3ed4473-6d67-47d8-95e0-a8fa2e9c7f83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\UI\UIBase">
+      <UniqueIdentifier>{2e70030b-1df2-4368-a5ea-f12022f1ca08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\UI\UIElement.cpp">
       <Filter>Source Files\Graphics\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\UI\UIBase\Rectangle.cpp">
+      <Filter>Source Files\Graphics\UI\UIBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\Graphics\UI\UIBase\Text.cpp">
+      <Filter>Source Files\Graphics\UI\UIBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

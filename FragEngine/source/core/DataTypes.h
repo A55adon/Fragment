@@ -597,6 +597,16 @@ private:
     vec2<float> _size{ 0.0f, 0.0f };
 
 public:
+    void setPosition(vec2<float> pos) {
+        _position.x = pos.x;
+        _position.y = pos.y;
+    }
+
+    vec2<float> getPosition() const {
+        return _position;
+    }
+
+
     void setPositionPx(vec2<int> pos) {
         _position.x = (static_cast<float>(pos.x) / CFG_WINDOW_WIDTH) * 2.0f - 1.0f;
         _position.y = (static_cast<float>(pos.y) / CFG_WINDOW_HEIGHT) * 2.0f - 1.0f;
@@ -648,9 +658,9 @@ public:
 
 struct Style {
 private:
-    Color _primaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
-    Color _secondaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
-    Color _tertiaryColor{ 1.0f, 1.0f, 1.0f, 1.0f };
+    Color _primaryColor{ 1.0f, 0.0f, 0.0f, 1.0f };
+    Color _secondaryColor{ 0.0f, 1.0f, 0.0f, 1.0f };
+    Color _tertiaryColor{ 0.0f, 0.0f, 1.0f, 1.0f };
 
     bool _border{ false };
     float _borderWidth{ 0.0f };

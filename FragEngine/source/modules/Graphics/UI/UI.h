@@ -3,6 +3,7 @@
 #include "core/config.h"
 #include "core/DataTypes.h"
 #include "modules/Graphics/UI/UIElement.h"
+#include "modules/Graphics/UI/UIBase/Rectangle.h"
 #include "modules/Graphics/Texture.h"
 #include <array>
 // UI API
@@ -46,11 +47,19 @@ class UI {
 public:
     UI() = default;
 
-    UIElement* createUIElement();
+    UIElement* createUIElement(Transform transform = Transform(), Style style = Style());
+    Rectangle* createRectangle(Transform transform = Transform(), Style style = Style());
 
     void update(float mouseX, float mouseY, bool lmbDown);
+
+    std::vector<UIElement*> getRootElements();
+
+    void setDebugDraw(bool dd) { _debugDraw = dd; }
+    void debugDraw() {};
 private:
-    std::vector<UIElement> _rootElements;
+    std::vector<std::unique_ptr<UIElement>> _rootElements;
+
+    bool _debugDraw = false;
 
     // Interaction
     UIElement* _dragTarget = nullptr;

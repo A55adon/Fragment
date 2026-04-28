@@ -28,7 +28,7 @@ int UIElement::getResizeEdgeMask(float x, float y, float threshold) const {
 
 UIElement* UIElement::findInteractionTarget(float x, float y, int& edgeMask) {
 	for (auto it = _children.rbegin(); it != _children.rend(); ++it) {
-		UIElement* child = (it)->findInteractionTarget(x, y, edgeMask);
+		UIElement* child = (*it)->findInteractionTarget(x, y, edgeMask);
 		if (child) return child;
 	}
 
@@ -41,15 +41,55 @@ UIElement* UIElement::findInteractionTarget(float x, float y, int& edgeMask) {
 void UIElement::rebuild()
 {
 }
-
 void UIElement::onResize(float dx, float dy, int edgeMask)
 {
-	if (_onResize) _onResize(dx, dy, edgeMask);
+	auto& t = _transform;
 
+	auto pos = t.getPositionUS();
+	auto size = t.getSizeUS();
+
+	// left
+	if (edgeMask & 1) {
+		pos.x += dx;
+		size.x -= dx;
+	}
+
+	// right 
+	if (edgeMask & 2) {
+		size.x += dx;
+	}
+
+	// top
+	if (edgeMask & 4) {
+		pos.y += dy;
+		size.y -= dy;
+	}
+
+	// bottom
+	if (edgeMask & 8) {
+		size.y += dy;
+	}
+
+	// clamp minimum size
+	const float minSize = 0.01f;
+	size.x = std::max(size.x, minSize);
+	size.y = std::max(size.y, minSize);
+
+	t.setPositionUS(pos);
+	t.setSizeUS(size);
+
+	rebuild();
 }
 
 void UIElement::onDrag(float dx, float dy)
 {
-	if (_onDrag) _onDrag(dx, dy);
+	auto& t = _transform;
 
+	auto pos = t.getPositionUS();
+	pos.x += dx;
+	pos.y += dy;
+
+	t.setPositionUS(pos);
+
+	rebuild();
 }

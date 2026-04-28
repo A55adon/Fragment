@@ -10,6 +10,8 @@
 #include "modules/Graphics/LightSource.h"
 #include "modules/Graphics/UI/UI.h"
 #include "core/config.h"
+#include "core/Mesh2D.h"
+#include "modules/Graphics/UI/UIElement.h"
 
 class Renderer {
 public:
@@ -27,7 +29,7 @@ public:
 
 	// Drawing functions
 	void drawScene(Scene* scene, Camera* camera, std::vector<std::unique_ptr<LightSource>>& lights);
-	//void drawUI(UI* ui);
+	void drawUI(UI* ui);
 	void clear();
 	void present();
 
@@ -35,7 +37,7 @@ private:
 	Renderer() = default;
 	~Renderer() = default;
 
-	//void drawUIObject(UIObject* uiObject, vec2<float> parentPos);
+	void drawUIObject(UIElement* uiElement, vec2<float> parentPos);
 	void renderShadowPass(Scene* scene, LightSource* light);
 
 	inline bool isCustomResolution() { 

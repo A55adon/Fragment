@@ -31,6 +31,8 @@
     <ClCompile Include="source\modules\Graphics\Shader.cpp" />
     <ClCompile Include="source\modules\Graphics\Texture.cpp" />
     <ClCompile Include="source\modules\Graphics\UI\UI.cpp" />
+    <ClCompile Include="source\modules\Graphics\UI\UIBase\Rectangle.cpp" />
+    <ClCompile Include="source\modules\Graphics\UI\UIBase\Text.cpp" />
     <ClCompile Include="source\modules\Graphics\UI\UIElement.cpp" />
     <ClCompile Include="source\modules\Physics\Physics.cpp" />
   </ItemGroup>

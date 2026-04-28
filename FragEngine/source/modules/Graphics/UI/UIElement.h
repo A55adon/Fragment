@@ -18,57 +18,36 @@ public:
 	const Style& getStyle() const { return _style; }
 
 	// Children
-	void addChild(UIElement child) {
-		_children.push_back(child);
+	void addChild(std::unique_ptr<UIElement> child) {
+		_children.push_back(std::move(child));
 	}
 
 	UIElement* getChild(size_t i) {
-		return &_children[i];
-	}
-
-	const UIElement* getChild(size_t i) const {
-		return &_children[i];
+		return _children[i].get();
 	}
 
 	size_t getChildCount() const {
 		return _children.size();
 	}
 
-	std::vector<UIElement>& getChildren() {
-		return _children;
-	}
-
-	const std::vector<UIElement>& getChildren() const {
-		return _children;
+	std::vector<UIElement*> getChildren() {
+		std::vector<UIElement*> els;
+		for (auto& el : _children) 
+			els.push_back(el.get());
+		return els;
 	}
 
 	void setDraggable(bool v) { _draggable = v; }
 	bool isDraggable() const { return _draggable; }
 
-	void setOnDrag(const std::function<void(float, float)>& fn) {
-		_onDrag = fn;
-	}
-
-	const std::function<void(float, float)>& getOnDrag() const {
-		return _onDrag;
-	}
-
 	void setResizable(bool v) { _resizable = v; }
 	bool isResizable() const { return _resizable; }
-
-	void setOnResize(const std::function<void(float, float, int)>& fn) {
-		_onResize = fn;
-	}
-
-	const std::function<void(float, float, int)>& getOnResize() const {
-		return _onResize;
-	}
 
 	void setMesh2D(Mesh2D mesh) {
 		_mesh = mesh;
 	}
 
-	const Mesh2D& getMesh2D() const {
+	Mesh2D& getMesh2D() {
 		return _mesh;
 	}
 
@@ -78,21 +57,18 @@ public:
 
 	UIElement* findInteractionTarget(float x, float y, int& edgeMask);
 
-	virtual void rebuild();
+	void rebuild();
 
 	virtual void onResize(float dx, float dy, int edgeMask);
 	virtual void onDrag(float dx, float dy);
 
-private:
+protected:
 	Mesh2D _mesh;
 	Transform _transform;
 	Style _style;
 
-	std::vector<UIElement> _children;
-
+	std::vector<std::unique_ptr<UIElement>> _children;
+private:
 	bool _draggable = false;
-	std::function<void(float, float)> _onDrag;
-
 	bool _resizable = false;
-	std::function<void(float, float, int)> _onResize;
 };

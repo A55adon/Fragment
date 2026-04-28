@@ -2,14 +2,33 @@
 #include "modules/Graphics/UI/UIElement.h"
 #include "modules/IO/UserInput/Input.h"
 
-UIElement* UI::createUIElement()
+UIElement* UI::createUIElement(Transform transform, Style style)
 {
-	_rootElements.push_back(UIElement());
-	return &_rootElements.back();
+	std::unique_ptr<UIElement> el = std::make_unique<UIElement>();
+	el->setTransform(transform);
+	el->setStyle(style);	
+	_rootElements.push_back(std::move(el));
+	return _rootElements.back().get();
+}
+
+Rectangle* UI::createRectangle(Transform transform, Style style)
+{
+	auto rect = std::make_unique<Rectangle>();
+
+	rect->setTransform(transform);
+	rect->setStyle(style);
+	rect->rebuild();
+
+	Rectangle* ptr = rect.get();
+	_rootElements.push_back(std::move(rect));
+
+	return ptr;
 }
 
 void UI::update(float mouseX, float mouseY, bool lmbDown)
 {
+	if(_debugDraw) debugDraw();
+
 	if (!lmbDown) {
 		_dragTarget = nullptr;
 		_resizeTarget = nullptr;
@@ -27,7 +46,7 @@ void UI::update(float mouseX, float mouseY, bool lmbDown)
 
 		for (auto it = _rootElements.rbegin(); it != _rootElements.rend(); ++it) {
 			int edgeMask = 0;
-			UIElement* hit = (it)->findInteractionTarget(mouseX, mouseY, edgeMask);
+			UIElement* hit = (*it)->findInteractionTarget(mouseX, mouseY, edgeMask);
 
 			if (hit) {
 				if (edgeMask != 0 && hit->isResizable()) {
@@ -55,10 +74,17 @@ void UI::update(float mouseX, float mouseY, bool lmbDown)
 	float dxUI = dx / CFG_WINDOW_WIDTH;
 	float dyUI = dy / CFG_WINDOW_HEIGHT;
 
-	if (_resizeTarget && _resizeTarget->getOnResize()) {
-		_resizeTarget->getOnResize()(dxUI, dyUI, (float)_resizeEdgeMask);
+	if (_resizeTarget) {
+		_resizeTarget->onResize(dxUI, dyUI, _resizeEdgeMask);
 	}
-	else if (_dragTarget && _dragTarget->getOnDrag()) {
-		_dragTarget->getOnDrag()(dxUI, dyUI);
+	else if (_dragTarget) {
+		_dragTarget->onDrag(dxUI, dyUI);
 	}
+}
+
+std::vector<UIElement*> UI::getRootElements() {
+    std::vector<UIElement*> els;
+    for (auto& el : _rootElements)
+        els.push_back(el.get());
+    return els;
 }
