@@ -72,43 +72,16 @@ public:
 		return _mesh;
 	}
 
-	bool containsPx(float x, float y) const {
-		auto pos = _transform.getPositionPx();
-		auto size = _transform.getSizePx();
+	bool containsPx(float x, float y) const;
 
-		return x >= pos.x &&
-			y >= pos.y &&
-			x <= pos.x + size.x &&
-			y <= pos.y + size.y;
-	}
+	int getResizeEdgeMask(float x, float y, float threshold = 5.0f) const;
 
-	int getResizeEdgeMask(float x, float y, float threshold = 5.0f) const {
-		if (!_resizable) return 0;
+	UIElement* findInteractionTarget(float x, float y, int& edgeMask);
 
-		auto pos = _transform.getPositionPx();
-		auto size = _transform.getSizePx();
+	virtual void rebuild();
 
-		int mask = 0;
-
-		if (abs(x - pos.x) <= threshold) mask |= 1; // left
-		if (abs(x - (pos.x + size.x)) <= threshold) mask |= 2; // right
-		if (abs(y - pos.y) <= threshold) mask |= 4; // top
-		if (abs(y - (pos.y + size.y)) <= threshold) mask |= 8; // bottom
-
-		return mask;
-	}
-
-	UIElement* findInteractionTarget(float x, float y, int& edgeMask) {
-		for (auto it = _children.rbegin(); it != _children.rend(); ++it) {
-			UIElement* child = (it)->findInteractionTarget(x, y, edgeMask);
-			if (child) return child;
-		}
-
-		if (!containsPx(x, y)) return nullptr;
-
-		edgeMask = getResizeEdgeMask(x, y);
-		return this;
-	}
+	virtual void onResize(float dx, float dy, int edgeMask);
+	virtual void onDrag(float dx, float dy);
 
 private:
 	Mesh2D _mesh;

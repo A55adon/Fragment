@@ -44,23 +44,20 @@ UI -> UIElement -> Base -> Input
 
 class UI {
 public:
-	UI() = default;
+    UI() = default;
 
-	
+    UIElement* createUIElement();
 
-	UIElement* createUIElement();
-
-	void update(float mouseX, float mouseY, bool lmbDown);
+    void update(float mouseX, float mouseY, bool lmbDown);
 private:
     std::vector<UIElement> _rootElements;
 
-	// Interaction
-	UIElement* _dragTarget = nullptr;
-	UIElement* _resizeTarget = nullptr;
-	int _resizeEdgeMask = 0;
+    // Interaction
+    UIElement* _dragTarget = nullptr;
+    UIElement* _resizeTarget = nullptr;
+    int _resizeEdgeMask = 0;
 
-	bool _lmbWasDown = false;
-	float _lastMouseX = 0.0f;
-	float _lastMouseY = 0.0f;
+    bool _lmbWasDown = false;
+    float _lastMouseX = 0.0f;
+    float _lastMouseY = 0.0f;
 };
-

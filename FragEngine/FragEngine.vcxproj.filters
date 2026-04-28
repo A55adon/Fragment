@@ -93,6 +93,9 @@
     <ClCompile Include="source\core\config.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="source\modules\Graphics\UI\UIElement.cpp">
+      <Filter>Source Files\Graphics\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\modules\Graphics\Camera.h">
