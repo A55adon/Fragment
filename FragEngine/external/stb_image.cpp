@@ -6,3 +6,6 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 #pragma warning(pop)
+
+#define STB_TRUETYPE_IMPLEMENTATION
+#include "stb_truetype.h"

@@ -26,6 +26,8 @@ public:
 	void initialize(Window* window);
 
 	void setCustomResolution(vec2<int> size);
+	vec2<int> getRenderResolution() const { return _resolution; }
+	vec2<float> mapWindowToRenderCoordinates(float mouseX, float mouseY) const;
 
 	// Drawing functions
 	void drawScene(Scene* scene, Camera* camera, std::vector<std::unique_ptr<LightSource>>& lights);
@@ -38,7 +40,8 @@ private:
 	~Renderer() = default;
 
 	void drawUIObject(UIElement* uiElement, vec2<float> parentPos);
-	void renderShadowPass(Scene* scene, LightSource* light);
+	void renderShadowPass(Scene* scene, LightSource* light, Camera* canera);
+	vec4<int> getPresentationViewport() const;
 
 	inline bool isCustomResolution() { 
 		return _resolution != vec2<int>( _window->getWidth(), _window->getHeight() ); 

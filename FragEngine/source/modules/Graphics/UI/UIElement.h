@@ -8,6 +8,7 @@
 class UIElement {
 public:
 	UIElement() = default;
+	virtual ~UIElement() = default;
 
 	void setTransform(const Transform& t) { _transform = t; }
 	Transform& getTransform() { return _transform; }
@@ -18,8 +19,10 @@ public:
 	const Style& getStyle() const { return _style; }
 
 	// Children
-	void addChild(std::unique_ptr<UIElement> child) {
+	UIElement* addChild(std::unique_ptr<UIElement> child) {
+		child->_parent = this;
 		_children.push_back(std::move(child));
+		return _children.back().get();
 	}
 
 	UIElement* getChild(size_t i) {
@@ -51,16 +54,45 @@ public:
 		return _mesh;
 	}
 
-	bool containsPx(float x, float y) const;
+	void setVisible(bool v) { _visible = v; }
+	bool isVisible() const { return _visible; }
 
-	int getResizeEdgeMask(float x, float y, float threshold = 5.0f) const;
+	void setHitTestVisible(bool v) { _hitTestVisible = v; }
+	bool isHitTestVisible() const { return _hitTestVisible; }
 
-	UIElement* findInteractionTarget(float x, float y, int& edgeMask);
+	void setFocusTarget(bool v) { _focusTarget = v; }
+	bool isFocusTarget() const { return _focusTarget; }
 
-	void rebuild();
+	void setFocused(bool v) { _focused = v; }
+	bool isFocused() const { return _focused; }
+
+	UIElement* getParent() const { return _parent; }
+
+	virtual std::string getElementTypeName() const { return "UIElement"; }
+
+	virtual void update();
+
+	bool containsPx(float x, float y, vec2<float> parentPos = { 0.0f, 0.0f }) const;
+
+	int getResizeEdgeMask(float x, float y, vec2<float> parentPos = { 0.0f, 0.0f }, float threshold = 5.0f) const;
+
+	UIElement* findInteractionTarget(float x, float y, vec2<float> parentPos, int& edgeMask);
+	UIElement* findTopElementAt(float x, float y, vec2<float> parentPos);
+
+	vec2<float> getWorldPosition(vec2<float> parentPos = { 0.0f, 0.0f }) const;
+	vec2<float> getAbsoluteWorldPosition() const;
+
+	virtual void rebuild();
 
 	virtual void onResize(float dx, float dy, int edgeMask);
 	virtual void onDrag(float dx, float dy);
+	virtual void onPointerDown(float mouseX, float mouseY) {}
+	virtual void onPointerMove(float mouseX, float mouseY, bool lmbDown) {}
+	virtual void onPointerUp(float mouseX, float mouseY) {}
+	virtual void onClick() {}
+
+	std::string getDebugLabel(vec2<float> parentPos = { 0.0f, 0.0f }) const;
+	void collectElements(std::vector<std::pair<UIElement*, vec2<float>>>& out, vec2<float> parentPos = { 0.0f, 0.0f });
 
 protected:
 	Mesh2D _mesh;
@@ -71,4 +103,9 @@ protected:
 private:
 	bool _draggable = false;
 	bool _resizable = false;
+	bool _visible = true;
+	bool _hitTestVisible = true;
+	bool _focusTarget = false;
+	bool _focused = false;
+	UIElement* _parent = nullptr;
 };

@@ -2,4 +2,5 @@
 
 SceneObject::SceneObject(Physics* physics)
 {
+	_physics = physics;
 }

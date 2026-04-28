@@ -6,6 +6,8 @@ void Renderer::initialize(Window* window)
 	ASSERT(window, "Window not vaild at Renderer initialization");
 	_window = window;
 	_resolution = { window->getWidth(), window->getHeight() };
+	CFG_WINDOW_WIDTH = static_cast<float>(_resolution.x);
+	CFG_WINDOW_HEIGHT = static_cast<float>(_resolution.y);
 
 	// Check if glad function loading works
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -44,11 +46,11 @@ void Renderer::initialize(Window* window)
 	glBindVertexArray(_uiVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, _uiVBO);
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 3, nullptr, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex2D) * 3, nullptr, GL_DYNAMIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoordinate));
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)offsetof(Vertex2D, position));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)offsetof(Vertex2D, texCoordinate));
+	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)offsetof(Vertex2D, color));
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 	glEnableVertexAttribArray(2);
@@ -106,8 +108,8 @@ void Renderer::initialize(Window* window)
 		SHADOW_SIZE, SHADOW_SIZE, 0,
 		GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 
@@ -130,11 +132,15 @@ void Renderer::initialize(Window* window)
 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 
 	glLineWidth(CFG_GL_LINEWIDTH);
+
+	LOG("GL config result: " + std::to_string(glGetError()));
 }
 
 void Renderer::setCustomResolution(vec2<int> size)
 {
 	_resolution = size;
+	CFG_WINDOW_WIDTH = static_cast<float>(_resolution.x);
+	CFG_WINDOW_HEIGHT = static_cast<float>(_resolution.y);
 	glGenVertexArrays(1, &_resolutionVAO);
 	glGenBuffers(1, &_resolutionVBO);
 	glGenFramebuffers(1, &_resolutionFBO);
@@ -183,13 +189,59 @@ void Renderer::setCustomResolution(vec2<int> size)
 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 }
 
+vec4<int> Renderer::getPresentationViewport() const
+{
+	int windowWidth = _window->getWidth();
+	int windowHeight = _window->getHeight();
+
+	if (_resolution.x <= 0 || _resolution.y <= 0 || windowWidth <= 0 || windowHeight <= 0) {
+		return { 0, 0, windowWidth, windowHeight };
+	}
+
+	const float renderAspect = static_cast<float>(_resolution.x) / static_cast<float>(_resolution.y);
+	const float windowAspect = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
+
+	int viewportWidth = windowWidth;
+	int viewportHeight = windowHeight;
+
+	if (windowAspect > renderAspect) {
+		viewportWidth = static_cast<int>(std::round(static_cast<float>(windowHeight) * renderAspect));
+	}
+	else {
+		viewportHeight = static_cast<int>(std::round(static_cast<float>(windowWidth) / renderAspect));
+	}
+
+	const int viewportX = (windowWidth - viewportWidth) / 2;
+	const int viewportY = (windowHeight - viewportHeight) / 2;
+	return { viewportX, viewportY, viewportWidth, viewportHeight };
+}
+
+vec2<float> Renderer::mapWindowToRenderCoordinates(float mouseX, float mouseY) const
+{
+	const auto viewport = getPresentationViewport();
+	const int windowHeight = _window->getHeight();
+	const float viewportTop = static_cast<float>(windowHeight - viewport.y - viewport.w);
+
+	if (viewport.z <= 0 || viewport.w <= 0) {
+		return { mouseX, mouseY };
+	}
+
+	const float localX = std::clamp(mouseX - static_cast<float>(viewport.x), 0.0f, static_cast<float>(viewport.z));
+	const float localY = std::clamp(mouseY - viewportTop, 0.0f, static_cast<float>(viewport.w));
+
+	return {
+		(localX / static_cast<float>(viewport.z)) * static_cast<float>(_resolution.x),
+		(localY / static_cast<float>(viewport.w)) * static_cast<float>(_resolution.y)
+	};
+}
+
 void Renderer::drawScene(Scene* scene, Camera* camera, std::vector<std::unique_ptr<LightSource>>& lights)
 {
 	ASSERT(scene, "Tried to draw invalid scene");
 	ASSERT(camera, "Tried to draw with invalid camera");
 
 	if (!lights.empty()) {
-		renderShadowPass(scene, lights[0].get());
+		renderShadowPass(scene, lights[0].get(), camera);
 	}
 	if (isCustomResolution())
 		glBindFramebuffer(GL_FRAMEBUFFER, _resolutionFBO);
@@ -313,8 +365,8 @@ void Renderer::drawUIObject(UIElement* uiElement, vec2<float> parentPos) {
 		for (int i = 0; i < 3; ++i)
 		{
 			verts[i] = t.vertices[i];
-			verts[i].position.x += parentPos.x;
-			verts[i].position.y += parentPos.y;
+			verts[i].position.x += worldPos.x;
+			verts[i].position.y += worldPos.y;
 		}
 
 		glBindVertexArray(_uiVAO);
@@ -330,14 +382,26 @@ void Renderer::drawUIObject(UIElement* uiElement, vec2<float> parentPos) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Renderer::renderShadowPass(Scene* scene, LightSource* light)
+void Renderer::renderShadowPass(Scene* scene, LightSource* light, Camera* camera)
 {
-	float near = 1.0f, far = 100.0f;
+	float range = 40.0f;
 
-	mat4 lightProj = mat4::ortho(-20.f, 20.f, -20.f, 20.f, near, far);
-	mat4 lightView = mat4::lookAt(light->position,
-		vec3<float>(0, 0, 0),
-		vec3<float>(0, 1, 0));
+	vec3<float> sceneCenter{ 0.0f, 0.0f, 0.0f };
+	const auto& objects = scene->getAllObjects().getAll();
+	if (!objects.empty()) {
+		for (const auto& obj : objects) {
+			sceneCenter += obj->getPosition();
+		}
+		sceneCenter *= (1.0f / static_cast<float>(objects.size()));
+	}
+
+	mat4 lightProj = mat4::ortho(-range, range, -range, range, 1.0f, 100.0f);
+
+	mat4 lightView = mat4::lookAt(
+		light->position,
+		sceneCenter,
+		vec3<float>(0, 1, 0)
+	);
 
 	_lightSpaceMatrix = lightProj * lightView;
 
@@ -387,12 +451,15 @@ void Renderer::present()
 	if (!isCustomResolution()) return;
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glViewport(0, 0, _window->getWidth(), _window->getHeight());
+	const auto viewport = getPresentationViewport();
+	glViewport(viewport.x, viewport.y, viewport.z, viewport.w);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glDisable(GL_DEPTH_TEST);
 
 	_resolutionShader.use();
+	_resolutionShader.setInt("screenTexture", 0);
 	glBindVertexArray(_resolutionVAO);
+	glActiveTexture(GL_TEXTURE0);     
 	glBindTexture(GL_TEXTURE_2D, _FBOTexture);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);

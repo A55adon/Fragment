@@ -594,7 +594,7 @@ private:
 struct Transform {
 private:
     vec2<float> _position{ 0.0f, 0.0f };
-    vec2<float> _size{ 0.0f, 0.0f };
+    vec2<float> _size{ 0.1f, 0.1f };
 
 public:
     void setPosition(vec2<float> pos) {
@@ -666,7 +666,7 @@ private:
     float _borderWidth{ 0.0f };
     float _borderRadius{ 0.0f };
     int _boarderEdges{ 0 };
-    Color _borderColor{ 0.0f, 0.0f, 0.0f, 1.0f };
+    Color _borderColor{ 0.5f, 0.5f, 0.5f, 1.0f };
 
     static Color HexToColor(uint32_t hex) {
         float r = ((hex >> 24) & 0xFF) / 255.0f;

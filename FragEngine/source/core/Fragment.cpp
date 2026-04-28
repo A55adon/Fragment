@@ -119,7 +119,7 @@ void Fragment::runApp()
 
 		auto debugNow = clock::now();
 		std::chrono::duration<float> debugDelta = debugNow - lastDebugPrintTime;
-		if (_debugFPS && debugDelta.count() >= .5f)
+		if (_debugFPS && debugDelta.count() >= .1f)
 		{
 			avgFPS = frameCount / debugDelta.count();
 			avgFrameTime = (totalFrameTime / frameCount) * 1000.0f; 

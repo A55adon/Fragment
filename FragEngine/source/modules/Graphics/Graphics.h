@@ -23,7 +23,7 @@ public:
 		glfwTerminate();
 	};
 
-	Camera* initNewCamera(std::string name) { return _cameras.createNew(name); }
+	Camera* initNewCamera(std::string name, float aspect = 4.f / 3.f) { return _cameras.createNew(name, aspect); }
 	LightSource* initNewLight(std::string name) { return _lightSources.createNew(name); }
 
 	Register<LightSource>& getLights() { return _lightSources; }

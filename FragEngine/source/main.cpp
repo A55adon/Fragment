@@ -19,6 +19,18 @@ int hingeSceneID;
 
 float speed = 3.0f;
 
+enum class DemoMode {
+	Overview,
+	Physics,
+	Rendering
+};
+
+DemoMode uiMode = DemoMode::Overview;
+float exposureValue = 0.5f;
+int sampleCount = 4;
+std::vector<float> frameHistory(240, 0.0f);
+std::vector<float> arcValues{ 16.0f, 8.0f, 4.0f };
+
 //REFLECT_EXISTING_ENUM(EPhysicsUpdateState, STOPPED, CAPPED, SLOWED);
 
 void onWKeyHeld(float dt) {
@@ -105,7 +117,88 @@ void onMouseMove(float dx, float dy) {
 }
 
 void createUI() {
-	gameUI->createRectangle();
+	menuUI->setDebugDraw(true);
+
+	Style panelStyle;
+	panelStyle.setPrimaryColor(Color::fromHex("#1A1D22"));
+	panelStyle.setSecondaryColor(Color::fromHex("#E9EEF5"));
+	panelStyle.setBorder(true);
+	panelStyle.setBorderWidth(0.004f);
+	panelStyle.setBorderRadius(0.018f);
+	panelStyle.setBorderColor(Color::fromHex("#3A4555"));
+
+	Transform panelTr;
+	panelTr.setPositionPx({ 60, 35 });
+	panelTr.setSizePx({ 100, 50 });
+
+	Rectangle* panel = menuUI->createRectangle(panelTr, panelStyle);
+	panel->setDraggable(true);
+	panel->setResizable(true);
+	/*
+	Style titleStyle = panelStyle;
+	titleStyle.setPrimaryColor(Color::fromHex("#F7C873"));
+	Transform titleTr;
+	titleTr.setPosition({ -0.15f, 0.22f });
+	titleTr.setSizePx({ 300, 20 });
+	Text* title = menuUI->createText("Fragment UI Sandbox", titleTr, titleStyle, 24);
+	title->setColor(titleStyle.getPrimaryColor());
+
+	Style buttonStyle = panelStyle;
+	buttonStyle.setPrimaryColor(Color::fromHex("#273241"));
+	buttonStyle.setSecondaryColor(Color::fromHex("#F4F7FB"));
+	Transform buttonTr;
+	buttonTr.setPositionUS({ 0.18f, 0.12f });
+	buttonTr.setSizeUS({ 0.08f, 0.035f });
+	Button* button = menuUI->createButton("Push", []() {
+		arcValues[0] += 1.0f;
+		arcValues[1] = std::max(1.0f, arcValues[1] - 0.5f);
+	}, buttonTr, buttonStyle, 18);
+	button->setDraggable(true);
+
+	Transform inputTr;
+	inputTr.setPositionUS({ 0.18f, 0.31f });
+	inputTr.setSizeUS({ 0.08f, 0.035f });
+	menuUI->createInputField<int>(&sampleCount, inputTr, buttonStyle, 18);
+
+	Transform sliderTr;
+	sliderTr.setPositionUS({ 0.18f, 0.40f });
+	sliderTr.setSizeUS({ 0.12f, 0.04f });
+	menuUI->createSlider<float>(&exposureValue, 0.0f, 1.0f, 0.05f, sliderTr, buttonStyle, 14);
+
+	Transform dropdownTr;
+	dropdownTr.setPositionUS({ 0.18f, 0.50f });
+	dropdownTr.setSizeUS({ 0.09f, 0.04f });
+	menuUI->createDropdown<DemoMode>(
+		&uiMode,
+		{
+			{ DemoMode::Overview, "Overview" },
+			{ DemoMode::Physics, "Physics" },
+			{ DemoMode::Rendering, "Rendering" }
+		},
+		dropdownTr,
+		buttonStyle,
+		16
+	);
+
+	Transform histogramTr;
+	histogramTr.setPositionUS({ 0.58f, 0.26f });
+	histogramTr.setSizeUS({ 0.16f, 0.14f });
+	menuUI->createHistogram(&frameHistory, histogramTr, panelStyle);
+
+	Transform chartTr;
+	chartTr.setPositionUS({ 0.58f, 0.58f });
+	chartTr.setSizeUS({ 0.11f, 0.11f });
+	menuUI->createArcChart(
+		&arcValues,
+		{
+			Color::fromHex("#F7C873"),
+			Color::fromHex("#7AC7FF"),
+			Color::fromHex("#7BE495")
+		},
+		chartTr,
+		panelStyle
+	);
+*/
 }
 
 void createScenes() {
@@ -263,12 +356,12 @@ void start() {
 	window = graphics->getWindow();
 	window->setFullscreen();
 	window->setVSync(false);
-	Renderer::get()->setCustomResolution(vec2<int>(1920,1680));
+	Renderer::get()->setCustomResolution(vec2<int>(window->getWidth(), window->getHeight()));
 
 	//LOG("Aspect ratio:" + std::to_string(graphics->getAspect()));
 	
 	// Create a Camera
-	camera = graphics->initNewCamera("MainCamera");
+	camera = graphics->initNewCamera("MainCamera", window->getAspect());
 	camera->setPosition(vec3<float>(4, 1, 0));
 	camera->setRotation(vec3<float>(0, -1.6, 0));
 
@@ -289,7 +382,8 @@ void start() {
 	// Bind functions to keypresses
 	createInput();
 
-	engine.setGameState(EGameState::GAME);
+	engine.setGameState(EGameState::UI);
+	window->setCursorFocus(false);
 
 	createScenes();
 	engine.loadSceneByID(catapultSceneID);
@@ -306,8 +400,16 @@ void update(float dt) {
 
 	bool lmbDown = glfwGetMouseButton(window->getRawWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
-	float mouseX = static_cast<float>(mx);
-	float mouseY = static_cast<float>(my);
+	const auto uiMouse = Renderer::get()->mapWindowToRenderCoordinates(
+		static_cast<float>(mx),
+		static_cast<float>(my)
+	);
+	float mouseX = uiMouse.x;
+	float mouseY = uiMouse.y;
+
+	frameHistory.erase(frameHistory.begin());
+	frameHistory.push_back(std::max(0.0f, engine.avgFrameTime));
+	arcValues[2] = std::max(1.0f, engine.avgPhysicsTime);
 
 	if (engine.getGameState() == EGameState::UI)
 		menuUI->update(mouseX, mouseY, lmbDown);

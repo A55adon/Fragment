@@ -34,7 +34,7 @@ public:
 		const GLFWvidmode* mode = glfwGetVideoMode(secondMonitor);
 
 		CFG_WINDOW_WIDTH = mode->width;
-		CFG_WINDOW_WIDTH = mode->height;
+		CFG_WINDOW_HEIGHT = mode->height;
 
 		glfwSetWindowMonitor(
 			window,
@@ -51,15 +51,8 @@ public:
 
 	void setSize(vec2<int> size) {
 		glfwSetWindowSize(window, size.x, size.y);
-
-		int count;
-		GLFWmonitor** monitors = glfwGetMonitors(&count);
-
-		GLFWmonitor* secondMonitor = monitors[CFG_WINDOW_MONITOR];
-		const GLFWvidmode* mode = glfwGetVideoMode(secondMonitor);
-
-		CFG_WINDOW_WIDTH = mode->width;
-		CFG_WINDOW_WIDTH = mode->height;
+		CFG_WINDOW_WIDTH = static_cast<float>(size.x);
+		CFG_WINDOW_HEIGHT = static_cast<float>(size.y);
 	}
 
 	int getWidth() {
@@ -83,7 +76,8 @@ public:
 	}
 
 	float getAspect() {
-		return getWidth() / getHeight();
+		const int height = getHeight();
+		return static_cast<float>(getWidth()) / static_cast<float>(height > 0 ? height : 1);
 	}
 
 	void setTitle(std::string title) {
