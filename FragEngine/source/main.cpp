@@ -292,7 +292,7 @@ void start() {
 	engine.setGameState(EGameState::GAME);
 
 	createScenes();
-	//engine.loadSceneByID(catapultSceneID);
+	engine.loadSceneByID(catapultSceneID);
 	LOG(CFG_GET_WINDOW_ASPECT());
 }
 
