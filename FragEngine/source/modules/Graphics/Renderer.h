@@ -39,7 +39,6 @@ private:
 	Renderer() = default;
 	~Renderer() = default;
 
-	void drawUIObject(UIElement* uiElement, vec2<float> parentPos);
 	void renderShadowPass(Scene* scene, LightSource* light, Camera* canera);
 	vec4<int> getPresentationViewport() const;
 

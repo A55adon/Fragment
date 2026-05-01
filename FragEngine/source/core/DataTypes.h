@@ -654,6 +654,15 @@ public:
             _size.y * 0.5f
         };
     }
+    
+    void setSize(vec2<float> size) {
+        _size.x = size.x;
+        _size.y = size.y;
+    }
+
+    vec2<float> getSize() const {
+        return _size;
+    }
 };
 
 struct Style {

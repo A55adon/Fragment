@@ -1,0 +1,95 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'mat4::v' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/globalsceneobjectkeyregister.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+                },
+                "region": {
+                  "startLine": 232,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "mat4::{ctor}",
+                  "decoratedName": "??0mat4@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "mat4::v"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.51.36241.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/globalsceneobjectkeyregister.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "c2f7013d5cadca2251dc217a5e739aff9076f149476c8b2581a48e18f9b9f3f1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "595cf26e5170319d41d1ddc2d9c09f9009887e26931a45c183dec58cfc76cffd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/globalsceneobjectkeyregister.h"
+          },
+          "hashes": {
+            "sha-256": "40da6c1f9dbff864420d604dbebfeaecc678caea2f01ff291d820eefe20ef53e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/config.h"
+          },
+          "hashes": {
+            "sha-256": "4d884d9676ebcd2570709f8b46e4830572352f487072e8507ef7df88ff4bf5d7"
+          }
+        }
+      ]
+    }
+  ]
+}

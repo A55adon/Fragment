@@ -28,10 +28,8 @@ enum class DemoMode {
 DemoMode uiMode = DemoMode::Overview;
 float exposureValue = 0.5f;
 int sampleCount = 4;
-std::vector<float> frameHistory(240, 0.0f);
+std::vector<float> frameHistory(24, 0.0f);
 std::vector<float> arcValues{ 16.0f, 8.0f, 4.0f };
-
-//REFLECT_EXISTING_ENUM(EPhysicsUpdateState, STOPPED, CAPPED, SLOWED);
 
 void onWKeyHeld(float dt) {
 	vec3<float> pos = camera->getPosition();
@@ -134,44 +132,49 @@ void createUI() {
 	Rectangle* panel = menuUI->createRectangle(panelTr, panelStyle);
 	panel->setDraggable(true);
 	panel->setResizable(true);
-	/*
+	
 	Style titleStyle = panelStyle;
 	titleStyle.setPrimaryColor(Color::fromHex("#F7C873"));
 	Transform titleTr;
-	titleTr.setPosition({ -0.15f, 0.22f });
-	titleTr.setSizePx({ 300, 20 });
-	Text* title = menuUI->createText("Fragment UI Sandbox", titleTr, titleStyle, 24);
+	titleTr.setPositionPx({ 60, 135 });
+	panelTr.setSizePx({ 100, 50 });
+	Text* title = menuUI->createText("Example Text", titleTr, titleStyle, 24);
 	title->setColor(titleStyle.getPrimaryColor());
-
+	title->setDraggable(true);
+	title->setResizable(true);
+	
 	Style buttonStyle = panelStyle;
 	buttonStyle.setPrimaryColor(Color::fromHex("#273241"));
 	buttonStyle.setSecondaryColor(Color::fromHex("#F4F7FB"));
 	Transform buttonTr;
-	buttonTr.setPositionUS({ 0.18f, 0.12f });
-	buttonTr.setSizeUS({ 0.08f, 0.035f });
+	buttonTr.setPositionPx({ 60, 235 });
+	buttonTr.setSizePx({ 100, 50 });
 	Button* button = menuUI->createButton("Push", []() {
+		LOG("Button pressed");
 		arcValues[0] += 1.0f;
 		arcValues[1] = std::max(1.0f, arcValues[1] - 0.5f);
 	}, buttonTr, buttonStyle, 18);
 	button->setDraggable(true);
-
+	button->setResizable(true);
+	
 	Transform inputTr;
-	inputTr.setPositionUS({ 0.18f, 0.31f });
-	inputTr.setSizeUS({ 0.08f, 0.035f });
+	inputTr.setPositionPx({ 60, 335 });
+	inputTr.setSizePx({ 100, 50 });
 	menuUI->createInputField<int>(&sampleCount, inputTr, buttonStyle, 18);
-
+	
 	Transform sliderTr;
-	sliderTr.setPositionUS({ 0.18f, 0.40f });
-	sliderTr.setSizeUS({ 0.12f, 0.04f });
+	sliderTr.setPositionPx({ 140, 435 });
+	sliderTr.setSizePx({ 250, 50 });
 	menuUI->createSlider<float>(&exposureValue, 0.0f, 1.0f, 0.05f, sliderTr, buttonStyle, 14);
-
+	
+	//!!!
 	Transform dropdownTr;
-	dropdownTr.setPositionUS({ 0.18f, 0.50f });
-	dropdownTr.setSizeUS({ 0.09f, 0.04f });
+	dropdownTr.setPositionPx({ 60, 535 });
+	dropdownTr.setSizePx({ 100, 50 });
 	menuUI->createDropdown<DemoMode>(
 		&uiMode,
 		{
-			{ DemoMode::Overview, "Overview" },
+			{ DemoMode::Overview, "Overview" }, 
 			{ DemoMode::Physics, "Physics" },
 			{ DemoMode::Rendering, "Rendering" }
 		},
@@ -179,14 +182,13 @@ void createUI() {
 		buttonStyle,
 		16
 	);
-
 	Transform histogramTr;
-	histogramTr.setPositionUS({ 0.58f, 0.26f });
+	histogramTr.setPositionUS({ 0.78f, 0.26f });
 	histogramTr.setSizeUS({ 0.16f, 0.14f });
 	menuUI->createHistogram(&frameHistory, histogramTr, panelStyle);
 
 	Transform chartTr;
-	chartTr.setPositionUS({ 0.58f, 0.58f });
+	chartTr.setPositionUS({ 0.78f, 0.78f });
 	chartTr.setSizeUS({ 0.11f, 0.11f });
 	menuUI->createArcChart(
 		&arcValues,
@@ -198,7 +200,6 @@ void createUI() {
 		chartTr,
 		panelStyle
 	);
-*/
 }
 
 void createScenes() {
@@ -275,7 +276,6 @@ void createScenes() {
 
 	Scene* catapultScene = engine.saveToNewScene("catapultScene");
 	catapultSceneID = catapultScene->getID();
-
 
 	// Cubes with hinges
 	cfg = PhysicsSettings();
@@ -409,7 +409,10 @@ void update(float dt) {
 
 	frameHistory.erase(frameHistory.begin());
 	frameHistory.push_back(std::max(0.0f, engine.avgFrameTime));
-	arcValues[2] = std::max(1.0f, engine.avgPhysicsTime);
+
+	arcValues[0] = engine.avgRenderTime;
+	arcValues[1] = engine.avgPhysicsTime;
+	arcValues[2] = engine.avgOtherTime;
 
 	if (engine.getGameState() == EGameState::UI)
 		menuUI->update(mouseX, mouseY, lmbDown);

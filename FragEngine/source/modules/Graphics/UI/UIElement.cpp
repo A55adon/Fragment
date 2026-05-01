@@ -8,6 +8,50 @@ void UIElement::update()
 	}
 }
 
+void UIElement::draw(vec2<float> parentPosition, Shader* shader, GLuint vbo, GLuint vao)
+{
+	vec2<float> worldPos = parentPosition + _transform.getPosition();
+
+	//Draw
+	for (auto& t : _mesh.getTriangles())
+	{
+		shader->use();
+
+		if (_mesh.getTexture())
+		{
+			_mesh.getTexture()->bind(0);
+
+			shader->setInt("uTexture", 0);
+			shader->setInt("useTexture", 1);
+		}
+		else
+		{
+			shader->setInt("useTexture", 0);
+		}
+
+		Vertex2D verts[3];
+		for (int i = 0; i < 3; ++i)
+		{
+			verts[i] = t.vertices[i];
+			verts[i].position.x += worldPos.x;
+			verts[i].position.y += worldPos.y;
+		}
+
+		glBindVertexArray(vao);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glBindVertexArray(0);
+	}
+
+	for (auto& child : _children) {
+		child->draw(parentPosition, shader,  vao, vbo);
+	}
+
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 vec2<float> UIElement::getWorldPosition(vec2<float> parentPos) const
 {
 	return { parentPos.x + _transform.getPosition().x, parentPos.y + _transform.getPosition().y };
@@ -158,8 +202,7 @@ std::string UIElement::getDebugLabel(vec2<float> parentPos) const
 	auto sizePx = _transform.getSizePx();
 
 	return std::format(
-		"{} [{}x{}] ({}, {})",
-		getElementTypeName(),
+		"[{}x{}] ({}, {})",
 		sizePx.x,
 		sizePx.y,
 		posPx.x,

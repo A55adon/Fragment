@@ -37,21 +37,21 @@ public:
         if (now - _lastPollTime < 0.04) return;
         _lastPollTime = now;
 
-        if (glfwGetKey(window, GLFW_KEY_BACKSPACE) == GLFW_PRESS && !_buffer.empty()) {
+        if (isKeyTriggered(window, GLFW_KEY_BACKSPACE, now) && !_buffer.empty()) {
             _buffer.pop_back();
             syncText();
             commit();
             return;
         }
 
-        if (glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS && (_buffer.empty() || _buffer == "-")) {
+        if (isKeyTriggered(window, GLFW_KEY_MINUS, now) && (_buffer.empty() || _buffer == "-")) {
             _buffer = "-";
             syncText();
             return;
         }
 
         for (int key = GLFW_KEY_0; key <= GLFW_KEY_9; ++key) {
-            if (glfwGetKey(window, key) == GLFW_PRESS) {
+            if (isKeyTriggered(window, key, now)) {
                 _buffer.push_back(static_cast<char>('0' + (key - GLFW_KEY_0)));
                 syncText();
                 commit();
@@ -103,9 +103,39 @@ private:
             }
         }
     }
+    bool isKeyTriggered(GLFWwindow* window, int key, double now) {
+        int state = glfwGetKey(window, key);
 
+        bool triggered = false;
+
+        if (state == GLFW_PRESS) {
+            if (_prevKeyState[key] == GLFW_RELEASE) {
+                // first press → instant
+                _keyHoldStart[key] = now;
+                triggered = true;
+            }
+            else {
+                // held → repeat after delay
+                double heldTime = now - _keyHoldStart[key];
+
+                const double delay = 0.4;   // time before repeat starts
+                const double repeat = 0.05; // repeat speed
+
+                if (heldTime > delay) {
+                    if (now - _lastPollTime > repeat) {
+                        triggered = true;
+                    }
+                }
+            }
+        }
+
+        _prevKeyState[key] = state;
+        return triggered;
+    }
     T* _boundValue = nullptr;
     std::string _buffer;
     std::function<void(const T&)> _onValueChange;
     double _lastPollTime = 0.0;
+    std::array<int, GLFW_KEY_LAST> _prevKeyState{};
+    std::array<double, GLFW_KEY_LAST> _keyHoldStart{};
 };

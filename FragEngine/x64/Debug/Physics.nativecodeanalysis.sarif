@@ -1,0 +1,4635 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'mat4::v' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+                },
+                "region": {
+                  "startLine": 232,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "mat4::{ctor}",
+                  "decoratedName": "??0mat4@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "mat4::v"
+          }
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mF32':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 93,
+                  "endLine": 135,
+                  "endColumn": 117
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Vec4::[]",
+                  "decoratedName": "??AVec4@JPH@@QEBAMI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "startColumn": 63
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "startColumn": 93
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mF32[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mF32':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                },
+                "region": {
+                  "startLine": 136,
+                  "startColumn": 91,
+                  "endLine": 136,
+                  "endColumn": 115
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Vec4::[]",
+                  "decoratedName": "??AVec4@JPH@@QEAAAEAMI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                          },
+                          "region": {
+                            "startLine": 136,
+                            "startColumn": 61
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+                          },
+                          "region": {
+                            "startLine": 136,
+                            "startColumn": 91
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mF32[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mU32':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 95,
+                  "endLine": 115,
+                  "endColumn": 119
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::UVec4::[]",
+                  "decoratedName": "??AUVec4@JPH@@QEBAII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "startColumn": 65
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "startColumn": 95
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mU32[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mU32':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 93,
+                  "endLine": 116,
+                  "endColumn": 117
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::UVec4::[]",
+                  "decoratedName": "??AUVec4@JPH@@QEAAAEAII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 63
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 93
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mU32[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '64' bytes, but 'inColumn' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 120,
+                  "endLine": 94,
+                  "endColumn": 152
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::()",
+                  "decoratedName": "??RMat44@JPH@@QEBAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 71
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 94
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 120
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol[inColumn].mF32':  the readable size is '16' bytes, but 'inRow' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 120,
+                  "endLine": 94,
+                  "endColumn": 152
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::()",
+                  "decoratedName": "??RMat44@JPH@@QEBAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 71
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 94
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 120
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '64' bytes, but 'inColumn' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 118,
+                  "endLine": 95,
+                  "endColumn": 150
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::()",
+                  "decoratedName": "??RMat44@JPH@@QEAAAEAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 69
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 92
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 118
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol[inColumn].mF32':  the readable size is '16' bytes, but 'inRow' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 118,
+                  "endLine": 95,
+                  "endColumn": 150
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::()",
+                  "decoratedName": "??RMat44@JPH@@QEAAAEAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 69
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 92
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "startColumn": 118
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '64' bytes, but 'inCol' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 81,
+                  "endLine": 158,
+                  "endColumn": 103
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::GetColumn3",
+                  "decoratedName": "?GetColumn3@Mat44@JPH@@QEBA?AVVec3@2@I@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 58
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "'mCol' is an Output from 'JPH::Vec3::{ctor}' (declared at c:\\users\\simon\\desktop\\code\\fragment\\fragengine\\external\\joltphysics-5.5.0\\jolt\\math\\vec3.h:37)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6386",
+          "message": {
+            "text": "Buffer overrun while writing to 'this->mCol':  the writable size is '64' bytes, but 'inCol' bytes might be written."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 87,
+                  "endLine": 159,
+                  "endColumn": 130
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::SetColumn3",
+                  "decoratedName": "?SetColumn3@Mat44@JPH@@QEAAXIVVec3@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 159,
+                            "startColumn": 64
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 159,
+                            "startColumn": 99
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid write to 'this->mCol[4]', (writable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '64' bytes, but 'inCol' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 81,
+                  "endLine": 160,
+                  "endColumn": 98
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::GetColumn4",
+                  "decoratedName": "?GetColumn4@Mat44@JPH@@QEBA?AVVec4@2@I@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 58
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[4]', (readable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6386",
+          "message": {
+            "text": "Buffer overrun while writing to 'this->mCol':  the writable size is '64' bytes, but 'inCol' bytes might be written."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 87,
+                  "endLine": 161,
+                  "endColumn": 101
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Mat44::SetColumn4",
+                  "decoratedName": "?SetColumn4@Mat44@JPH@@QEAAXIVVec4@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 64
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 99
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid write to 'this->mCol[4]', (writable range is 0 to 3)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '48' bytes, but 'inCol' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                },
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 81,
+                  "endLine": 113,
+                  "endColumn": 103
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::DMat44::GetColumn3",
+                  "decoratedName": "?GetColumn3@DMat44@JPH@@QEBA?AVVec3@2@I@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 113,
+                            "startColumn": 58
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 113,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "'mCol' is an Output from 'JPH::Vec3::{ctor}' (declared at c:\\users\\simon\\desktop\\code\\fragment\\fragengine\\external\\joltphysics-5.5.0\\jolt\\math\\vec3.h:37)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 113,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[3]', (readable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6386",
+          "message": {
+            "text": "Buffer overrun while writing to 'this->mCol':  the writable size is '48' bytes, but 'inCol' bytes might be written."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 87,
+                  "endLine": 114,
+                  "endColumn": 111
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::DMat44::SetColumn3",
+                  "decoratedName": "?SetColumn3@DMat44@JPH@@QEAAXIVVec3@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 64
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 99
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid write to 'this->mCol[3]', (writable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '48' bytes, but 'inCol' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 81,
+                  "endLine": 115,
+                  "endColumn": 98
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::DMat44::GetColumn4",
+                  "decoratedName": "?GetColumn4@DMat44@JPH@@QEBA?AVVec4@2@I@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "startColumn": 58
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "startColumn": 81
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[3]', (readable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6386",
+          "message": {
+            "text": "Buffer overrun while writing to 'this->mCol':  the writable size is '48' bytes, but 'inCol' bytes might be written."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                },
+                "region": {
+                  "startLine": 116,
+                  "startColumn": 87,
+                  "endLine": 116,
+                  "endColumn": 101
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::DMat44::SetColumn4",
+                  "decoratedName": "?SetColumn4@DMat44@JPH@@QEAAXIVVec4@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 64
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "startColumn": 99
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid write to 'this->mCol[3]', (writable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mU8':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 95,
+                  "endLine": 65,
+                  "endColumn": 118
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::BVec16::[]",
+                  "decoratedName": "??ABVec16@JPH@@QEBAEI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "startColumn": 64
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "startColumn": 95
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mU8[16]', (readable range is 0 to 15)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mU8':  the readable size is '16' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                },
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 93,
+                  "endLine": 66,
+                  "endColumn": 116
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::BVec16::[]",
+                  "decoratedName": "??ABVec16@JPH@@QEAAAEAEI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                          },
+                          "region": {
+                            "startLine": 66,
+                            "startColumn": 62
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+                          },
+                          "region": {
+                            "startLine": 66,
+                            "startColumn": 93
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mU8[16]', (readable range is 0 to 15)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::ProfileThread::mSamples' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Profiler.inl"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 16
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::ProfileThread::{ctor}",
+                  "decoratedName": "??0ProfileThread@JPH@@QEAA@AEBV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::ProfileThread::mSamples"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::ProfileMeasurement::mTemp' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Profiler.inl"
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 21
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::ProfileMeasurement::{ctor}",
+                  "decoratedName": "??0ProfileMeasurement@JPH@@QEAA@PEBDI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::ProfileMeasurement::mTemp"
+          }
+        },
+        {
+          "ruleId": "C6255",
+          "message": {
+            "text": "`_alloca` indicates failure by raising a stack overflow exception.  Consider using _malloca instead."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/JobSystem.inl"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 32
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::JobSystem::JobHandle::sRemoveDependencies",
+                  "decoratedName": "?sRemoveDependencies@JobHandle@JobSystem@JPH@@SAXPEBV123@IH@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26827",
+          "message": {
+            "text": "Did you forget to initialize an enum constant, or intend to use another type?."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Body/BodyAccess.h"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 3,
+                  "endLine": 48,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::BodyAccess::sCheckRights",
+                  "decoratedName": "?sCheckRights@BodyAccess@JPH@@SA_NW4EAccess@12@0@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::StaticArray<JPH::PhysicsUpdateContext::BodyPairQueue,32>::mElements' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/StaticArray.h"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::StaticArray<JPH::PhysicsUpdateContext::BodyPairQueue,32>::{ctor}",
+                  "decoratedName": "??0?$StaticArray@UBodyPairQueue@PhysicsUpdateContext@JPH@@$0CA@@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::StaticArray<JPH::PhysicsUpdateContext::BodyPairQueue,32>::mElements"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::StaticArray<JPH::JobSystem::JobHandle,32>::mElements' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/StaticArray.h"
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::StaticArray<JPH::JobSystem::JobHandle,32>::{ctor}",
+                  "decoratedName": "??0?$StaticArray@VJobHandle@JobSystem@JPH@@$0CA@@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::StaticArray<JPH::JobSystem::JobHandle,32>::mElements"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding6' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding6"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mBroadPhaseUpdateState' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mBroadPhaseUpdateState"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mIsFirst' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mIsFirst"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mContext' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mContext"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mIsLast' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mIsLast"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding4' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding4"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mNumActiveBodiesAtStepStart' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mNumActiveBodiesAtStepStart"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding3' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding3"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mPadding5' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mPadding5"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::mMaxBodyPairsPerQueue' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::{ctor}",
+                  "decoratedName": "??0Step@PhysicsUpdateContext@JPH@@QEAA@AEBU012@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::mMaxBodyPairsPerQueue"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::CCDBody::mContactNormal' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::CCDBody::{ctor}",
+                  "decoratedName": "??0CCDBody@Step@PhysicsUpdateContext@JPH@@QEAA@VBodyID@3@VVec3@3@MM@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::CCDBody::mContactNormal"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::PhysicsUpdateContext::Step::CCDBody::mContactPointOn2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 8
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::PhysicsUpdateContext::Step::CCDBody::{ctor}",
+                  "decoratedName": "??0CCDBody@Step@PhysicsUpdateContext@JPH@@QEAA@VBodyID@3@VVec3@3@MM@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::PhysicsUpdateContext::Step::CCDBody::mContactPointOn2"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::ContactSettings::mCombinedFriction' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Collision/ContactListener.h"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::ContactSettings::{ctor}",
+                  "decoratedName": "??0ContactSettings@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::ContactSettings::mCombinedFriction"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::ContactSettings::mCombinedRestitution' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Collision/ContactListener.h"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::ContactSettings::{ctor}",
+                  "decoratedName": "??0ContactSettings@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::ContactSettings::mCombinedRestitution"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::ContactSettings::mIsSensor' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Collision/ContactListener.h"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::ContactSettings::{ctor}",
+                  "decoratedName": "??0ContactSettings@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::ContactSettings::mIsSensor"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::IslandBuilder::mMaxActiveBodies' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/IslandBuilder.h"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::IslandBuilder::{ctor}",
+                  "decoratedName": "??0IslandBuilder@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::IslandBuilder::mMaxActiveBodies"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::RotationEulerConstraintPart::mInvI1' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/ConstraintPart/RotationEulerConstraintPart.h"
+                },
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::RotationEulerConstraintPart::{ctor}",
+                  "decoratedName": "??0RotationEulerConstraintPart@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::RotationEulerConstraintPart::mInvI1"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::RotationEulerConstraintPart::mEffectiveMass' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/ConstraintPart/RotationEulerConstraintPart.h"
+                },
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::RotationEulerConstraintPart::{ctor}",
+                  "decoratedName": "??0RotationEulerConstraintPart@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::RotationEulerConstraintPart::mEffectiveMass"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::RotationEulerConstraintPart::mInvI2' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/ConstraintPart/RotationEulerConstraintPart.h"
+                },
+                "region": {
+                  "startLine": 281,
+                  "startColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::RotationEulerConstraintPart::{ctor}",
+                  "decoratedName": "??0RotationEulerConstraintPart@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::RotationEulerConstraintPart::mInvI2"
+          }
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mLimitsSpringSettings':  the readable size is '36' bytes, but 'inAxis' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                },
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 120,
+                  "endLine": 155,
+                  "endColumn": 155
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::SixDOFConstraint::GetLimitsSpringSettings",
+                  "decoratedName": "?GetLimitsSpringSettings@SixDOFConstraint@JPH@@QEBAAEBVSpringSettings@2@W4EAxis@SixDOFConstraintSettings@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 76
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 120
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mLimitsSpringSettings[3]', (readable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C33010",
+          "message": {
+            "text": "Unchecked lower bound for enum inAxis used as index."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                },
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 120,
+                  "endLine": 155,
+                  "endColumn": 155
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::SixDOFConstraint::GetLimitsSpringSettings",
+                  "decoratedName": "?GetLimitsSpringSettings@SixDOFConstraint@JPH@@QEBAAEBVSpringSettings@2@W4EAxis@SixDOFConstraintSettings@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 76
+                          }
+                        },
+                        "message": {
+                          "text": "Branching based on condition 'inAxis < 3'. 'true' branch is taken\nEnum value 'inAxis' is checked for upper bound."
+                        }
+                      },
+                      "kinds": [
+                        "Combination"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "startColumn": 120
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6386",
+          "message": {
+            "text": "Buffer overrun while writing to 'this->mLimitsSpringSettings':  the writable size is '36' bytes, but 'inAxis' bytes might be written."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                },
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 142,
+                  "endLine": 156,
+                  "endColumn": 174
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::SixDOFConstraint::SetLimitsSpringSettings",
+                  "decoratedName": "?SetLimitsSpringSettings@SixDOFConstraint@JPH@@QEAAXW4EAxis@SixDOFConstraintSettings@2@AEBVSpringSettings@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 98
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 172
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid write to 'this->mLimitsSpringSettings[3]', (writable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C33010",
+          "message": {
+            "text": "Unchecked lower bound for enum inAxis used as index."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                },
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 142,
+                  "endLine": 156,
+                  "endColumn": 174
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::SixDOFConstraint::SetLimitsSpringSettings",
+                  "decoratedName": "?SetLimitsSpringSettings@SixDOFConstraint@JPH@@QEAAXW4EAxis@SixDOFConstraintSettings@2@AEBVSpringSettings@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 98
+                          }
+                        },
+                        "message": {
+                          "text": "Branching based on condition 'inAxis < 3'. 'true' branch is taken\nEnum value 'inAxis' is checked for upper bound."
+                        }
+                      },
+                      "kinds": [
+                        "Combination"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "startColumn": 172
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mObjectToBroadPhase':  the readable size is '3' bytes, but 'layer' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/modules/Physics/Physics.h"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 9,
+                  "endLine": 54,
+                  "endColumn": 41
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "BPLayerInterfaceImpl::GetBroadPhaseLayer",
+                  "decoratedName": "?GetBroadPhaseLayer@BPLayerInterfaceImpl@@UEBA?AVBroadPhaseLayer@JPH@@G@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/modules/Physics/Physics.h"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/modules/Physics/Physics.h"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mObjectToBroadPhase[3]', (readable range is 0 to 2)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mF32':  the readable size is '8' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 3,
+                  "endLine": 48,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Vector<2>::[]",
+                  "decoratedName": "??A?$Vector@$01@JPH@@QEAAAEAMI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                          },
+                          "region": {
+                            "startLine": 47,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                          },
+                          "region": {
+                            "startLine": 48,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mF32[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mF32':  the readable size is '8' bytes, but 'inCoordinate' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 3,
+                  "endLine": 42,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Vector<2>::[]",
+                  "decoratedName": "??A?$Vector@$01@JPH@@QEBAMI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                          },
+                          "region": {
+                            "startLine": 41,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mF32[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol':  the readable size is '16' bytes, but 'inColumn' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 3,
+                  "endLine": 99,
+                  "endColumn": 35
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Matrix<2,2>::()",
+                  "decoratedName": "??R?$Matrix@$01$01@JPH@@QEAAAEAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 97,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 99,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'this->mCol[inColumn].mF32':  the readable size is '8' bytes, but 'inRow' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                },
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 3,
+                  "endLine": 99,
+                  "endColumn": 35
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Matrix<2,2>::()",
+                  "decoratedName": "??R?$Matrix@$01$01@JPH@@QEAAAEAMII@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 97,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+                          },
+                          "region": {
+                            "startLine": 99,
+                            "startColumn": 3
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'this->mCol[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::Result<JPH::Ref<JPH::Shape> >::<unnamed-tag>::mResult' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Result.h"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Result<JPH::Ref<JPH::Shape> >::{ctor}",
+                  "decoratedName": "??0?$Result@V?$Ref@VShape@JPH@@@JPH@@@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::Result<JPH::Ref<JPH::Shape> >::<unnamed-tag>::mResult"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'JPH::Result<JPH::Ref<JPH::Shape> >::<unnamed-tag>::mError' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Result.h"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 7
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "JPH::Result<JPH::Ref<JPH::Shape> >::{ctor}",
+                  "decoratedName": "??0?$Result@V?$Ref@VShape@JPH@@@JPH@@@JPH@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "JPH::Result<JPH::Ref<JPH::Shape> >::<unnamed-tag>::mError"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.51.36241.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/physics.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "bd14700b49ad84f54deb58b9d7dd69f8e95c2b4e654de7c015785a522d9e0fd5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "595cf26e5170319d41d1ddc2d9c09f9009887e26931a45c183dec58cfc76cffd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vec4.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "a5c4d35d216068e7aa699068a77439968add72e9ce675142caa8ae8058f479b0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/UVec4.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "0cc540a7b14bf8855a98858ec9fa566a044f530d0a2553d429470309f8fb9d2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Mat44.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "0e10d090db2f6dba655725ad64c2028cfee7b8db090f6eedb86528a6ba261e4d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/DMat44.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "366d0f7ee5edeab6c98a6de7eacc5997bd8ca1578b5e70e3c24a2fb4550c8537"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/BVec16.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "652f5f6cf1009550d22dc6620606db8fb1095bb93068e46b2a4fc57b5d8fcc50"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Profiler.inl"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "8cbf202aab3c4c30e181106acc0776cd4c7f1c58fdcbe3a8863ca327b28f9f86"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/JobSystem.inl"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "f09acf3b4806ee64969f6507bc242cb43c7473b40cff057fe246b2d2774a2466"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Body/BodyAccess.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "64effa25581c7533a8b56fdceabc48a3bec4be3af166e54a2610eef32a356e78"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/StaticArray.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "24569796faceb2d5720e88ec660432fad748d1adb53e9c0248d9511233ec0002"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/PhysicsUpdateContext.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "44add2c870e8a42df0e07d5d6842a70d94be1f256f9f480969f40d77d0a2062c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Collision/ContactListener.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "5685ce89ef5608682ff9d4bdf5a45b014ca6e328665a328d1a8c6fa55d60553b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/IslandBuilder.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "61790e16aa4d8acdf1c9d4019137cd31779fe33731b6185e90d64050357a1d93"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/ConstraintPart/RotationEulerConstraintPart.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "b0de95cc25ff1f84559c737755ff5b566feb430792b757800ceb619e263ec18c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Physics/Constraints/SixDOFConstraint.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "bdcf74c3e220e955004accb18bcd5cd8c7c2a52a59dffb709dc7be473f53244d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/modules/Physics/Physics.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "41e722731a164e3e53d774654d286b739313d120cb2499727062953dfd22fa6e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Vector.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "2e56ae793ad60d8e62ab2bc59d609dae50db05d17ea455e0f1cf886ff38b7c21"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Math/Matrix.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "0af2841e7ac73ec7c9ad62e9cf8acdc55b13d85e9010884f693d0f54e1580c9d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/JoltPhysics-5.5.0/Jolt/Core/Result.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "69e9b31880d1e660525c03cfb3dc66e2b5aff3094ad9e41c8ce1ec754367bfb9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/sceneobject.h"
+          },
+          "hashes": {
+            "sha-256": "7da735d011a0718f53da8d35a804f5ce5399c3d09a3a879a40bad53fd0cef685"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/mesh.h"
+          },
+          "hashes": {
+            "sha-256": "ed72357b97037080f52b86d8482e42d8c5949c15fb24abeb08d811222887ad0c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/config.h"
+          },
+          "hashes": {
+            "sha-256": "4d884d9676ebcd2570709f8b46e4830572352f487072e8507ef7df88ff4bf5d7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/defaultfunctions.h"
+          },
+          "hashes": {
+            "sha-256": "745b8002f20dd9a6d67cbd41cb6ffd47f0c0f60cc168b780164ab40ee1d69779"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/texture.h"
+          },
+          "hashes": {
+            "sha-256": "603eb892fb8eae55abb692aad21bc75580c248a48634db520759c42edc5ca9e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/glad/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "455c2b4a47708883c04b632f9ce33b7f814a1a9cbade018732fc8f05e9147324"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/glad/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "7b1e01aaa7ad8f6fc34b5c7bdf79ebf5189bb09e2c4d2e79fc5d350623d11e83"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.h"
+          },
+          "hashes": {
+            "sha-256": "1f8c1b6b408f26e3b20cbfbbd4758afb3dc9b837ff1e17c258928f406148a87c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image_write.h"
+          },
+          "hashes": {
+            "sha-256": "12422803fe1cc30b56de15b2c6f3cebd85bab99342a40b6ab4ff50d371bd2245"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/axisconstraint.h"
+          },
+          "hashes": {
+            "sha-256": "1334656f8ba2214b1285fe43b4292da34fda189a3e0a2d2b64de90d70189cb82"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/globalsceneobjectkeyregister.h"
+          },
+          "hashes": {
+            "sha-256": "40da6c1f9dbff864420d604dbebfeaecc678caea2f01ff291d820eefe20ef53e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/physics/hingeconstraint.h"
+          },
+          "hashes": {
+            "sha-256": "ca861bf326b69707d9b8ac55f5edfe4e5c4e72b8fc3e3797d9dc1a11b5d92de7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/jolt.h"
+          },
+          "hashes": {
+            "sha-256": "2798c564839df7062f01e725ef9193748ab050ea04eadfc7f3141c5315496480"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/core.h"
+          },
+          "hashes": {
+            "sha-256": "ac12ce5db4a7e4bda7b1baf5e6432cc24ce5da11525afd3ba28051f75dfd7ae6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/armneon.h"
+          },
+          "hashes": {
+            "sha-256": "dbab38dd176a55b59c0ef12c54c2dc19f2ef60f59799d04d587dbd034cc15448"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/memory.h"
+          },
+          "hashes": {
+            "sha-256": "e7bd754b7501edc549777bae9fef2dccdc8c6a16636fad5766ea32e898c60004"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/issuereporting.h"
+          },
+          "hashes": {
+            "sha-256": "2dfa3b655789a461d7cf737c22fcb79412d25575b6958c4f3bbc386b47bdc111"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/array.h"
+          },
+          "hashes": {
+            "sha-256": "a179c3811e06f8aeeab394c3232ebcf4d2ad867e397f9e7ab60a60397f1249c0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/stlallocator.h"
+          },
+          "hashes": {
+            "sha-256": "fe5461708f8c5d27359d3054566e0795aab35f279752f48ab26bade75209d836"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/hashcombine.h"
+          },
+          "hashes": {
+            "sha-256": "ffc51c419850206d9d5f43e1bf58fcbc79ce32163b889ddfb0dbc3228714ec36"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/math.h"
+          },
+          "hashes": {
+            "sha-256": "3aa5fa6e91e2470d97562bc41b27b5bb19be69440b9b57300dca92b8e432bdc7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/float4.h"
+          },
+          "hashes": {
+            "sha-256": "d5b86950f87683a08497571f4a0fd27b686aa895bc1252c68c8494863d708b3a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/swizzle.h"
+          },
+          "hashes": {
+            "sha-256": "a53c561c94fe7329b20c44f69cd61f69a1f5b1db55ec45a7e4b80473adf6b12c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/mathtypes.h"
+          },
+          "hashes": {
+            "sha-256": "b8a0eb0e9da15929c6aa46c8a99582f14c06da459c495203c6cf9e28fb30105e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/vec4.inl"
+          },
+          "hashes": {
+            "sha-256": "7f62de2886616a2322e0715bdf1c3b11b439fe28d7b0e18da0dc77957ed79614"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/trigonometry.h"
+          },
+          "hashes": {
+            "sha-256": "29877e3baa5775e3ecaaef1da6bc00d5b76d9a31ae1be3a8754b1d03ab7d445e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/vec3.h"
+          },
+          "hashes": {
+            "sha-256": "52f2ba3fa7765489aa2f7c15162a192b6684b0515b399f4c797e2d0f184fa352"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/float3.h"
+          },
+          "hashes": {
+            "sha-256": "5aefc1ae76f37c04e822fefcbc8c1a94d5d9ce275051342b9267d58be5d280fe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/vec3.inl"
+          },
+          "hashes": {
+            "sha-256": "50e619bda4c0091c18424808d9d2340e77c4f641f6015e17bcd9c0c060a6883d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/uvec4.inl"
+          },
+          "hashes": {
+            "sha-256": "0abe0ab189640180bc2edabe7be5eaf66ff5d8cd002c1ec73a9d46692d56722a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/mat44.inl"
+          },
+          "hashes": {
+            "sha-256": "9b120e9057b0eac9067f7899db0a4298c970276b96098dfdfd3f970d89575afd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/quat.h"
+          },
+          "hashes": {
+            "sha-256": "8e6138166569495580369a1663002c0bcf20bdfc30ba0cbbe3faf05d1c8da2e1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/quat.inl"
+          },
+          "hashes": {
+            "sha-256": "9ecd4a5793039cb4377100bb62c6e35bdd87954f804860d884cc87a889586c02"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/real.h"
+          },
+          "hashes": {
+            "sha-256": "c02f59ae19340cef5f5154ee4da61a4173e02656a4ec704737f4b3ee20d88a84"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/dvec3.h"
+          },
+          "hashes": {
+            "sha-256": "33c622cba6983d93d438c499968cac89f79a02f9ecd4af953ae4a4546d5f3597"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/double3.h"
+          },
+          "hashes": {
+            "sha-256": "6c9c549df44ac5412ffe3a6c6eb27abea4d93e5497b7ee831c2f6f6eea8be993"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/dvec3.inl"
+          },
+          "hashes": {
+            "sha-256": "7dc0f062fd039cf9812eca9c223eda122451b91395e5c82c55d9f0f9c8ffc361"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/dmat44.inl"
+          },
+          "hashes": {
+            "sha-256": "d5b62d82218b9d4a2fe5d0e51cb20f9382e249d1a6996957895b804f4c8c7da5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/factory.h"
+          },
+          "hashes": {
+            "sha-256": "af1598cf50871ff26d644fa80978152b539f48a6e9fd7fddc79567083c6b6716"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/rtti.h"
+          },
+          "hashes": {
+            "sha-256": "b3b4242f30450a1d7e7a8022176e5c7692cf5777fb8bbda157de27d65f25abb7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/reference.h"
+          },
+          "hashes": {
+            "sha-256": "03d47b73b2f4c72a51ef3e64826c7cffce67a775649dd77e3eeadf55b44930e9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/atomics.h"
+          },
+          "hashes": {
+            "sha-256": "6dd7c2e99763d9a59eb22c59a21300332cf4d30262f6b6a961540506834703a6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/objectstream/serializableattribute.h"
+          },
+          "hashes": {
+            "sha-256": "e89acb0a4aac93fdeab2911b68e9878b77e0d77b02c27c4a3132dee4c50cbb2c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/objectstream/objectstreamtypes.h"
+          },
+          "hashes": {
+            "sha-256": "5f2008cf0204b888eaaf04ca288f04127ada23972ac54b69ce83fca298e8d88a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/unorderedmap.h"
+          },
+          "hashes": {
+            "sha-256": "03f6e3648b0941140bf02b802cf977e1e2dccbdd09fda8ef147f9a2a222169dc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/hashtable.h"
+          },
+          "hashes": {
+            "sha-256": "4eda3c31fb27faf6cc1d009eae8ab7c7b902029c6a9e4196fdc6a1c39cdce2f1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/bvec16.inl"
+          },
+          "hashes": {
+            "sha-256": "3b219eab2ee6325fc3078ba11611b810db45e571a51758273d6a45e830fd4704"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/tempallocator.h"
+          },
+          "hashes": {
+            "sha-256": "f9a63b3989093945c02b9fe65d00963a315efcd8b1801f8131ec1ead81509207"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/noncopyable.h"
+          },
+          "hashes": {
+            "sha-256": "3b4b17d3a40d412b1b80f7b41084651a5914db037214f72cc7e214da19c68069"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/jobsystemthreadpool.h"
+          },
+          "hashes": {
+            "sha-256": "d263a2617008982850d8459c2672876dea0a3083b9284f1489d54bcf1b5e6578"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/jobsystemwithbarrier.h"
+          },
+          "hashes": {
+            "sha-256": "849424618af96dc76c87e33ad9b7e5dd422d1c7c9481e16a5b142522f2edb29b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/jobsystem.h"
+          },
+          "hashes": {
+            "sha-256": "d884df960c24ec0fff2f531c7b15883d9535f91189697c3165fdf71c912dc57a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/color.h"
+          },
+          "hashes": {
+            "sha-256": "f82ebbe23e64758541533ba863ca38f6b4867986ffe12c2303c8245e3413f840"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/profiler.h"
+          },
+          "hashes": {
+            "sha-256": "24f6bb901da5cc4d49ad67121d662cb7890f17d74ab5346fd7d6835520151089"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/tickcounter.h"
+          },
+          "hashes": {
+            "sha-256": "73591d7c178fa70ca26ab21c8319f0a27a63f299053ebe1e18ad725dcfce0506"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/semaphore.h"
+          },
+          "hashes": {
+            "sha-256": "4503edbc0ac7021b6db95be70385f0d4ab8cd1f54f4ec504edff689bca0e200c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/fixedsizefreelist.h"
+          },
+          "hashes": {
+            "sha-256": "f6603a650b0894ac324c1fabde1d0a3d2386ae32ec822d833c37be510bce8109"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/mutex.h"
+          },
+          "hashes": {
+            "sha-256": "29d829cf4665a52a13cf68ef1ee12045e7923a39f399943397b817896ebefbad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/fixedsizefreelist.inl"
+          },
+          "hashes": {
+            "sha-256": "2980848ae1d1dfe1388112329cf7944984d1c45b0068ebaf6d30a54b08eabc3b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/physicssystem.h"
+          },
+          "hashes": {
+            "sha-256": "3a8aa94120e5086c3ea46aba03a66e087be35da28e6a88a9b91725f7e261bac2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodyinterface.h"
+          },
+          "hashes": {
+            "sha-256": "96187d49ffd46e7d96e2f53d5c506f9c3b385e019a1149ba397c09f4994309d6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodyid.h"
+          },
+          "hashes": {
+            "sha-256": "2fad7d231f4503eb273a84d02a2a52ee52e53b58d408cf2e2886e66817e3504f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/eactivation.h"
+          },
+          "hashes": {
+            "sha-256": "eb80cd6371f0d8e80836c2a9c5dce20de9b47609e2a6025b8fc727cf018fc016"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/objectlayer.h"
+          },
+          "hashes": {
+            "sha-256": "ec53f05ee9564509b8de2a56f81acdfca9e011949be40bcf9a8a5812ceed72ad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/motiontype.h"
+          },
+          "hashes": {
+            "sha-256": "8618c56aa2c14d608f4e99488d2f7b81ffb7d3bec12a2364d0640e2c925ae454"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/motionquality.h"
+          },
+          "hashes": {
+            "sha-256": "d0a58d5aa0ac47df84f97d0d9449049d6ec19e29f51b4c0683edc6bc6ddc62b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodytype.h"
+          },
+          "hashes": {
+            "sha-256": "61a7dd8a37d24eaac6177ae7d6dec365a88c114e16922becb4c3b30871cbe088"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/narrowphasequery.h"
+          },
+          "hashes": {
+            "sha-256": "548e528119a50e5723291274f1735bb57065464d455cf4a4d7df30f4e96d6dfc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodyfilter.h"
+          },
+          "hashes": {
+            "sha-256": "0d683802b3257babc4d068b695e2b1d94884e20a4a6e47baa0a64543c69905d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodylock.h"
+          },
+          "hashes": {
+            "sha-256": "18217fcb4c1860e03b7f2a114a405a26b88f1ad254e8860a5aababb9730aacb7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodylockinterface.h"
+          },
+          "hashes": {
+            "sha-256": "f30ac9ad4fc0f902f6fe8ffa0fdf9f05e39b7c944dc5e566070d5c6f15528a28"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/body.h"
+          },
+          "hashes": {
+            "sha-256": "564ae279f2ea2a7b6c4a7b5763664b2af700cfe7ce9b30d7880b80e948cec157"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/aabox.h"
+          },
+          "hashes": {
+            "sha-256": "7cdf9bd463a434f650945ebebf2acb1b9874615a4f0a46a05e3a75b32c24bd15"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/triangle.h"
+          },
+          "hashes": {
+            "sha-256": "d1d6255ac1810f2280963ab5fb21913c90bcaca83431dda43a9903c88cfee006"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/indexedtriangle.h"
+          },
+          "hashes": {
+            "sha-256": "7bdc49a6f6a6fd69da76c9efab192ef2854c38fb6fa6a74d2dc9a8ca31915f0f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/plane.h"
+          },
+          "hashes": {
+            "sha-256": "c8b457bf262ce03df9880dca1ec1c512c7bccb8bae82755f9b536d8d85739848"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/shape.h"
+          },
+          "hashes": {
+            "sha-256": "cb3310005d75417e92557138f893237d8490bd20d278e2cdc20ec693755d52bc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/massproperties.h"
+          },
+          "hashes": {
+            "sha-256": "3c1d6c29651fff8bd71a8142dadc03bd038d58c1e42fdae93058c4cecd107b26"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/objectstream/serializableobject.h"
+          },
+          "hashes": {
+            "sha-256": "b8090b0e8e45f3a2b63397d1a0122db80a7ab796b3d5b826c8c572cd619d994b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/objectstream/objectstream.h"
+          },
+          "hashes": {
+            "sha-256": "b420eff60f509a7b3dca7a7aeac819b702190a155cbf9f06faccb45887e60563"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/backfacemode.h"
+          },
+          "hashes": {
+            "sha-256": "90cc67d020d18934c299acb6caae3884d1788f3c26bd61445d5d9b9531d423c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/collisioncollector.h"
+          },
+          "hashes": {
+            "sha-256": "f4161442273c7575f0ce161afcb111a7b469c5d23b0d27dc0382f4451afe55b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shapefilter.h"
+          },
+          "hashes": {
+            "sha-256": "d4388615e5ddac5f0b688c3846dff7c65c230147ceff0aef70afe48fcc6c6d2e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/unorderedset.h"
+          },
+          "hashes": {
+            "sha-256": "9d686ad320fe787351f0d1a2a78e6df2fad3e0d643ffd1e49e597c8ec96b459c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/streamutils.h"
+          },
+          "hashes": {
+            "sha-256": "8431fa5f6b10962ff01006ea2c27e54eb4c94ccaaa80c0bc53ce68a856ada24e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/streamin.h"
+          },
+          "hashes": {
+            "sha-256": "d0d890c62d186cb62826c81185aecc509c2945104e223e6cccf336cde6c847db"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/streamout.h"
+          },
+          "hashes": {
+            "sha-256": "4d767530e857e9d39dcd970a5552ee26fdc4ca7d1188521fc0f43c4829ab1de2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/broadphase/broadphaselayer.h"
+          },
+          "hashes": {
+            "sha-256": "b04573adda1f2edffbbdaedb2736d23079b907db1c0d13fb312e9c8a8e0e7faa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/collisiongroup.h"
+          },
+          "hashes": {
+            "sha-256": "1f208975cfc1606c2c1e90f91ea0081e195981523d68cf7f9e63b861737218a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/groupfilter.h"
+          },
+          "hashes": {
+            "sha-256": "bbcd582a1d6436b60df9d5f55040666071efb045d5f03220d9be74868296df85"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/transformedshape.h"
+          },
+          "hashes": {
+            "sha-256": "31c538d99f70f101bf0eb618f5ed3108a09a40aab44704a4520fab2cbb5b56cf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/subshapeid.h"
+          },
+          "hashes": {
+            "sha-256": "7c3062f2499c3c07b6432efaeef7c9e0c9d76ff5b52983f461b05d7a28d14b4f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/motionproperties.h"
+          },
+          "hashes": {
+            "sha-256": "cd0969279954baca101c1420f64a5afd743cacfe34587dd9fa4d88c8be215fd3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/sphere.h"
+          },
+          "hashes": {
+            "sha-256": "964d06aaff2637865b18d4e72ab793464534467ee4c44eece0cc5b6c05d87e81"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/alloweddofs.h"
+          },
+          "hashes": {
+            "sha-256": "eb33833a1b945add8083433039ead7bce270c2f877467e15a112a9b5f124062a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/determinismlog.h"
+          },
+          "hashes": {
+            "sha-256": "e082fe450767a0003007b5d6a2366d9bc712a609ac1a0d5de8213f91b25bc0c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/motionproperties.inl"
+          },
+          "hashes": {
+            "sha-256": "48195e2d0c95d296a1299e54536f0c5c435fa2bbaea193f71fc0261090e96df2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/stringtools.h"
+          },
+          "hashes": {
+            "sha-256": "2940f4597f16469196f8d7ef79102cf4a9f269a5188914f49a63d9c8dba0a0ac"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/body.inl"
+          },
+          "hashes": {
+            "sha-256": "fb96c60165572c4498f33e0db1121009b7c850763f172c2bcbb6b471d2386d2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodymanager.h"
+          },
+          "hashes": {
+            "sha-256": "2244c31286a64b59cd8c89247f3921249853563dfa06fe2cc69bb4b7ea6e3870"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/mutexarray.h"
+          },
+          "hashes": {
+            "sha-256": "764bcbed9797a90f52d02ff0281c788e67f63764af2b88657859f9790e2c65a6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/physicslock.h"
+          },
+          "hashes": {
+            "sha-256": "2f446a3af03553429797c1bc4ca4e5dcfe072455a69c7239c49ec99634e7dd48"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/broadphase/broadphasequery.h"
+          },
+          "hashes": {
+            "sha-256": "4c8b7e522718f7fbe719d4e00bad85e661b2be6ce4205d6d08800b3018bff756"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/subshapeidpair.h"
+          },
+          "hashes": {
+            "sha-256": "5a4b951383d27295393513ac0e7df26fcab21ec28de8ca6bcf9bf4e1383d34b5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/contactconstraintmanager.h"
+          },
+          "hashes": {
+            "sha-256": "b49bc741b15d21d6c9bb20817687ac3f060717899ece2355b22359d789581af2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/lockfreehashmap.h"
+          },
+          "hashes": {
+            "sha-256": "59afd2d147f6334cd51a32ab67161467bfde1637b0c62cd6193c7b940593fb97"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/lockfreehashmap.inl"
+          },
+          "hashes": {
+            "sha-256": "32a6025e87e8a53a7e565f88b67862be92b390610ea8ae000d6fbebb202cfab6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/ephysicsupdateerror.h"
+          },
+          "hashes": {
+            "sha-256": "d18eb5b2e3b931418347437192447e5c892b529dab12e9342462cb7c9b9094d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodypair.h"
+          },
+          "hashes": {
+            "sha-256": "bed39329a967258367c321fe7ab8635213606dee810ee76944de82d181c3ab25"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/manifoldbetweentwofaces.h"
+          },
+          "hashes": {
+            "sha-256": "e55c98858904bc1138b7c10a302dfc1da5b63a9794514879b8772927343ea123"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/convexshape.h"
+          },
+          "hashes": {
+            "sha-256": "4357b65a06ef26dbffb4c4aee75ceec073c1fea42714e60db865d191eb97b3b5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/physicsmaterial.h"
+          },
+          "hashes": {
+            "sha-256": "9c9b8bdd47ba0c7ff330248bedfa7d006ba4d59833343941debc7be8cbfe7aa8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/axisconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "2ee5f89873a166b71e43ba8eb3a282643f55a73fce1d463469a298a0fe55ce90"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/springpart.h"
+          },
+          "hashes": {
+            "sha-256": "1630f29b21a29bbc5bd41a5f547b9a6422b360d7c40d7bad7b9d92a1254811fa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/springsettings.h"
+          },
+          "hashes": {
+            "sha-256": "be604390ac70eb268cdaf107f72d535daf1c97dbf31f64ac1ada04fc007da4b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/staterecorder.h"
+          },
+          "hashes": {
+            "sha-256": "f5647e3de973da9b45abfbb37fd9cfdc303dfc36a7e52e62298a7d01fb2cb5ee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/dualaxisconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "2eaf703948197249b30643a53a5078d0e01607e390ac020e05ac6c24ae76a069"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/gaussianelimination.h"
+          },
+          "hashes": {
+            "sha-256": "52e9e7bd4d40c8cd02125779f903690fd7381a286f28bf28b249cdd95c98ff58"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintmanager.h"
+          },
+          "hashes": {
+            "sha-256": "61647d0e6be1bbf9a230c6a40b2b9a8d7f64960f06865538155f747f71824ea7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraint.h"
+          },
+          "hashes": {
+            "sha-256": "3650195859b71e46be8c112766e3ea7818e8b0cbe9d3e53afc6384cfb662c462"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/largeislandsplitter.h"
+          },
+          "hashes": {
+            "sha-256": "ab061e2a29182f1688da873c562ecba8e5f52466249882c75f368beb09782927"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/broadphase/broadphase.h"
+          },
+          "hashes": {
+            "sha-256": "ed1d899361c0b0bfd979daef21ffd14f9ad225e838b8692ba3d8acf973d606db"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/core/stltempallocator.h"
+          },
+          "hashes": {
+            "sha-256": "02dc5f6a9d8a11aeefd85e5d25f70a9b1e7b8ad19d89126003118d807dee3462"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/physicssettings.h"
+          },
+          "hashes": {
+            "sha-256": "3cc953141c6e4c073c2dcbdf67c8f38af0fec38863bf374672df7b980ed388fa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/registertypes.h"
+          },
+          "hashes": {
+            "sha-256": "8c14ca279309ea904d53b7ab6da82cfed21089b5c2ca248b6b71757f42997830"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/boxshape.h"
+          },
+          "hashes": {
+            "sha-256": "14a82d0976cead54a6adda21fa14ff631a22ff873ccfb5171c0153ba33f5f3f3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/collision/shape/sphereshape.h"
+          },
+          "hashes": {
+            "sha-256": "f69ab69f3fe2a7a4911a2787099940ea24974ce80c5e4b4eaa61636c03ac6191"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodycreationsettings.h"
+          },
+          "hashes": {
+            "sha-256": "7854840c7a4270f8c92147d74857b090d0cb309cd40543e25d705db278c06ae3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/body/bodylockmulti.h"
+          },
+          "hashes": {
+            "sha-256": "a7823eacd8282fe90e87c8bdf2f860bad7327a1b1cdacd61198d1b2d42b4dac4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/twobodyconstraint.h"
+          },
+          "hashes": {
+            "sha-256": "aeaeab175e1f01917c95e89e56e6d5d90fc9d694b2e1c3b43547ffd798dc9a1a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/motorsettings.h"
+          },
+          "hashes": {
+            "sha-256": "0626f918a0d7455fd8191545aa89ecfee06b47c301f75f3f08800fa2d84c99fc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/pointconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "f9e29dce20ab39c83299302c9bfb95406d7c517e4dffa7895a75e859dfa2afed"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/angleconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "ba710312e9a50155b81adb572ca29d14bdde03e369e15b3dd604fb08b5612b08"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/swingtwistconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "577a43a23011607aebea4769c524a8695607af91e3431afc415013d73e1a1fbf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/geometry/ellipse.h"
+          },
+          "hashes": {
+            "sha-256": "83f2619e77fcb5000ec68659015558cd356bd1aae57276774313a5111cc59bf7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/math/float2.h"
+          },
+          "hashes": {
+            "sha-256": "198fd5d6c312f58adcf3c5325831cae3d8c190b1e89c9e5456e89b3aec21e8db"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/hingeconstraint.h"
+          },
+          "hashes": {
+            "sha-256": "58ef6a5ef8d6c493bad89c3c26790dc9227cb3e2dd59453692b607dd849885a4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/joltphysics-5.5.0/jolt/physics/constraints/constraintpart/hingerotationconstraintpart.h"
+          },
+          "hashes": {
+            "sha-256": "29c54443fde2cd8dc58e07d400b19523983305191ade9bb2082befe52fae6dd5"
+          }
+        }
+      ]
+    }
+  ]
+}

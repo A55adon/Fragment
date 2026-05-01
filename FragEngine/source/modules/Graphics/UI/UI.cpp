@@ -201,17 +201,17 @@ void UI::debugDraw()
 		auto worldPos = element->getWorldPosition(parentPos);
 		auto sizePx = element->getTransform().getSizePx();
 		auto labelPos = worldPos;
-		labelPos.x += element->getTransform().getSizeUS().x * 0.5f - (70.0f / CFG_WINDOW_WIDTH);
-		labelPos.y -= element->getTransform().getSizeUS().y * 0.5f + (12.0f / CFG_WINDOW_HEIGHT);
-
+		//labelPos.x -= element->getTransform().getSize().x / 2.f;
+		labelPos.y += element->getTransform().getSize().y / 2.f + 0.015f;
+		
 		Transform tr;
 		tr.setPosition(labelPos);
-		tr.setSizePx({ std::max(140, sizePx.x), 18 });
+		tr.setSizePx({ std::max(10, sizePx.x), 28 });
 
 		overlay->setTransform(tr);
 		overlay->setStyle(element->getStyle());
-		overlay->setFont(getDefaultFont(14));
-		overlay->setColor(Color::White);
+		overlay->setFont(getDefaultFont(16));
+		overlay->setColor(Color::Red);
 		overlay->setText(element->getDebugLabel(parentPos));
 		_debugOverlayElements.push_back(std::move(overlay));
 	}

@@ -228,10 +228,11 @@ vec2<float> Renderer::mapWindowToRenderCoordinates(float mouseX, float mouseY) c
 
 	const float localX = std::clamp(mouseX - static_cast<float>(viewport.x), 0.0f, static_cast<float>(viewport.z));
 	const float localY = std::clamp(mouseY - viewportTop, 0.0f, static_cast<float>(viewport.w));
+	const float flippedY = static_cast<float>(viewport.w) - localY;
 
 	return {
 		(localX / static_cast<float>(viewport.z)) * static_cast<float>(_resolution.x),
-		(localY / static_cast<float>(viewport.w)) * static_cast<float>(_resolution.y)
+		(flippedY / static_cast<float>(viewport.w)) * static_cast<float>(_resolution.y)
 	};
 }
 
@@ -331,7 +332,7 @@ void Renderer::drawUI(UI* ui)
 
 	_uiShader.use();
 	for (auto& uiEl : ui->getRootElements()) {
-		drawUIObject(uiEl, { 0,0 });
+		uiEl->draw({ 0,0 }, &_uiShader, _uiVAO, _uiVBO);
 	}
 
 	// Restore state after UI drawing:
@@ -339,49 +340,6 @@ void Renderer::drawUI(UI* ui)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 }
-
-void Renderer::drawUIObject(UIElement* uiElement, vec2<float> parentPos) {
-	vec2<float> worldPos = parentPos + uiElement->getTransform().getPosition();
-
-
-	//Draw
-	for (auto& t : uiElement->getMesh2D().getTriangles())
-	{
-		_uiShader.use();
-
-		if (uiElement->getMesh2D().getTexture())
-		{
-			uiElement->getMesh2D().getTexture()->bind(0);
-
-			_uiShader.setInt("uTexture", 0);
-			_uiShader.setInt("useTexture", 1);
-		}
-		else
-		{
-			_uiShader.setInt("useTexture", 0);
-		}
-
-		Vertex2D verts[3];
-		for (int i = 0; i < 3; ++i)
-		{
-			verts[i] = t.vertices[i];
-			verts[i].position.x += worldPos.x;
-			verts[i].position.y += worldPos.y;
-		}
-
-		glBindVertexArray(_uiVAO);
-		glBindBuffer(GL_ARRAY_BUFFER, _uiVBO);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(verts), verts);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glBindVertexArray(0);
-	}
-	for (auto& child : uiElement->getChildren()) {
-		drawUIObject(child, worldPos);
-	}
-	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
 void Renderer::renderShadowPass(Scene* scene, LightSource* light, Camera* camera)
 {
 	float range = 40.0f;

@@ -1,0 +1,247 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'mat4::v' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/ui.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+                },
+                "region": {
+                  "startLine": 232,
+                  "startColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "mat4::{ctor}",
+                  "decoratedName": "??0mat4@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "mat4::v"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.51.36241.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/ui.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "70061b358f259ecaf655cada4089200cb3a4d4ca7ff473b3e0c1865111d92d8b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/source/core/DataTypes.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "595cf26e5170319d41d1ddc2d9c09f9009887e26931a45c183dec58cfc76cffd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/ui.h"
+          },
+          "hashes": {
+            "sha-256": "51578c46fdf9a9fea832a005b7d1d54df14448121c3163fc315334ecdb8bb3d1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/config.h"
+          },
+          "hashes": {
+            "sha-256": "4d884d9676ebcd2570709f8b46e4830572352f487072e8507ef7df88ff4bf5d7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uielement.h"
+          },
+          "hashes": {
+            "sha-256": "dc9057fffcd6cad92f15701f6c68fc243d62a3323d2e88f505c871975a262421"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/mesh2d.h"
+          },
+          "hashes": {
+            "sha-256": "a439eded59a866a28de55920055390a76de14845bb031b63970990a6aa3f7694"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/texture.h"
+          },
+          "hashes": {
+            "sha-256": "603eb892fb8eae55abb692aad21bc75580c248a48634db520759c42edc5ca9e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/glad/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "455c2b4a47708883c04b632f9ce33b7f814a1a9cbade018732fc8f05e9147324"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/glad/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "7b1e01aaa7ad8f6fc34b5c7bdf79ebf5189bb09e2c4d2e79fc5d350623d11e83"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.h"
+          },
+          "hashes": {
+            "sha-256": "1f8c1b6b408f26e3b20cbfbbd4758afb3dc9b837ff1e17c258928f406148a87c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image_write.h"
+          },
+          "hashes": {
+            "sha-256": "12422803fe1cc30b56de15b2c6f3cebd85bab99342a40b6ab4ff50d371bd2245"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/core/defaultfunctions.h"
+          },
+          "hashes": {
+            "sha-256": "745b8002f20dd9a6d67cbd41cb6ffd47f0c0f60cc168b780164ab40ee1d69779"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uibase/rectangle.h"
+          },
+          "hashes": {
+            "sha-256": "038019f8d22b95021dc786ec65b80aade7f100559c68188a90114c5632d87f3c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uibase/text.h"
+          },
+          "hashes": {
+            "sha-256": "dd1fe6a5ae35b0336e8115af9b0b12eac0e4ec0cffa1dd2f8412f7480400f16b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uibase/font.h"
+          },
+          "hashes": {
+            "sha-256": "3e42ae6222a4c443e62e66f9b0c23b759f3f07ded0ecad923bb1e01fe6876294"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_truetype.h"
+          },
+          "hashes": {
+            "sha-256": "ecd30b05e0dd4fea3a13c26810dd9e1992dc379049482c393d5a19e6b5090aab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uiinput/button.h"
+          },
+          "hashes": {
+            "sha-256": "b344bb560dd53f6863ec4e4b9743161a6d2c02fccf0fb57ac8400e0fe60cae87"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uiinput/input.h"
+          },
+          "hashes": {
+            "sha-256": "d16bbce4c445d1a7fa2ba1068ba7622d52136201f28f1c08b452d223c9536599"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/glfw/include/glfw/glfw3.h"
+          },
+          "hashes": {
+            "sha-256": "aa370985f6b493bbe0358a36ab49f5780a6397c0209c6d98a62143dea595b73c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uiinput/slider.h"
+          },
+          "hashes": {
+            "sha-256": "d4c18c482ca05a098c87f8c499fddac8a6c5d41a3bffb999fd2d3514c15ac26e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uiinput/dropdown.h"
+          },
+          "hashes": {
+            "sha-256": "6360b901085f60159d700bcca4a636a7878a81931418b4c7b2088c7c1537df2f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uistatistics/histogram.h"
+          },
+          "hashes": {
+            "sha-256": "4ebfa5439cbfede4360c6de4365a47bc91b1b6ab9cfb26869257689111088a06"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/source/modules/graphics/ui/uistatistics/arcchart.h"
+          },
+          "hashes": {
+            "sha-256": "71fa9f42584a2c91990e8ab74461884f13910b32e516b447dd97f2f276dc6bed"
+          }
+        }
+      ]
+    }
+  ]
+}

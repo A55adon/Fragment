@@ -88,7 +88,7 @@ private:
         float t = normalizedValue();
         auto style = _style;
         auto fillStyle = _style;
-        fillStyle.setPrimaryColor(_style.getSecondaryColor());
+        fillStyle.setPrimaryColor(_style.getPrimaryColor());
 
         Transform fillTransform;
         fillTransform.setPosition({

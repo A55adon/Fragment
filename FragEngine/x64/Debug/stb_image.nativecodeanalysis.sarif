@@ -1,0 +1,2906 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+                },
+                "region": {
+                  "startLine": 5747,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbi__tga_get_comp",
+                  "decoratedName": "?stbi__tga_get_comp@@YAHHHPEAH@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6262",
+          "message": {
+            "text": "Function uses '35036' bytes of stack.  Consider moving some data to heap."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+                },
+                "region": {
+                  "startLine": 6963,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbi__load_gif_main",
+                  "decoratedName": "?stbi__load_gif_main@@YAPEAXPEAUstbi__context@@PEAPEAHPEAH222H@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6262",
+          "message": {
+            "text": "Function uses '34980' bytes of stack.  Consider moving some data to heap."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+                },
+                "region": {
+                  "startLine": 7048,
+                  "startColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbi__gif_load",
+                  "decoratedName": "?stbi__gif_load@@YAPEAXPEAUstbi__context@@PEAH11HPEAUstbi__result_info@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+                },
+                "region": {
+                  "startLine": 7149,
+                  "startColumn": 15
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbi__hdr_convert",
+                  "decoratedName": "?stbi__hdr_convert@@YAXPEAMPEAEH@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+                },
+                "region": {
+                  "startLine": 7152,
+                  "startColumn": 15
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbi__hdr_convert",
+                  "decoratedName": "?stbi__hdr_convert@@YAXPEAMPEAEH@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image_write.h"
+                },
+                "region": {
+                  "startLine": 443,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbiw__write_pixel",
+                  "decoratedName": "?stbiw__write_pixel@@YAXPEAUstbi__write_context@@HHHHPEAE@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 2143,
+                  "startColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__run_charstring",
+                  "decoratedName": "?stbtt__run_charstring@@YAHPEBUstbtt_fontinfo@@HPEAUstbtt__csctx@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6387",
+          "message": {
+            "text": "'scanline' could be '0':  this does not adhere to the specification for the function 'memset'. "
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 3322,
+                  "startColumn": 7,
+                  "endLine": 3322,
+                  "endColumn": 61
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__rasterize_sorted_edges",
+                  "decoratedName": "?stbtt__rasterize_sorted_edges@@YAXPEAUstbtt__bitmap@@PEAUstbtt__edge@@HHHHPEAX@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3299,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3300,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 31
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3304,
+                            "startColumn": 4
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3306,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3307,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3311,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3313,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3314,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3316,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<result->h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3318,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3319,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3320,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3322,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' is an In/Out argument to 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3322,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' should not be NULL, because this is not consistent with the SAL annotation on 'memset'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6387",
+          "message": {
+            "text": "'scanline2' could be '0':  this does not adhere to the specification for the function 'memset'. See line 3322 for an earlier location where this can occur"
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 3323,
+                  "startColumn": 7,
+                  "endLine": 3323,
+                  "endColumn": 65
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__rasterize_sorted_edges",
+                  "decoratedName": "?stbtt__rasterize_sorted_edges@@YAXPEAUstbtt__bitmap@@PEAUstbtt__edge@@HHHHPEAX@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3299,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3300,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 31
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3304,
+                            "startColumn": 4
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3306,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3307,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3311,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3313,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3314,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3316,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<result->h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3318,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3319,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3320,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3322,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3323,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' is an In/Out argument to 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3323,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' should not be NULL, because this is not consistent with the SAL annotation on 'memset'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6011",
+          "message": {
+            "text": "Dereferencing NULL pointer 'scanline2'. See line 3322 for an earlier location where this can occur"
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 3368,
+                  "startColumn": 13,
+                  "endLine": 3368,
+                  "endColumn": 31
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__rasterize_sorted_edges",
+                  "decoratedName": "?stbtt__rasterize_sorted_edges@@YAXPEAUstbtt__bitmap@@PEAUstbtt__edge@@HHHHPEAX@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3299,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3300,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 31
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3304,
+                            "startColumn": 4
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3306,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3307,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3311,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3313,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3314,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3316,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<result->h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3318,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3319,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3320,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3322,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3323,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' is an In/Out argument to 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3327,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume '*step' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3340,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'e->y0<=scan_y_bottom' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3360,
+                            "startColumn": 11
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'active' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3364,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3365,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3365,
+                            "startColumn": 22
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'i<result->w')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3366,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3367,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3368,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline2' is dereferenced, but may still be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6011",
+          "message": {
+            "text": "Dereferencing NULL pointer 'scanline'. See line 3322 for an earlier location where this can occur"
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 3369,
+                  "startColumn": 13,
+                  "endLine": 3369,
+                  "endColumn": 31
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__rasterize_sorted_edges",
+                  "decoratedName": "?stbtt__rasterize_sorted_edges@@YAXPEAUstbtt__bitmap@@PEAUstbtt__edge@@HHHHPEAX@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3299,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3300,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3301,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 31
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3302,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3304,
+                            "startColumn": 4
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3306,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3307,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3311,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3313,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3314,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3316,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<result->h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3318,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3319,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3320,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3322,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' is an In/Out argument to 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3323,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3327,
+                            "startColumn": 14
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume '*step' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3340,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'e->y0<=scan_y_bottom' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3360,
+                            "startColumn": 11
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'active' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3364,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3365,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3365,
+                            "startColumn": 22
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'i<result->w')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3366,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3367,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3368,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 3369,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "'scanline' is dereferenced, but may still be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'buffer':  the readable size is '_Old_3`kernel_width' bytes, but '3' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 4066,
+                  "startColumn": 10,
+                  "endLine": 4066,
+                  "endColumn": 46
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__h_prefilter",
+                  "decoratedName": "?stbtt__h_prefilter@@YAXPEAEHHHI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4014,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is a 8 byte array"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4015,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4016,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4017,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is an Output from 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4018,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4018,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4019,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4020,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4021,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is an Output from 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4023,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4026,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'kernel_width' ) resolves to case 2: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4027,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4028,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4028,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4029,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4030,
+                            "startColumn": 60
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4031,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4028,
+                            "startColumn": 36
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4028,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4064,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'i<w')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4065,
+                            "startColumn": 10
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume '!!((pixels[i]==0))')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4066,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4067,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4064,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4064,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Continue this loop, (assume 'i<w')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4065,
+                            "startColumn": 10
+                          }
+                        },
+                        "message": {
+                          "text": "Continue this loop, (assume '!!((pixels[i]==0))')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4066,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'buffer[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'buffer':  the readable size is '_Old_3`kernel_width' bytes, but '3' bytes may be read."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                },
+                "region": {
+                  "startLine": 4128,
+                  "startColumn": 10,
+                  "endLine": 4128,
+                  "endColumn": 46
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "stbtt__v_prefilter",
+                  "decoratedName": "?stbtt__v_prefilter@@YAXPEAEHHHI@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4076,
+                            "startColumn": 18
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is a 8 byte array"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4077,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4078,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4079,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is an Output from 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4080,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4080,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'j<w')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4081,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4082,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4083,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "'buffer' is an Output from 'memset' (declared at c:\\program files\\microsoft visual studio\\18\\insiders\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime_string.h:63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4085,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4088,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'kernel_width' ) resolves to case 2: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4089,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4090,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4090,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4091,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4092,
+                            "startColumn": 60
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4093,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4090,
+                            "startColumn": 36
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4090,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4126,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'i<h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4127,
+                            "startColumn": 10
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume '<branch condition>')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4128,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4129,
+                            "startColumn": 36
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4126,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4126,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Continue this loop, (assume 'i<h')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4127,
+                            "startColumn": 10
+                          }
+                        },
+                        "message": {
+                          "text": "Continue this loop, (assume '<branch condition>')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+                          },
+                          "region": {
+                            "startLine": 4128,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'buffer[2]', (readable range is 0 to 1)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.51.36241.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/simon/desktop/code/fragment/fragengine/external/stb_image.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "0154339d3b7aed8bea57eca4a74de2326de4d4ad8b26b07b96695e0ba29fd879"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "1f8c1b6b408f26e3b20cbfbbd4758afb3dc9b837ff1e17c258928f406148a87c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_image_write.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "12422803fe1cc30b56de15b2c6f3cebd85bab99342a40b6ab4ff50d371bd2245"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/simon/Desktop/Code/Fragment/FragEngine/external/stb_truetype.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "ecd30b05e0dd4fea3a13c26810dd9e1992dc379049482c393d5a19e6b5090aab"
+          }
+        }
+      ]
+    }
+  ]
+}

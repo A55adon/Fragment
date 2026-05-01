@@ -59,3 +59,11 @@ inline vec3<T> normalize(const vec3<T>& v) {
     if (len < 1e-8) return vec3<T>(0, 0, 0);
     return vec3<T>(v.x / len, v.y / len, v.z / len);
 }
+
+inline float NDCToPX_X(float ndc) {
+    return (ndc + 1.0f) * 0.5f * CFG_WINDOW_WIDTH;
+}
+
+inline float NDCToPX_Y(float ndc) {
+    return (1.0f - (ndc + 1.0f) * 0.5f) * CFG_WINDOW_HEIGHT;
+}

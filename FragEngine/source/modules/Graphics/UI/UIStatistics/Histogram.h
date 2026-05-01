@@ -1,53 +1,74 @@
 #pragma once
 
 #include "modules/Graphics/UI/UIBase/Rectangle.h"
+#include "modules/Graphics/UI/UIBase/Text.h"
+#include "core/DefaultFunctions.h"
 
 class Histogram : public Rectangle {
 public:
     void bindValues(const std::vector<float>* values) { _values = values; }
-
-    std::string getElementTypeName() const override { return "Histogram"; }
-
-    void update() override {
-        Rectangle::update();
-        rebuild();
-    }
 
     void rebuild() override {
         Rectangle::rebuild();
         if (!_values || _values->size() < 2) return;
 
         float maxValue = *std::max_element(_values->begin(), _values->end());
-        if (maxValue <= 0.0f) maxValue = 1.0f;
+        float minValue = *std::min_element(_values->begin(), _values->end());
+
+        if(minValue == maxValue) {
+            WARN("Same value for min and max in Histogram");
+            return;
+        }
 
         auto& tris = _mesh.getTriangles();
+        float width = _transform.getSize().x;
+        float height = _transform.getSize().y;
+        float left = _transform.getPosition().x - (width / 2.f);
+        float bottom = _transform.getPosition().y - (height / 2.f);
+
+        // Warn about to much data
+
+        float lineThickness = 0.01f;
         Color lineColor = _style.getSecondaryColor();
-        float width = _transform.getSizeUS().x * 2.0f;
-        float height = _transform.getSizeUS().y * 2.0f;
-        float left = -width * 0.5f;
-        float bottom = -height * 0.5f;
-        float thickness = std::max(1.0f, _style.getBorderWidth() * CFG_WINDOW_HEIGHT) / CFG_WINDOW_HEIGHT * 2.0f;
+
+        float widthPerEntry = (float)(_transform.getSizePx().x) / (float)(_values->size());
+
+        //LOG(CFG_WINDOW_WIDTH << ";" << CFG_WINDOW_HEIGHT);
+        //LOG("Size per entry PX: " << widthPerEntry);
+
+        if (widthPerEntry < 5.f) WARN("Could not propperly fit " << _values->size() << " values on " << _transform.getSizePx().x << " pixels, some data may be truncated! Each entry only has " << widthPerEntry << " pixels of space, consider makeing the element bigger or log fewer data!");
 
         for (size_t i = 1; i < _values->size(); ++i) {
-            float t0 = static_cast<float>(i - 1) / static_cast<float>(_values->size() - 1);
-            float t1 = static_cast<float>(i) / static_cast<float>(_values->size() - 1);
-            vec2<float> p0{ left + width * t0, bottom + height * ((*_values)[i - 1] / maxValue) };
-            vec2<float> p1{ left + width * t1, bottom + height * ((*_values)[i] / maxValue) };
 
-            vec2<float> dir{ p1.x - p0.x, p1.y - p0.y };
-            float len = std::sqrt(dir.x * dir.x + dir.y * dir.y);
-            if (len <= 1e-6f) continue;
-            dir.x /= len;
-            dir.y /= len;
-            vec2<float> normal{ -dir.y * thickness, dir.x * thickness };
+            float step = width / (float)(_values->size() - 1);
+            float posX = left + step * i;
+            
+            //posX = _transform.getPositionPx().x - (_transform.getSizePx().x / 2.f) + ((_transform.getSizePx().x / _values->size()) * i);
+            //LOG("Element at position " << posX);
 
-            Vertex2D v0{ { p0.x + normal.x, p0.y + normal.y }, {}, lineColor };
-            Vertex2D v1{ { p0.x - normal.x, p0.y - normal.y }, {}, lineColor };
-            Vertex2D v2{ { p1.x - normal.x, p1.y - normal.y }, {}, lineColor };
-            Vertex2D v3{ { p1.x + normal.x, p1.y + normal.y }, {}, lineColor };
-            tris.push_back({ v0, v1, v2 });
-            tris.push_back({ v0, v2, v3 });
+            float t = ((*_values)[i] - minValue) / (maxValue - minValue);
+            float posY = bottom + t * height;
+
+            if (i + 1 < _values->size()) {
+                float nextPosX = left + step * (i + 1);
+
+                float nextT = ((*_values)[i + 1] - minValue) / (maxValue - minValue);
+                float nextPosY = bottom + nextT * height;
+
+                // Create triangles to draw linepiece from current value to next value
+                Vertex2D v0{ {posX, posY}, lineColor};
+                Vertex2D v1{ {posX + lineThickness, posY}, lineColor };
+                Vertex2D v2{ {nextPosX, nextPosY}, lineColor };
+                Vertex2D v3{ {nextPosX + lineThickness, nextPosY}, lineColor };
+
+                tris.push_back({ v0, v1, v2 });
+                tris.push_back({ v0, v2, v3 });
+            }
         }
+    }
+
+    void update() override {
+        rebuild();
     }
 
 private:
