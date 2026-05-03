@@ -27,8 +27,11 @@ void Text::setFontSize(int size)
 
 void Text::rebuild()
 {
+    UIElement::rebuild();
     auto& tris = _mesh.getTriangles();
     tris.clear();
+    _textWidthPx = 0.0f;
+    _textHeightPx = 0.0f;
 
     if (!_font || _text.empty()) {
         return;

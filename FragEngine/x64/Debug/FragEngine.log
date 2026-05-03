@@ -13,6 +13,12 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(37,27): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
   (compiling source file 'source/core/Fragment.cpp')
   
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.h(95,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'source/core/Fragment.cpp')
+  
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.h(95,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'source/core/Fragment.cpp')
+  
   main.cpp
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(10,8): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(10,8): warning C4244:         with
@@ -27,11 +33,19 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(37,27): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
   (compiling source file 'source/main.cpp')
   
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(366,37): warning C4305: 'argument': truncation from 'double' to 'T'
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(366,37): warning C4305:         with
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(366,37): warning C4305:         [
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(366,37): warning C4305:             T=float
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(366,37): warning C4305:         ]
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.h(95,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'source/main.cpp')
+  
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.h(95,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'source/main.cpp')
+  
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(441,37): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(441,37): warning C4305:         with
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(441,37): warning C4305:         [
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(441,37): warning C4305:             T=float
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(441,37): warning C4305:         ]
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(530,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp(530,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Renderer.cpp
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(10,8): warning C4244: 'argument': conversion from 'float' to 'T', possible loss of data
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(10,8): warning C4244:         with
@@ -46,11 +60,7 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Window.h(37,27): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
   (compiling source file 'source/modules/Graphics/Renderer.cpp')
   
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Renderer.cpp(258,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  UI.cpp
-  Rectangle.cpp
-  Text.cpp
-  UIElement.cpp
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Renderer.cpp(325,47): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   FragEngine.vcxproj -> C:\Users\simon\Desktop\Code\Fragment\x64\Debug\Fragment.exe

@@ -26,7 +26,8 @@ void Fragment::runApp()
 
 	while (true)
 	{
-		auto currentTime = clock::now();
+		auto frameStart = clock::now();
+		auto currentTime = frameStart;
 		std::chrono::duration<float> delta = currentTime - lastTime;
 		float dt = delta.count();
 		lastTime = currentTime;
@@ -40,11 +41,13 @@ void Fragment::runApp()
 		// other
 		auto otherStart = clock::now();
 		userInput.update(dt);
-		
-
-		logicUpdateFn(dt);
 		auto otherEnd = clock::now();
-		float otherTime = std::chrono::duration<float>(otherEnd - otherStart).count();
+		lastInputTimeMs = std::chrono::duration<float>(otherEnd - otherStart).count() * 1000.0f;
+
+		auto logicStart = clock::now();
+		logicUpdateFn(dt);
+		auto logicEnd = clock::now();
+		lastLogicTimeMs = std::chrono::duration<float>(logicEnd - logicStart).count() * 1000.0f;
 
 		// physics
 		float physicsTime = 0.0f;
@@ -77,6 +80,10 @@ void Fragment::runApp()
 			}
 			auto physicsEnd = clock::now();
 			physicsTime = std::chrono::duration<float>(physicsEnd - physicsStart).count();
+			lastPhysicsTimeMs = physicsTime * 1000.0f;
+		}
+		else {
+			lastPhysicsTimeMs = 0.0f;
 		}
 
 		// render
@@ -96,26 +103,37 @@ void Fragment::runApp()
 				drawUpdateFn();
 				auto renderEnd = clock::now();
 				renderTime = std::chrono::duration<float>(renderEnd - renderStart).count();
+				lastRenderTimeMs = renderTime * 1000.0f;
 				lastRenderTime = currentTime;
 			}
 			break;
 		}
 
 		case ERenderUpdateState::UNCAPPED:
-		{
-			auto renderStart = clock::now();
-			drawUpdateFn();
-			auto renderEnd = clock::now();
-			renderTime = std::chrono::duration<float>(renderEnd - renderStart).count();
-			break;
-		}
+			{
+				auto renderStart = clock::now();
+				drawUpdateFn();
+				auto renderEnd = clock::now();
+				renderTime = std::chrono::duration<float>(renderEnd - renderStart).count();
+				lastRenderTimeMs = renderTime * 1000.0f;
+				break;
+			}
 	}
+		if (renderTime <= 0.0f) {
+			lastRenderTimeMs = 0.0f;
+		}
 
 		frameCount++;
 		totalFrameTime += dt;
 		totalPhysicsTime += physicsTime;
 		totalRenderTime += renderTime;
-		totalOtherTime += otherTime;
+		totalOtherTime += std::chrono::duration<float>(logicEnd - otherStart).count();
+
+		auto frameEnd = clock::now();
+		lastFrameTimeMs = std::chrono::duration<float>(frameEnd - frameStart).count() * 1000.0f;
+		if (frameEndFn) {
+			frameEndFn(lastFrameTimeMs);
+		}
 
 		auto debugNow = clock::now();
 		std::chrono::duration<float> debugDelta = debugNow - lastDebugPrintTime;
@@ -166,6 +184,11 @@ void Fragment::setAppDrawUpdateFn(std::function<void()> fn)
 void Fragment::setAppLogicUpdateFn(std::function<void(float dt)> fn)
 {
 	logicUpdateFn = fn;
+}
+
+void Fragment::setAppFrameEndFn(std::function<void(float frameTimeMs)> fn)
+{
+	frameEndFn = fn;
 }
 
 void Fragment::setEndFn(std::function<void()> fn)
@@ -333,5 +356,3 @@ SceneObject* Fragment::createNewSceneObject(std::string name)
 
 	return loadedScene.getAllObjects().createNew<SceneObject>(name, loadedScene.getPhysics());
 }
-
-

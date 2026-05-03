@@ -13,6 +13,7 @@
 #include "core/GlobalSceneObjectKeyRegister.h"
 #include "core/Scene.h"
 #include "modules/Monitoring/Monitor.h"
+#include "core/Ray.h"
 
 enum class EPhysicsUpdateState {
 	STOPPED,
@@ -36,6 +37,7 @@ public:
 	void setAppStartFn(std::function<void()> fn);
 	void setAppDrawUpdateFn(std::function<void()> fn);
 	void setAppLogicUpdateFn(std::function<void(float dt)> fn);
+	void setAppFrameEndFn(std::function<void(float frameTimeMs)> fn);
 	void setEndFn(std::function<void()> fn);
 
 	// Modules 
@@ -82,7 +84,42 @@ public:
 	// Misc
 	void setDebugFPS(bool debug) { _debugFPS = debug; }
 
+	bool cursorInUI(UI* ui) {
+		GLFWwindow* window = graphics.getWindow()->getRawWindow();
+		ASSERT(window, "No valid window");
+		double cursorXPos = 0; // in pixels
+		double cursorYPos = 0; // in pixels
+		glfwGetCursorPos(window, &cursorXPos, &cursorYPos);
+		
+		for (auto& el : ui->getRootElements()) {
+			if (cursorInUIElement(el, cursorXPos, cursorYPos))
+				return true; // hit 
+		}
+		return false;
 
+	}
+	bool cursorInUIElement(UIElement* el, float cursorXPos, float cursorYPos) { // might treat child positions wrong
+		for (auto& child : el->getChildren())
+			if (cursorInUIElement(child, cursorXPos, cursorYPos))
+				return true; // hit in child
+
+		Transform tr = el->getTransform();
+
+		vec2<float> topLeft;
+		topLeft.x = tr.getPositionPx().x - tr.getSizePx().x / 2.f;
+		topLeft.y = tr.getPositionPx().y + tr.getSizePx().y / 2.f;
+		topLeft.y = CFG_WINDOW_HEIGHT - topLeft.y;
+
+		vec2<float> bottomRight;
+		bottomRight.x = tr.getPositionPx().x + tr.getSizePx().x / 2.f;
+		bottomRight.y = tr.getPositionPx().y - tr.getSizePx().y / 2.f;
+		bottomRight.y = CFG_WINDOW_HEIGHT - bottomRight.y;
+
+		if (cursorXPos < bottomRight.x && cursorXPos > topLeft.x) // X axis check
+			if (cursorYPos < bottomRight.y && cursorYPos > topLeft.y) // Y axis check
+				return true; // hit
+		return false;
+	}
 
 	EPhysicsUpdateState& getPhysicsUpdateState() { return _physicsUpdateState; }
 
@@ -94,6 +131,11 @@ public:
 	float avgPhysicsTime = -1.f;
 	float avgRenderTime = -1.f;
 	float avgOtherTime = -1.f;
+	float lastFrameTimeMs = 0.f;
+	float lastInputTimeMs = 0.f;
+	float lastLogicTimeMs = 0.f;
+	float lastPhysicsTimeMs = 0.f;
+	float lastRenderTimeMs = 0.f;
 
 private:
 	ERenderUpdateState renderUpdateState;
@@ -117,5 +159,6 @@ private:
 	std::function<void()> drawUpdateFn;
 	std::function<void()> endFn;
 	std::function<void(float dt)> logicUpdateFn;
+	std::function<void(float frameTimeMs)> frameEndFn;
 	bool appExit = false;
 };

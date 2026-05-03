@@ -165,3 +165,32 @@ private:
     Mesh _physicsMesh; // optional — if not set, render mesh is used
     JPH::BodyID _bodyID = JPH::BodyID();
 };
+
+
+inline std::pair<vec3<float>, vec3<float>> getWorldAABB(SceneObject* obj)
+{
+    vec3<float> pos = obj->getPosition();
+    vec3<float> scale = obj->getScale();
+
+    vec3<float> mn = { std::numeric_limits<float>::max(),
+                       std::numeric_limits<float>::max(),
+                       std::numeric_limits<float>::max() };
+    vec3<float> mx = { -std::numeric_limits<float>::max(),
+                       -std::numeric_limits<float>::max(),
+                       -std::numeric_limits<float>::max() };
+
+    for (const auto& tri : obj->getRenderMesh().triangles) {
+        for (const auto& v : tri.vertices) {
+            // Apply model matrix (position + scale, no rotation for AABB)
+            float wx = v.position.x * scale.x + pos.x;
+            float wy = v.position.y * scale.y + pos.y;
+            float wz = v.position.z * scale.z + pos.z;
+
+            mn.x = std::min(mn.x, wx);  mx.x = std::max(mx.x, wx);
+            mn.y = std::min(mn.y, wy);  mx.y = std::max(mx.y, wy);
+            mn.z = std::min(mn.z, wz);  mx.z = std::max(mx.z, wz);
+        }
+    }
+
+    return { mn, mx };
+}

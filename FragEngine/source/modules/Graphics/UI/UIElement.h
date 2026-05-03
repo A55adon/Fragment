@@ -14,11 +14,11 @@ public:
 	UIElement() = default;
 	virtual ~UIElement() = default;
 
-	void setTransform(const Transform& t) { _transform = t; }
+	void setTransform(const Transform& t) { _transform = t; markDirty(); }
 	Transform& getTransform() { return _transform; }
 	const Transform& getTransform() const { return _transform; }
 
-	void setStyle(const Style& s) { _style = s; }
+	void setStyle(const Style& s) { _style = s; markDirty(); }
 	Style& getStyle() { return _style; }
 	const Style& getStyle() const { return _style; }
 
@@ -48,7 +48,7 @@ public:
 	void setMesh2D(Mesh2D mesh) { _mesh = mesh;	}
 	Mesh2D& getMesh2D() { return _mesh;	}
 
-	void setVisible(bool v) { _visible = v; }
+	void setVisible(bool v) { _visible = v; markDirty(); }
 	bool isVisible() const { return _visible; }
 
 	void setHitTestVisible(bool v) { _hitTestVisible = v; }
@@ -90,6 +90,7 @@ public:
 	void collectElements(std::vector<std::pair<UIElement*, vec2<float>>>& out, vec2<float> parentPos = { 0.0f, 0.0f });
 
 protected:
+	void markDirty();
 	Mesh2D _mesh;
 	Transform _transform;
 	Style _style;
@@ -103,4 +104,5 @@ private:
 	bool _focusTarget = false;
 	bool _focused = false;
 	UIElement* _parent = nullptr;
+	bool _dirtyDraw = false;
 };

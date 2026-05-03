@@ -44,6 +44,7 @@
     <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h" />
     <ClInclude Include="source\core\Mesh.h" />
     <ClInclude Include="source\core\Mesh2D.h" />
+    <ClInclude Include="source\core\Ray.h" />
     <ClInclude Include="source\core\Scene.h" />
     <ClInclude Include="source\core\SceneObject.h" />
     <ClInclude Include="source\modules\Graphics\Camera.h" />

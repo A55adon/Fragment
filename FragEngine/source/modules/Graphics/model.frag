@@ -23,19 +23,21 @@ uniform Light lights[MAX_LIGHTS];
 uniform int lightCount;
 
 uniform vec3 viewPos;
+uniform vec3 shadowLightDirection;
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     projCoords = projCoords * 0.5 + 0.5;
     if (projCoords.x < 0.0 || projCoords.x > 1.0 ||
-        projCoords.y < 0.0 || projCoords.y > 1.0)
+        projCoords.y < 0.0 || projCoords.y > 1.0 ||
+        projCoords.z < 0.0 || projCoords.z > 1.0)
         return 0.0;
 
-    projCoords.z = clamp(projCoords.z, 0.0, 1.0);
     float currentDepth = projCoords.z;
 
-    float bias = max(0.05 * (1.0 - dot(normalize(bNormal), normalize(lights[0].position - bPos))), 0.005);
+    float normalToLight = max(dot(normalize(bNormal), normalize(shadowLightDirection)), 0.0);
+    float bias = max(0.0005 * (1.0 - normalToLight), 0.00005);
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
 
@@ -48,8 +50,6 @@ float ShadowCalculation(vec4 fragPosLightSpace)
         }
     }
     shadow /= 25.0;
-    if (projCoords.z > 1.0)
-        shadow = 0.0;
     return shadow;
 }
 

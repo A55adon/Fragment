@@ -6,29 +6,38 @@
 
 class Histogram : public Rectangle {
 public:
-    void bindValues(const std::vector<float>* values) { _values = values; }
+    void bindValues(const std::vector<float>* values) {
+        _values = values;
+        rebuild();
+    }
 
     void rebuild() override {
-        Rectangle::rebuild();
-        if (!_values || _values->size() < 2) return;
+        //Rectangle::rebuild();
+        _lineVertices.clear();
+        ensureLabels();
 
-        float maxValue = *std::max_element(_values->begin(), _values->end());
-        float minValue = *std::min_element(_values->begin(), _values->end());
-
-        if(minValue == maxValue) {
-            WARN("Same value for min and max in Histogram");
+        if (!_values || _values->empty()) {
+            _maxLabel->setText("");
+            _minLabel->setText("");
             return;
         }
 
-        auto& tris = _mesh.getTriangles();
+        float maxValue = *std::max_element(_values->begin(), _values->end());
+        float minValue = *std::min_element(_values->begin(), _values->end());
+        layoutLabels(maxValue, minValue);
+
+        if (_values->size() < 2) return;
+
+        if(minValue == maxValue) {
+            //WARN("Same value for min and max in Histogram");
+            return;
+        }
+
         float width = _transform.getSize().x;
         float height = _transform.getSize().y;
-        float left = _transform.getPosition().x - (width / 2.f);
-        float bottom = _transform.getPosition().y - (height / 2.f);
+        float left = -width / 2.f;
+        float bottom = -height / 2.f;
 
-        // Warn about to much data
-
-        float lineThickness = 0.01f;
         Color lineColor = _style.getSecondaryColor();
 
         float widthPerEntry = (float)(_transform.getSizePx().x) / (float)(_values->size());
@@ -36,34 +45,15 @@ public:
         //LOG(CFG_WINDOW_WIDTH << ";" << CFG_WINDOW_HEIGHT);
         //LOG("Size per entry PX: " << widthPerEntry);
 
-        if (widthPerEntry < 5.f) WARN("Could not propperly fit " << _values->size() << " values on " << _transform.getSizePx().x << " pixels, some data may be truncated! Each entry only has " << widthPerEntry << " pixels of space, consider makeing the element bigger or log fewer data!");
+        //if (widthPerEntry < 5.f) WARN("Could not propperly fit " << _values->size() << " values on " << _transform.getSizePx().x << " pixels, some data may be truncated! Each entry only has " << widthPerEntry << " pixels of space, consider makeing the element bigger or log fewer data!");
 
-        for (size_t i = 1; i < _values->size(); ++i) {
-
+        for (size_t i = 0; i < _values->size(); ++i) {
             float step = width / (float)(_values->size() - 1);
             float posX = left + step * i;
-            
-            //posX = _transform.getPositionPx().x - (_transform.getSizePx().x / 2.f) + ((_transform.getSizePx().x / _values->size()) * i);
-            //LOG("Element at position " << posX);
 
             float t = ((*_values)[i] - minValue) / (maxValue - minValue);
             float posY = bottom + t * height;
-
-            if (i + 1 < _values->size()) {
-                float nextPosX = left + step * (i + 1);
-
-                float nextT = ((*_values)[i + 1] - minValue) / (maxValue - minValue);
-                float nextPosY = bottom + nextT * height;
-
-                // Create triangles to draw linepiece from current value to next value
-                Vertex2D v0{ {posX, posY}, lineColor};
-                Vertex2D v1{ {posX + lineThickness, posY}, lineColor };
-                Vertex2D v2{ {nextPosX, nextPosY}, lineColor };
-                Vertex2D v3{ {nextPosX + lineThickness, nextPosY}, lineColor };
-
-                tris.push_back({ v0, v1, v2 });
-                tris.push_back({ v0, v2, v3 });
-            }
+            _lineVertices.push_back({ {posX, posY}, lineColor });
         }
     }
 
@@ -71,6 +61,72 @@ public:
         rebuild();
     }
 
+    void draw(vec2<float> parentPosition, Shader* shader, GLuint vbo, GLuint vao) override {
+        Rectangle::draw(parentPosition, shader, vbo, vao);
+
+        if (_lineVertices.size() < 2) return;
+
+        const vec2<float> worldPos = parentPosition + _transform.getPosition();
+        std::vector<Vertex2D> verts = _lineVertices;
+        for (auto& vert : verts) {
+            vert.position.x += worldPos.x;
+            vert.position.y += worldPos.y;
+        }
+
+        shader->use();
+        shader->setInt("useTexture", 0);
+
+        glBindVertexArray(vao);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex2D) * verts.size(), verts.data(), GL_DYNAMIC_DRAW);
+        glDrawArrays(GL_LINE_STRIP, 0, static_cast<GLsizei>(verts.size()));
+        glBindVertexArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
 private:
+    void ensureLabels() {
+        if (!_maxLabel) {
+            auto label = std::make_unique<Text>();
+            label->setAlignment(Text::Alignment::Center);
+            label->setColor(_style.getTertiaryColor());
+            label->setFontSize(14);
+            _maxLabel = static_cast<Text*>(addChild(std::move(label)));
+        }
+
+        if (!_minLabel) {
+            auto label = std::make_unique<Text>();
+            label->setAlignment(Text::Alignment::Center);
+            label->setColor(_style.getTertiaryColor());
+            label->setFontSize(14);
+            _minLabel = static_cast<Text*>(addChild(std::move(label)));
+        }
+    }
+
+    void layoutLabels(float maxValue, float minValue) {
+        const int widthPx = std::max(_transform.getSizePx().x, 40);
+        //const float horizontalOffset = -0.07f;
+        const float horizontalOffset = 0.06f;
+
+        float rightX = _transform.getSizeUS().x + horizontalOffset;
+
+        Transform topTransform;
+        topTransform.setPosition({ rightX, _transform.getSizeUS().y - 0.03f});
+        topTransform.setSizePx({ widthPx, 18 });
+        _maxLabel->setTransform(topTransform);
+        _maxLabel->setColor(_style.getTertiaryColor());
+        _maxLabel->setText(std::format("Highest: {:.2f}", maxValue));
+
+        Transform bottomTransform;
+        bottomTransform.setPosition({ rightX, -_transform.getSizeUS().y + 0.03f});
+        bottomTransform.setSizePx({ widthPx, 18 });
+        _minLabel->setTransform(bottomTransform);
+        _minLabel->setColor(_style.getTertiaryColor());
+        _minLabel->setText(std::format("Lowest: {:.2f}", minValue));
+    }
+
     const std::vector<float>* _values = nullptr;
+    std::vector<Vertex2D> _lineVertices;
+    Text* _maxLabel = nullptr;
+    Text* _minLabel = nullptr;
 };

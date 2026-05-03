@@ -1,5 +1,5 @@
 #include "modules/Graphics/UI/UIBase/Rectangle.h"
-#include "core/config.h"          // CFG_GET_WINDOW_ASPECT()
+#include "core/config.h"
 #include <cmath>
 
 #ifndef M_PI
@@ -7,6 +7,7 @@
 #endif
 
 void Rectangle::rebuild() {
+    UIElement::rebuild();
     auto& tris = _mesh.getTriangles();
     tris.clear();
 
@@ -54,7 +55,6 @@ void Rectangle::rebuild() {
     if (rx > hx) rx = hx;
     if (ry > hy) ry = hy;
 
-    // ---------- Sharp corners ----------
     if (borderRadius <= 0.0f) {
         if (hasBorder && borderWidth > 0.0f) {
             float il = left + borderWidthX;

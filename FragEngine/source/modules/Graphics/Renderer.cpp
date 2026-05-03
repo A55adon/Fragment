@@ -1,5 +1,71 @@
 #include "Renderer.h"
 
+#include <limits>
+
+namespace {
+	struct ShadowBounds {
+		vec3<float> min{
+			std::numeric_limits<float>::max(),
+			std::numeric_limits<float>::max(),
+			std::numeric_limits<float>::max()
+		};
+		vec3<float> max{
+			-std::numeric_limits<float>::max(),
+			-std::numeric_limits<float>::max(),
+			-std::numeric_limits<float>::max()
+		};
+		bool valid = false;
+	};
+
+	void includePoint(ShadowBounds& bounds, const vec3<float>& point)
+	{
+		bounds.min.x = std::min(bounds.min.x, point.x);
+		bounds.min.y = std::min(bounds.min.y, point.y);
+		bounds.min.z = std::min(bounds.min.z, point.z);
+		bounds.max.x = std::max(bounds.max.x, point.x);
+		bounds.max.y = std::max(bounds.max.y, point.y);
+		bounds.max.z = std::max(bounds.max.z, point.z);
+		bounds.valid = true;
+	}
+
+	vec3<float> transformPoint(const mat4& matrix, const vec3<float>& point)
+	{
+		return toVec3(matrix * vec4<float>(point.x, point.y, point.z, 1.0f));
+	}
+
+	vec3<float> getShadowTarget(const std::vector<std::unique_ptr<SceneObject>>& objects)
+	{
+		vec3<float> target{ 0.0f, 0.0f, 0.0f };
+		for (const auto& obj : objects) {
+			target += obj->getPosition();
+		}
+		target *= (1.0f / static_cast<float>(objects.size()));
+		return target;
+	}
+
+	ShadowBounds getLightSpaceBounds(const std::vector<std::unique_ptr<SceneObject>>& objects, const mat4& lightView)
+	{
+		ShadowBounds bounds;
+		for (const auto& obj : objects) {
+			const mat4 model = obj->getModelMatrix();
+			bool includedMeshVertex = false;
+
+			for (const auto& tri : obj->getRenderMesh().triangles) {
+				for (const auto& vertex : tri.vertices) {
+					const vec3<float> worldPos = transformPoint(model, vertex.position);
+					includePoint(bounds, transformPoint(lightView, worldPos));
+					includedMeshVertex = true;
+				}
+			}
+
+			if (!includedMeshVertex) {
+				includePoint(bounds, transformPoint(lightView, obj->getPosition()));
+			}
+		}
+		return bounds;
+	}
+}
+
 void Renderer::initialize(Window* window)
 {
 	// Check if window is valid
@@ -254,6 +320,7 @@ void Renderer::drawScene(Scene* scene, Camera* camera, std::vector<std::unique_p
 
 	_modelShader.setInt("shadowMap", 1);
 	_modelShader.setMat4("lightSpaceMatrix", _lightSpaceMatrix);
+	_modelShader.setVec3("shadowLightDirection", _shadowLightDirection);
 	// Tell the shader how many light there should be
 	_modelShader.setInt("lightCount", lights.size());
 
@@ -332,7 +399,7 @@ void Renderer::drawUI(UI* ui)
 
 	_uiShader.use();
 	for (auto& uiEl : ui->getRootElements()) {
-		uiEl->draw({ 0,0 }, &_uiShader, _uiVAO, _uiVBO);
+		uiEl->draw({ 0,0 }, &_uiShader, _uiVBO, _uiVAO);
 	}
 
 	// Restore state after UI drawing:
@@ -342,24 +409,68 @@ void Renderer::drawUI(UI* ui)
 }
 void Renderer::renderShadowPass(Scene* scene, LightSource* light, Camera* camera)
 {
-	float range = 40.0f;
+	(void)camera;
 
-	vec3<float> sceneCenter{ 0.0f, 0.0f, 0.0f };
 	const auto& objects = scene->getAllObjects().getAll();
-	if (!objects.empty()) {
-		for (const auto& obj : objects) {
-			sceneCenter += obj->getPosition();
-		}
-		sceneCenter *= (1.0f / static_cast<float>(objects.size()));
+	if (objects.empty()) {
+		return;
 	}
 
-	mat4 lightProj = mat4::ortho(-range, range, -range, range, 1.0f, 100.0f);
+	vec3<float> sceneTarget = getShadowTarget(objects);
+	vec3<float> lightForward = (sceneTarget - light->position).normalized();
+	if (lightForward.lengthSquared() < 1e-6f) {
+		lightForward = vec3<float>{ -0.35f, -1.0f, -0.25f }.normalized();
+		sceneTarget = light->position + lightForward;
+	}
+
+	vec3<float> up{ 0.0f, 1.0f, 0.0f };
+	if (std::fabs(lightForward.dot(up)) > 0.95f) {
+		up = { 0.0f, 0.0f, 1.0f };
+	}
+
+	_shadowLightDirection = -lightForward;
 
 	mat4 lightView = mat4::lookAt(
 		light->position,
-		sceneCenter,
-		vec3<float>(0, 1, 0)
+		sceneTarget,
+		up
 	);
+
+	ShadowBounds bounds = getLightSpaceBounds(objects, lightView);
+	if (!bounds.valid) {
+		return;
+	}
+
+	const float width = bounds.max.x - bounds.min.x;
+	const float height = bounds.max.y - bounds.min.y;
+	const float depth = bounds.max.z - bounds.min.z;
+	const float xyMargin = std::max(0.5f, std::max(width, height) * 0.05f);
+	const float zMargin = std::max(1.0f, depth * 0.10f);
+
+	float left = bounds.min.x - xyMargin;
+	float right = bounds.max.x + xyMargin;
+	float bottom = bounds.min.y - xyMargin;
+	float top = bounds.max.y + xyMargin;
+	float nearPlane = -bounds.max.z - zMargin;
+	float farPlane = -bounds.min.z + zMargin;
+
+	if (right - left < 1.0f) {
+		const float center = (left + right) * 0.5f;
+		left = center - 0.5f;
+		right = center + 0.5f;
+	}
+	if (top - bottom < 1.0f) {
+		const float center = (bottom + top) * 0.5f;
+		bottom = center - 0.5f;
+		top = center + 0.5f;
+	}
+	if (farPlane - nearPlane < 1.0f) {
+		const float center = (nearPlane + farPlane) * 0.5f;
+		nearPlane = center - 0.5f;
+		farPlane = center + 0.5f;
+	}
+
+	mat4 lightProj = mat4::ortho(left, right, bottom, top, nearPlane, farPlane);
 
 	_lightSpaceMatrix = lightProj * lightView;
 
@@ -370,7 +481,7 @@ void Renderer::renderShadowPass(Scene* scene, LightSource* light, Camera* camera
 	glBindFramebuffer(GL_FRAMEBUFFER, _shadowFBO);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-	glCullFace(GL_FRONT);
+	glDisable(GL_CULL_FACE);
 
 	for (auto& obj : scene->getAllObjects().getAll()) {
 
@@ -385,6 +496,7 @@ void Renderer::renderShadowPass(Scene* scene, LightSource* light, Camera* camera
 		}
 	}
 
+	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
 	if (isCustomResolution())

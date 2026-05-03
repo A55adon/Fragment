@@ -324,6 +324,61 @@ struct mat4
         m.v[3][3] = 1.0f;
         return m;
     }
+
+    static mat4 inverse(const mat4& m) {
+        // General 4x4 inverse using cofactor expansion
+        float inv[16], det;
+        const float* src = &m.v[0][0];
+        float tmp[16];
+
+        // Transpose into flat array (row -> column major for computation)
+        for (int i = 0; i < 4; ++i)
+            for (int j = 0; j < 4; ++j)
+                tmp[i * 4 + j] = m.v[i][j];
+
+        inv[0] = tmp[5] * tmp[10] * tmp[15] - tmp[5] * tmp[11] * tmp[14] - tmp[9] * tmp[6] * tmp[15]
+            + tmp[9] * tmp[7] * tmp[14] + tmp[13] * tmp[6] * tmp[11] - tmp[13] * tmp[7] * tmp[10];
+        inv[4] = -tmp[4] * tmp[10] * tmp[15] + tmp[4] * tmp[11] * tmp[14] + tmp[8] * tmp[6] * tmp[15]
+            - tmp[8] * tmp[7] * tmp[14] - tmp[12] * tmp[6] * tmp[11] + tmp[12] * tmp[7] * tmp[10];
+        inv[8] = tmp[4] * tmp[9] * tmp[15] - tmp[4] * tmp[11] * tmp[13] - tmp[8] * tmp[5] * tmp[15]
+            + tmp[8] * tmp[7] * tmp[13] + tmp[12] * tmp[5] * tmp[11] - tmp[12] * tmp[7] * tmp[9];
+        inv[12] = -tmp[4] * tmp[9] * tmp[14] + tmp[4] * tmp[10] * tmp[13] + tmp[8] * tmp[5] * tmp[14]
+            - tmp[8] * tmp[6] * tmp[13] - tmp[12] * tmp[5] * tmp[10] + tmp[12] * tmp[6] * tmp[9];
+        inv[1] = -tmp[1] * tmp[10] * tmp[15] + tmp[1] * tmp[11] * tmp[14] + tmp[9] * tmp[2] * tmp[15]
+            - tmp[9] * tmp[3] * tmp[14] - tmp[13] * tmp[2] * tmp[11] + tmp[13] * tmp[3] * tmp[10];
+        inv[5] = tmp[0] * tmp[10] * tmp[15] - tmp[0] * tmp[11] * tmp[14] - tmp[8] * tmp[2] * tmp[15]
+            + tmp[8] * tmp[3] * tmp[14] + tmp[12] * tmp[2] * tmp[11] - tmp[12] * tmp[3] * tmp[10];
+        inv[9] = -tmp[0] * tmp[9] * tmp[15] + tmp[0] * tmp[11] * tmp[13] + tmp[8] * tmp[1] * tmp[15]
+            - tmp[8] * tmp[3] * tmp[13] - tmp[12] * tmp[1] * tmp[11] + tmp[12] * tmp[3] * tmp[9];
+        inv[13] = tmp[0] * tmp[9] * tmp[14] - tmp[0] * tmp[10] * tmp[13] - tmp[8] * tmp[1] * tmp[14]
+            + tmp[8] * tmp[2] * tmp[13] + tmp[12] * tmp[1] * tmp[10] - tmp[12] * tmp[2] * tmp[9];
+        inv[2] = tmp[1] * tmp[6] * tmp[15] - tmp[1] * tmp[7] * tmp[14] - tmp[5] * tmp[2] * tmp[15]
+            + tmp[5] * tmp[3] * tmp[14] + tmp[13] * tmp[2] * tmp[7] - tmp[13] * tmp[3] * tmp[6];
+        inv[6] = -tmp[0] * tmp[6] * tmp[15] + tmp[0] * tmp[7] * tmp[14] + tmp[4] * tmp[2] * tmp[15]
+            - tmp[4] * tmp[3] * tmp[14] - tmp[12] * tmp[2] * tmp[7] + tmp[12] * tmp[3] * tmp[6];
+        inv[10] = tmp[0] * tmp[5] * tmp[15] - tmp[0] * tmp[7] * tmp[13] - tmp[4] * tmp[1] * tmp[15]
+            + tmp[4] * tmp[3] * tmp[13] + tmp[12] * tmp[1] * tmp[7] - tmp[12] * tmp[3] * tmp[5];
+        inv[14] = -tmp[0] * tmp[5] * tmp[14] + tmp[0] * tmp[6] * tmp[13] + tmp[4] * tmp[1] * tmp[14]
+            - tmp[4] * tmp[2] * tmp[13] - tmp[12] * tmp[1] * tmp[6] + tmp[12] * tmp[2] * tmp[5];
+        inv[3] = -tmp[1] * tmp[6] * tmp[11] + tmp[1] * tmp[7] * tmp[10] + tmp[5] * tmp[2] * tmp[11]
+            - tmp[5] * tmp[3] * tmp[10] - tmp[9] * tmp[2] * tmp[7] + tmp[9] * tmp[3] * tmp[6];
+        inv[7] = tmp[0] * tmp[6] * tmp[11] - tmp[0] * tmp[7] * tmp[10] - tmp[4] * tmp[2] * tmp[11]
+            + tmp[4] * tmp[3] * tmp[10] + tmp[8] * tmp[2] * tmp[7] - tmp[8] * tmp[3] * tmp[6];
+        inv[11] = -tmp[0] * tmp[5] * tmp[11] + tmp[0] * tmp[7] * tmp[9] + tmp[4] * tmp[1] * tmp[11]
+            - tmp[4] * tmp[3] * tmp[9] - tmp[8] * tmp[1] * tmp[7] + tmp[8] * tmp[3] * tmp[5];
+        inv[15] = tmp[0] * tmp[5] * tmp[10] - tmp[0] * tmp[6] * tmp[9] - tmp[4] * tmp[1] * tmp[10]
+            + tmp[4] * tmp[2] * tmp[9] + tmp[8] * tmp[1] * tmp[6] - tmp[8] * tmp[2] * tmp[5];
+
+        det = tmp[0] * inv[0] + tmp[1] * inv[4] + tmp[2] * inv[8] + tmp[3] * inv[12];
+        if (std::fabs(det) < 1e-8f) return identity();
+
+        det = 1.0f / det;
+        mat4 result;
+        for (int i = 0; i < 4; ++i)
+            for (int j = 0; j < 4; ++j)
+                result.v[i][j] = inv[i * 4 + j] * det;
+        return result;
+    }
 };
 
 

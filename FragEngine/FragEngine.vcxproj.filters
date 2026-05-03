@@ -200,6 +200,9 @@
     <ClInclude Include="source\core\Mesh2D.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="source\core\Ray.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\modules\Graphics\model.frag">

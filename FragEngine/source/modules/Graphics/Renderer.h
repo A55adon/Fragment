@@ -69,5 +69,6 @@ private:
 	Shader _shadowShader;
 
 	mat4 _lightSpaceMatrix;
+	vec3<float> _shadowLightDirection{ 0.0f, 1.0f, 0.0f };
 	const unsigned int SHADOW_SIZE = CFG_SHADOW_TEXTURE_SIZE;
 };

@@ -66,12 +66,13 @@ Histogram* UI::createHistogram(const std::vector<float>* values, Transform trans
 	return ptr;
 }
 
-ArcChart* UI::createArcChart(const std::vector<float>* values, const std::vector<Color>& colors, Transform transform, Style style)
+ArcChart* UI::createArcChart(const std::vector<float>* values, const std::vector<Color>& colors, Transform transform, Style style, const std::vector<std::string>& labels)
 {
 	auto chart = std::make_unique<ArcChart>();
 	chart->setTransform(transform);
 	chart->setStyle(style);
 	chart->bindValues(values);
+	chart->setOptionLabels(labels);
 	chart->setSegmentColors(colors);
 	chart->rebuild();
 
@@ -91,10 +92,16 @@ void UI::update(float mouseX, float mouseY, bool lmbDown)
 
 	if (!lmbDown) {
 		if (_pressTarget) {
-			if (_pressTarget->containsPx(mouseX, mouseY, _pressTarget->getParent() ? _pressTarget->getParent()->getAbsoluteWorldPosition() : vec2<float>{ 0.0f, 0.0f })) {
+			const bool releasedInside =
+				_pressTarget->containsPx(
+					mouseX,
+					mouseY,
+					_pressTarget->getParent() ? _pressTarget->getParent()->getAbsoluteWorldPosition() : vec2<float>{ 0.0f, 0.0f }
+				);
+			_pressTarget->onPointerUp(mouseX, mouseY);
+			if (releasedInside) {
 				_pressTarget->onClick();
 			}
-			_pressTarget->onPointerUp(mouseX, mouseY);
 		}
 		_dragTarget = nullptr;
 		_resizeTarget = nullptr;

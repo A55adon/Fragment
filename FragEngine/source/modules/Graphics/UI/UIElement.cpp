@@ -10,6 +10,7 @@ void UIElement::update()
 
 void UIElement::draw(vec2<float> parentPosition, Shader* shader, GLuint vbo, GLuint vao)
 {
+	if (!_visible) return;
 	vec2<float> worldPos = parentPosition + _transform.getPosition();
 
 	//Draw
@@ -45,11 +46,13 @@ void UIElement::draw(vec2<float> parentPosition, Shader* shader, GLuint vbo, GLu
 	}
 
 	for (auto& child : _children) {
-		child->draw(parentPosition, shader,  vao, vbo);
+		child->draw(worldPos, shader, vbo, vao);
 	}
 
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	_dirtyDraw = false;
 }
 
 vec2<float> UIElement::getWorldPosition(vec2<float> parentPos) const
@@ -136,6 +139,15 @@ UIElement* UIElement::findTopElementAt(float x, float y, vec2<float> parentPos)
 
 void UIElement::rebuild()
 {
+	markDirty();
+}
+
+void UIElement::markDirty()
+{
+	_dirtyDraw = true;
+	if (_parent) {
+		_parent->markDirty();
+	}
 }
 void UIElement::onResize(float dx, float dy, int edgeMask)
 {

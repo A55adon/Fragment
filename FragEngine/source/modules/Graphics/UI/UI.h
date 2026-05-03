@@ -101,7 +101,7 @@ public:
     }
 
     Histogram* createHistogram(const std::vector<float>* values, Transform transform = Transform(), Style style = Style());
-    ArcChart* createArcChart(const std::vector<float>* values, const std::vector<Color>& colors, Transform transform = Transform(), Style style = Style());
+    ArcChart* createArcChart(const std::vector<float>* values, const std::vector<Color>& colors, Transform transform = Transform(), Style style = Style(), const std::vector<std::string>& labels = {});
 
     void update(float mouseX, float mouseY, bool lmbDown);
 
