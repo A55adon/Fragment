@@ -107,18 +107,19 @@ private:
         const int widthPx = std::max(_transform.getSizePx().x, 40);
         //const float horizontalOffset = -0.07f;
         const float horizontalOffset = 0.06f;
+        const vec2<float> halfSize = _transform.getHalfSizeNDC();
 
-        float rightX = _transform.getSizeUS().x + horizontalOffset;
+        float rightX = halfSize.x + horizontalOffset;
 
         Transform topTransform;
-        topTransform.setPosition({ rightX, _transform.getSizeUS().y - 0.03f});
+        topTransform.setPosition({ rightX, halfSize.y - 0.03f});
         topTransform.setSizePx({ widthPx, 18 });
         _maxLabel->setTransform(topTransform);
         _maxLabel->setColor(_style.getTertiaryColor());
         _maxLabel->setText(std::format("Highest: {:.2f}", maxValue));
 
         Transform bottomTransform;
-        bottomTransform.setPosition({ rightX, -_transform.getSizeUS().y + 0.03f});
+        bottomTransform.setPosition({ rightX, -halfSize.y + 0.03f});
         bottomTransform.setSizePx({ widthPx, 18 });
         _minLabel->setTransform(bottomTransform);
         _minLabel->setColor(_style.getTertiaryColor());

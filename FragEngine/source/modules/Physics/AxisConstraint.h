@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/DataTypes.h"
-#include "core/GlobalSceneObjectKeyRegister.h"
+#include "core/SceneObjectKeyRegister.h"
 
 class SceneObject;
 
@@ -73,7 +73,7 @@ public:
 
     std::string getObjectKey() const { return _objectKey; }
 
-    SceneObject* getCachedObject() const { return GlobalSceneObjectKeyRegister::getObjByKey(_objectKey); }
+    SceneObject* getCachedObject() const { return SceneObjectKeyRegister::getObjByKey(_objectKey); }
     
     void setObjectKey(const std::string& key) { _objectKey = key; }
 private:

@@ -167,9 +167,9 @@ void UI::update(float mouseX, float mouseY, bool lmbDown)
 
 	if (dx == 0 && dy == 0) return;
 
-	// normalize to UI space (0–1)
-	float dxUI = dx / CFG_WINDOW_WIDTH;
-	float dyUI = dy / CFG_WINDOW_HEIGHT;
+	// Normalize pixel deltas to UI space (0-100, bottom-left origin).
+	float dxUI = (dx / CFG_WINDOW_WIDTH) * Transform::UI_SPACE_EXTENT;
+	float dyUI = (dy / CFG_WINDOW_HEIGHT) * Transform::UI_SPACE_EXTENT;
 
 	if (_pressTarget) {
 		_pressTarget->onPointerMove(mouseX, mouseY, lmbDown);

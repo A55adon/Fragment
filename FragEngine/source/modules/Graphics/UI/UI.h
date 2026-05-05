@@ -33,8 +33,8 @@ Factory:
     create[ObjectName](Args...,Transform,Style);
 
 Transform:
-    - position ->(%/px)
-    - size ->(%/px)
+    - position ->(NDC -1..1 / US 0..100 / px)
+    - size ->(NDC / US 0..100 / px)
 Style:
     - primaryColor
     - secondaryColor

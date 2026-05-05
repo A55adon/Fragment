@@ -13,47 +13,59 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Graphics">
-      <UniqueIdentifier>{e5789890-823b-4377-88cc-fe55b4108378}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{fd5a4469-4fe9-40eb-ad6b-61172569317c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\IO">
-      <UniqueIdentifier>{cfd488ed-7fc1-4b3d-b911-0c5470be72a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Physics">
-      <UniqueIdentifier>{56ef3326-9261-4779-998a-a99a499852da}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{411ef55c-9fbc-48b7-8c7c-8d2ae5b0e83e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics">
-      <UniqueIdentifier>{1a735d84-e278-43e8-8af4-55be5cdb3469}</UniqueIdentifier>
+    <Filter Include="Header Files\Editor">
+      <UniqueIdentifier>{bc1ebc88-0973-4897-b8df-381e9f81ee6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics\UI">
-      <UniqueIdentifier>{b879b1eb-85ee-4f4a-b475-546a13cfc65c}</UniqueIdentifier>
+    <Filter Include="Header Files\Modules">
+      <UniqueIdentifier>{32ed6aa8-3b97-4aed-b9e7-299dcdcf3afd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\UI">
-      <UniqueIdentifier>{12913ca6-1861-4f7c-9ee7-df07671d8dd2}</UniqueIdentifier>
+    <Filter Include="Header Files\Modules\Physics">
+      <UniqueIdentifier>{56ef3326-9261-4779-998a-a99a499852da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Physics">
-      <UniqueIdentifier>{b3c9860d-6bc6-4f74-9462-918dca43b659}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Monitoring">
+    <Filter Include="Header Files\Modules\Monitoring">
       <UniqueIdentifier>{47eb3c21-665a-4b06-88ff-59a53adbe870}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics\UI\UIBase">
+    <Filter Include="Header Files\Modules\IO">
+      <UniqueIdentifier>{cfd488ed-7fc1-4b3d-b911-0c5470be72a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\Graphics">
+      <UniqueIdentifier>{e5789890-823b-4377-88cc-fe55b4108378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\Graphics\UI">
+      <UniqueIdentifier>{b879b1eb-85ee-4f4a-b475-546a13cfc65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\Graphics\UI\UIBase">
       <UniqueIdentifier>{f9299328-acde-426f-beec-ca40d23e79d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics\UI\UIInput">
+    <Filter Include="Header Files\Modules\Graphics\UI\UIInput">
       <UniqueIdentifier>{e37992ff-db06-413b-b4f2-9282a3da60a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics\UI\UIStatistics">
+    <Filter Include="Header Files\Modules\Graphics\UI\UIStatistics">
       <UniqueIdentifier>{d3ed4473-6d67-47d8-95e0-a8fa2e9c7f83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\UI\UIBase">
+    <Filter Include="Source Files\Modules">
+      <UniqueIdentifier>{209c3353-9e08-4208-8e62-706cdc901ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Physics">
+      <UniqueIdentifier>{b3c9860d-6bc6-4f74-9462-918dca43b659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Graphics">
+      <UniqueIdentifier>{1a735d84-e278-43e8-8af4-55be5cdb3469}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Graphics\UI">
+      <UniqueIdentifier>{12913ca6-1861-4f7c-9ee7-df07671d8dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\Graphics\UI\UIBase">
       <UniqueIdentifier>{2e70030b-1df2-4368-a5ea-f12022f1ca08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Editor">
+      <UniqueIdentifier>{3a99665e-193c-4a48-820d-9020465feb59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,24 +82,24 @@
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\Graphics.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Modules\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\Shader.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Modules\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\Texture.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Modules\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Physics\Physics.cpp">
-      <Filter>Source Files\Physics</Filter>
+      <Filter>Source Files\Modules\Physics</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\UI\UI.cpp">
-      <Filter>Source Files\Graphics\UI</Filter>
+      <Filter>Source Files\Modules\Graphics\UI</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\Renderer.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Modules\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="source\core\GlobalSceneObjectKeyRegister.cpp">
+    <ClCompile Include="source\core\SceneObjectKeyRegister.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="source\core\SceneObject.cpp">
@@ -97,30 +109,33 @@
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\UI\UIElement.cpp">
-      <Filter>Source Files\Graphics\UI</Filter>
+      <Filter>Source Files\Modules\Graphics\UI</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\UI\UIBase\Rectangle.cpp">
-      <Filter>Source Files\Graphics\UI\UIBase</Filter>
+      <Filter>Source Files\Modules\Graphics\UI\UIBase</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\Graphics\UI\UIBase\Text.cpp">
-      <Filter>Source Files\Graphics\UI\UIBase</Filter>
+      <Filter>Source Files\Modules\Graphics\UI\UIBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\editor\core.cpp">
+      <Filter>Source Files\Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\modules\Graphics\Camera.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\Graphics.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\LightSource.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\Shader.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\Texture.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\core\DataTypes.h">
       <Filter>Header Files\Core</Filter>
@@ -138,70 +153,73 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\Window.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\IO\UserInput\Input.h">
-      <Filter>Header Files\IO</Filter>
+      <Filter>Header Files\Modules\IO</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UI.h">
-      <Filter>Header Files\Graphics\UI</Filter>
+      <Filter>Header Files\Modules\Graphics\UI</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Physics\Physics.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\Modules\Physics</Filter>
     </ClInclude>
     <ClInclude Include="source\core\Scene.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Monitoring\Monitor.h">
-      <Filter>Header Files\Monitoring</Filter>
+      <Filter>Header Files\Modules\Monitoring</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\Renderer.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Modules\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="source\core\config.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Physics\AxisConstraint.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\Modules\Physics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Physics\HingeConstraint.h">
-      <Filter>Header Files\Physics</Filter>
+      <Filter>Header Files\Modules\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h">
+    <ClInclude Include="source\core\SceneObjectKeyRegister.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIBase\Rectangle.h">
-      <Filter>Header Files\Graphics\UI\UIBase</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIBase</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIBase\Text.h">
-      <Filter>Header Files\Graphics\UI\UIBase</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIBase</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIInput\Button.h">
-      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIInput</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIInput\Dropdown.h">
-      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIInput</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIInput\Input.h">
-      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIInput</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIInput\Slider.h">
-      <Filter>Header Files\Graphics\UI\UIInput</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIInput</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIStatistics\ArcChart.h">
-      <Filter>Header Files\Graphics\UI\UIStatistics</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIStatistics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIStatistics\Histogram.h">
-      <Filter>Header Files\Graphics\UI\UIStatistics</Filter>
+      <Filter>Header Files\Modules\Graphics\UI\UIStatistics</Filter>
     </ClInclude>
     <ClInclude Include="source\modules\Graphics\UI\UIElement.h">
-      <Filter>Header Files\Graphics\UI</Filter>
+      <Filter>Header Files\Modules\Graphics\UI</Filter>
     </ClInclude>
     <ClInclude Include="source\core\Mesh2D.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="source\core\Ray.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\editor\core.h">
+      <Filter>Header Files\Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

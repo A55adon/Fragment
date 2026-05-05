@@ -58,9 +58,10 @@ private:
             option->setFont(_font);
             option->setLabel(_options[i].second);
 
+            const vec2<float> parentSize = getTransform().getSize();
             Transform tr;
-            tr.setPosition({ 0.0f, -getTransform().getSizeUS().y * 2.2f * static_cast<float>(i + 1) });
-            tr.setSizeUS(getTransform().getSizeUS());
+            tr.setPosition({ 0.0f, -parentSize.y * 1.1f * static_cast<float>(i + 1) });
+            tr.setSize(parentSize);
             option->setTransform(tr);
 
             const T value = _options[i].first;

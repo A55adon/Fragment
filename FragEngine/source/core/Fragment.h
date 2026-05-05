@@ -10,7 +10,7 @@
 #include "modules/IO/UserInput/Input.h"
 #include "modules/Physics/Physics.h"
 #include "core/SceneObject.h"
-#include "core/GlobalSceneObjectKeyRegister.h"
+#include "core/SceneObjectKeyRegister.h"
 #include "core/Scene.h"
 #include "modules/Monitoring/Monitor.h"
 #include "core/Ray.h"
@@ -119,6 +119,30 @@ public:
 			if (cursorYPos < bottomRight.y && cursorYPos > topLeft.y) // Y axis check
 				return true; // hit
 		return false;
+	}
+
+
+	SceneObject* pickSceneObject(float mouseX, float mouseY, Camera* camera)
+	{
+		Ray ray = screenToRay(
+			mouseX, mouseY,
+			CFG_WINDOW_WIDTH, CFG_WINDOW_HEIGHT,
+			camera->getViewMatrix(),
+			camera->getProjection()
+		);
+
+		SceneObject* closest = nullptr;
+		float closestT = std::numeric_limits<float>::max();
+
+		for (auto& obj : loadedScene.getAllObjects().getAll()) {
+			auto [aabbMin, aabbMax] = getWorldAABB(obj.get());
+			float t;
+			if (rayIntersectsAABB(ray, aabbMin, aabbMax, t) && t < closestT) {
+				closestT = t;
+				closest = obj.get();
+			}
+		}
+		return closest;  // nullptr if nothing hit
 	}
 
 	EPhysicsUpdateState& getPhysicsUpdateState() { return _physicsUpdateState; }

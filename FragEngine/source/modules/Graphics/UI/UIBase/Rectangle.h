@@ -4,8 +4,8 @@
 
 class Rectangle : public UIElement {
 public:
-	void rebuild();
+	void rebuild() override;
 
-	void onResize(float dx, float dy, int edgeMask);
-	void onDrag(float dx, float dy);
+	void onResize(float dx, float dy, int edgeMask) override;
+	void onDrag(float dx, float dy) override;
 };

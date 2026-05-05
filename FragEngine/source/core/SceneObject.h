@@ -39,7 +39,7 @@ public:
         if (_physics && !_bodyID.IsInvalid())
             destroyPhysics(_physics->getSystem());
         
-        GlobalSceneObjectKeyRegister::unregisterObject(this);
+        SceneObjectKeyRegister::unregisterObject(this);
     }
 
     bool operator==(const SceneObject& other) const {

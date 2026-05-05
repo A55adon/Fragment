@@ -231,7 +231,7 @@ void Fragment::loadSceneByID(int ID) {
 		newObject->setScale(obj->getScale());
 		newObject->initPhysics(obj->settings);
 
-		std::string newKey = GlobalSceneObjectKeyRegister::registerObject(newObject);
+		std::string newKey = SceneObjectKeyRegister::registerObject(newObject);
 		keyMap[obj.get()] = newKey;
 	}
 
@@ -293,7 +293,7 @@ void Fragment::saveSceneToID(int ID) {
 		newObject->initPhysics(obj->settings);
 
 		// Register the new object
-		std::string newKey = GlobalSceneObjectKeyRegister::registerObject(newObject);
+		std::string newKey = SceneObjectKeyRegister::registerObject(newObject);
 		keyMap[obj.get()] = newKey;
 	}
 
@@ -350,7 +350,7 @@ SceneObject* Fragment::createNewSceneObject(std::string name)
 	if (name.empty()) { // if no name give, return a sceneObject with name "sceneObject" followed by the scene ID
 		SceneObject* tempSceneObject = loadedScene.getAllObjects().createNew<SceneObject>("SceneObject", loadedScene.getPhysics());
 		tempSceneObject->setName("SceneObject" + std::to_string(tempSceneObject->getID()));
-		GlobalSceneObjectKeyRegister::registerObject(tempSceneObject);
+		SceneObjectKeyRegister::registerObject(tempSceneObject);
 		return tempSceneObject;
 	}
 

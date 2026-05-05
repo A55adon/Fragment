@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/DataTypes.h"
-#include "core/GlobalSceneObjectKeyRegister.h"
+#include "core/SceneObjectKeyRegister.h"
 
 class SceneObject;
 
@@ -52,8 +52,8 @@ public:
     float getMotorTargetVelocity() const { return _motorTargetVelocity; }
     float getMotorMaxTorque() const { return _motorMaxTorque; }
 
-    SceneObject* getCachedConnector1() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector1Key); }
-    SceneObject* getCachedConnector2() const { return GlobalSceneObjectKeyRegister::getObjByKey(_connector2Key); }
+    SceneObject* getCachedConnector1() const { return SceneObjectKeyRegister::getObjByKey(_connector1Key); }
+    SceneObject* getCachedConnector2() const { return SceneObjectKeyRegister::getObjByKey(_connector2Key); }
     
     void setConnector1Key(const std::string& key) { _connector1Key = key; }
     void setConnector2Key(const std::string& key) { _connector2Key = key; }

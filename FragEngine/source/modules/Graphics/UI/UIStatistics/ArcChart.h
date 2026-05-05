@@ -33,8 +33,9 @@ public:
         if (total <= 0.0f) return;
 
         auto& tris = _mesh.getTriangles();
-        float outerRx = _transform.getSizeUS().x;
-        float outerRy = _transform.getSizeUS().y;
+        const vec2<float> halfSize = _transform.getHalfSizeNDC();
+        float outerRx = halfSize.x;
+        float outerRy = halfSize.y;
         float innerRx = outerRx * 0.45f;
         float innerRy = outerRy * 0.45f;
         const int segments = 24;
@@ -85,7 +86,7 @@ private:
 
     void updateLegend(float total) {
         const int widthPx = std::max(_transform.getSizePx().x * 2, 120);
-        const float startOffset = _transform.getSizeUS().y + 0.05f;
+        const float startOffset = _transform.getHalfSizeNDC().y + 0.05f;
         const float lineSpacing = 0.035f;
 
         for (size_t idx = 0; idx < _values->size(); ++idx) {

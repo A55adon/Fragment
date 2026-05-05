@@ -2,8 +2,9 @@ C:\Users\simon\Desktop\Code\Fragment\FragEngine\external\glad\src\glad.c;C:\User
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\external\stb_image.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\stb_image.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\config.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\config.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\Fragment.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\Fragment.obj
-C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\GlobalSceneObjectKeyRegister.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\GlobalSceneObjectKeyRegister.obj
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\SceneObjectKeyRegister.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\SceneObjectKeyRegister.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\core\SceneObject.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\SceneObject.obj
+C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\editor\core.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\core.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\main.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\main.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Graphics.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\Graphics.obj
 C:\Users\simon\Desktop\Code\Fragment\FragEngine\source\modules\Graphics\Renderer.cpp;C:\Users\simon\Desktop\Code\Fragment\FragEngine\Fragment\x64\Debug\Renderer.obj

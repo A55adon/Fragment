@@ -74,12 +74,14 @@ bool UIElement::containsPx(float x, float y, vec2<float> parentPos) const {
 		static_cast<int>((worldPos.y + 1.0f) * 0.5f * CFG_WINDOW_HEIGHT)
 	};
 	int left = pos.x - size.x / 2;
-	int top = pos.y - size.y / 2;
+	int bottom = pos.y - size.y / 2;
+	int right = left + size.x;
+	int top = bottom + size.y;
 
 	return x >= left &&
-		y >= top &&
-		x <= left + size.x &&
-		y <= top + size.y;
+		y >= bottom &&
+		x <= right &&
+		y <= top;
 }
 
 int UIElement::getResizeEdgeMask(float x, float y, vec2<float> parentPos, float threshold) const {
@@ -93,8 +95,8 @@ int UIElement::getResizeEdgeMask(float x, float y, vec2<float> parentPos, float 
 	};
 	float left = static_cast<float>(pos.x - size.x / 2);
 	float right = left + static_cast<float>(size.x);
-	float top = static_cast<float>(pos.y - size.y / 2);
-	float bottom = top + static_cast<float>(size.y);
+	float bottom = static_cast<float>(pos.y - size.y / 2);
+	float top = bottom + static_cast<float>(size.y);
 
 	int mask = 0;
 
@@ -171,17 +173,17 @@ void UIElement::onResize(float dx, float dy, int edgeMask)
 	// top
 	if (edgeMask & 4) {
 		pos.y += dy * 0.5f;
-		size.y -= dy;
+		size.y += dy;
 	}
 
 	// bottom
 	if (edgeMask & 8) {
 		pos.y += dy * 0.5f;
-		size.y += dy;
+		size.y -= dy;
 	}
 
 	// clamp minimum size
-	const float minSize = 0.01f;
+	const float minSize = 1.0f;
 	size.x = std::max(size.x, minSize);
 	size.y = std::max(size.y, minSize);
 

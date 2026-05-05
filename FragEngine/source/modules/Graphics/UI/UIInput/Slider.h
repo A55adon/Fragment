@@ -86,18 +86,23 @@ private:
         if (!_fill || !_knob || !_valueLabel) return;
 
         float t = normalizedValue();
+        const vec2<float> parentSize = _transform.getSize();
+        const vec2<float> parentHalf = _transform.getHalfSizeNDC();
+        const float minFillWidth = 2.0f / Transform::UI_SPACE_EXTENT;
+        const float minKnobWidth = 2.4f / Transform::UI_SPACE_EXTENT;
+        const float minKnobHeight = 3.6f / Transform::UI_SPACE_EXTENT;
         auto style = _style;
         auto fillStyle = _style;
         fillStyle.setPrimaryColor(_style.getPrimaryColor());
 
         Transform fillTransform;
         fillTransform.setPosition({
-            -_transform.getSizeUS().x + (_transform.getSizeUS().x * t),
+            -parentHalf.x + (parentHalf.x * t),
             0.0f
         });
-        fillTransform.setSizeUS({
-            std::max(0.01f, _transform.getSizeUS().x * t),
-            _transform.getSizeUS().y * 0.55f
+        fillTransform.setSize({
+            std::max(minFillWidth, parentSize.x * t),
+            parentSize.y * 0.55f
         });
         _fill->setTransform(fillTransform);
         _fill->setStyle(fillStyle);
@@ -105,19 +110,19 @@ private:
 
         Transform knobTransform;
         knobTransform.setPosition({
-            -_transform.getSizeUS().x + (_transform.getSizeUS().x * 2.0f * t),
+            -parentHalf.x + (parentSize.x * t),
             0.0f
         });
-        knobTransform.setSizeUS({
-            std::max(0.012f, _transform.getSizeUS().y * 0.35f),
-            std::max(0.018f, _transform.getSizeUS().y * 0.9f)
+        knobTransform.setSize({
+            std::max(minKnobWidth, parentSize.y * 0.35f),
+            std::max(minKnobHeight, parentSize.y * 0.9f)
         });
         _knob->setTransform(knobTransform);
         _knob->setStyle(style);
         _knob->rebuild();
 
         Transform labelTransform;
-        labelTransform.setPosition({ 0.0f, _transform.getSizeUS().y * 0.1f });
+        labelTransform.setPosition({ 0.0f, parentHalf.y * 0.1f });
         labelTransform.setSizePx({ _transform.getSizePx().x, 16 });
         _valueLabel->setTransform(labelTransform);
         if (_font) _valueLabel->setFont(_font);

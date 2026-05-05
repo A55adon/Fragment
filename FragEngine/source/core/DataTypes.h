@@ -652,6 +652,8 @@ private:
     vec2<float> _size{ 0.1f, 0.1f };
 
 public:
+    static constexpr float UI_SPACE_EXTENT = 100.0f;
+
     void setPosition(vec2<float> pos) {
         _position.x = pos.x;
         _position.y = pos.y;
@@ -687,26 +689,26 @@ public:
     }
 
     void setPositionUS(vec2<float> pos) {
-        _position.x = pos.x * 2.0f - 1.0f;
-        _position.y = pos.y * 2.0f - 1.0f;
+        _position.x = (pos.x / UI_SPACE_EXTENT) * 2.0f - 1.0f;
+        _position.y = (pos.y / UI_SPACE_EXTENT) * 2.0f - 1.0f;
     }
 
     vec2<float> getPositionUS() const {
         return {
-            (_position.x + 1.0f) * 0.5f,
-            (_position.y + 1.0f) * 0.5f
+            (_position.x + 1.0f) * 0.5f * UI_SPACE_EXTENT,
+            (_position.y + 1.0f) * 0.5f * UI_SPACE_EXTENT
         };
     }
 
     void setSizeUS(vec2<float> size) {
-        _size.x = size.x * 2.0f;
-        _size.y = size.y * 2.0f;
+        _size.x = (size.x / UI_SPACE_EXTENT) * 2.0f;
+        _size.y = (size.y / UI_SPACE_EXTENT) * 2.0f;
     }
 
     vec2<float> getSizeUS() const {
         return {
-            _size.x * 0.5f,
-            _size.y * 0.5f
+            _size.x * 0.5f * UI_SPACE_EXTENT,
+            _size.y * 0.5f * UI_SPACE_EXTENT
         };
     }
     
@@ -717,6 +719,13 @@ public:
 
     vec2<float> getSize() const {
         return _size;
+    }
+
+    vec2<float> getHalfSizeNDC() const {
+        return {
+            _size.x * 0.5f,
+            _size.y * 0.5f
+        };
     }
 };
 

@@ -23,8 +23,9 @@
     <ClCompile Include="external\stb_image.cpp" />
     <ClCompile Include="source\core\config.cpp" />
     <ClCompile Include="source\core\Fragment.cpp" />
-    <ClCompile Include="source\core\GlobalSceneObjectKeyRegister.cpp" />
+    <ClCompile Include="source\core\SceneObjectKeyRegister.cpp" />
     <ClCompile Include="source\core\SceneObject.cpp" />
+    <ClCompile Include="source\editor\core.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\modules\Graphics\Graphics.cpp" />
     <ClCompile Include="source\modules\Graphics\Renderer.cpp" />
@@ -41,12 +42,13 @@
     <ClInclude Include="source\core\DataTypes.h" />
     <ClInclude Include="source\core\DefaultFunctions.h" />
     <ClInclude Include="source\core\Fragment.h" />
-    <ClInclude Include="source\core\GlobalSceneObjectKeyRegister.h" />
+    <ClInclude Include="source\core\SceneObjectKeyRegister.h" />
     <ClInclude Include="source\core\Mesh.h" />
     <ClInclude Include="source\core\Mesh2D.h" />
     <ClInclude Include="source\core\Ray.h" />
     <ClInclude Include="source\core\Scene.h" />
     <ClInclude Include="source\core\SceneObject.h" />
+    <ClInclude Include="source\editor\core.h" />
     <ClInclude Include="source\modules\Graphics\Camera.h" />
     <ClInclude Include="source\modules\Graphics\Graphics.h" />
     <ClInclude Include="source\modules\Graphics\LightSource.h" />
